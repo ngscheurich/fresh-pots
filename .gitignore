@@ -16,3 +16,11 @@
 .byebug_history
 
 .envrc
+
+# Added by Breakfast Gem
+yarn-error.log
+npm-debug.log
+node_modules/*
+public/assets/*
+
+.tern-port

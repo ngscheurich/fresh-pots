@@ -2,10 +2,17 @@
 <html>
   <head>
     <title>FreshPots</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag "app.css" %>
+    <%= javascript_include_tag "app.js" %>
+    <script>require('frontend/js/app').init();</script>
+    <%= breakfast_autoreload_tag %>
   </head>
 
   <body>
-    <%= yield %>
+    <div class="mw8 center pa3 sans-serif">
+      <%= yield %>
+    </div>
   </body>
 </html>
