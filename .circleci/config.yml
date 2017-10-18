@@ -18,11 +18,6 @@ jobs:
           - v1-dependencies-
 
       - run:
-          name: Installing system dependencies
-          command: |
-            sudo apt-get install qt5-default libqt5webkit5-dev gstreamer1.0-plugins-base gstreamer1.0-tools gstreamer1.0-x
-
-      - run:
           name: Installing application dependencies
           command: |
             bundle install --jobs=4 --retry=3 --path vendor/bundle
