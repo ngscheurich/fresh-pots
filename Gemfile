@@ -11,6 +11,7 @@ gem "pg", "~> 0.18"
 gem "puma", "~> 3.7"
 gem "rails", "~> 5.1.4"
 gem "rubocop", require: false
+gem "simple_form"
 
 group :development, :test do
   gem "capybara", "~> 2.13"
