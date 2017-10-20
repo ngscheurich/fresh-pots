@@ -43,3 +43,6 @@ jobs:
       - run:
           name: Running tests
           command: bin/rails test
+      - run:
+          name: Running system tests
+          command: bin/rails test:system
