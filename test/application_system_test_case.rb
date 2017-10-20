@@ -1,5 +1,5 @@
 require "test_helper"
 
 class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
-  driven_by :poltergeist, js_errors: false
+  driven_by :poltergeist, options: { js_errors: false }
 end
