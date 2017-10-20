@@ -17,7 +17,7 @@ group :development, :test do
   gem "capybara", "~> 2.13"
   gem "poltergeist"
   gem "pry-byebug"
-  gem "pry-rails"
+  gem "spirit_hands"
 end
 
 group :development do
