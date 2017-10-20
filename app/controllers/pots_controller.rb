@@ -1,28 +1,20 @@
 class PotsController < ApplicationController
   before_action :set_pot, only: [:show, :edit, :update, :destroy]
 
-  # GET /pots
-  # GET /pots.json
   def index
     @pots = Pot.all
   end
 
-  # GET /pots/1
-  # GET /pots/1.json
   def show
   end
 
-  # GET /pots/new
   def new
     @pot = Pot.new
   end
 
-  # GET /pots/1/edit
   def edit
   end
 
-  # POST /pots
-  # POST /pots.json
   def create
     @pot = Pot.new(pot_params)
 
@@ -37,8 +29,6 @@ class PotsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /pots/1
-  # PATCH/PUT /pots/1.json
   def update
     respond_to do |format|
       if @pot.update(pot_params)
@@ -51,8 +41,6 @@ class PotsController < ApplicationController
     end
   end
 
-  # DELETE /pots/1
-  # DELETE /pots/1.json
   def destroy
     @pot.destroy
     respond_to do |format|
@@ -62,12 +50,10 @@ class PotsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_pot
       @pot = Pot.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def pot_params
       params.require(:pot).permit(:name)
     end
