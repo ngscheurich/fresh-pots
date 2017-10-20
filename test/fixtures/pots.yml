@@ -1,7 +1,5 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
 one:
-  name: MyString
+  name: One
 
-two:
-  name: MyString
+pot_with_brews:
+  name: Pot with Brews

@@ -6,6 +6,7 @@ class PotsController < ApplicationController
   end
 
   def show
+    @recent_brews = @pot.recent_brews
   end
 
   def new
