@@ -8,8 +8,9 @@ class PotTest < ActiveSupport::TestCase
 
   test "#recent_brews returns the correct data" do
     pot = Pot.create(name: "Pot")
-    1.upto(10) { Brew.create(pot: pot) }
-    brew = Brew.create(pot: pot)
+    ctype = coffee_types(:one)
+    1.upto(10) { Brew.create(pot: pot, coffee_type: ctype) }
+    brew = Brew.create(pot: pot, coffee_type: ctype)
     assert_equal(pot.recent_brews(1), [brew])
   end
 end

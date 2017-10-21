@@ -3,6 +3,8 @@ require "test_helper"
 class BrewsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @brew = brews(:one)
+    @valid_params = { brew: { pot_id: @brew.pot_id,
+                              coffee_type_id: @brew.coffee_type.id } }
   end
 
   test "should get index" do
@@ -16,8 +18,10 @@ class BrewsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create brew" do
+    pot = Pot.create(name: "pot")
+    coffee_type = CoffeeType.create(name: "type")
     assert_difference("Brew.count") do
-      post brews_url, params: { brew: { pot_id: @brew.pot_id } }
+      post brews_url, params: { brew: { pot_id: pot.id, coffee_type_id: coffee_type.id } }
     end
 
     assert_redirected_to brew_url(Brew.last)
@@ -34,7 +38,7 @@ class BrewsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update brew" do
-    patch brew_url(@brew), params: { brew: { pot_id: @brew.pot_id } }
+    patch brew_url(@brew), params: @valid_params
     assert_redirected_to brew_url(@brew)
   end
 

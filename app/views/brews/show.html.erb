@@ -5,5 +5,10 @@
   <%= link_to @brew.pot.name, @brew.pot %>
 </p>
 
+<p>
+  <strong>Coffee Type:</strong>
+  <%= link_to @brew.coffee_type.name, @brew.coffee_type %>
+</p>
+
 <%= link_to 'Edit', edit_brew_path(@brew) %> |
 <%= link_to 'Back', brews_path %>
