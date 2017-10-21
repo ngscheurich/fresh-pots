@@ -12,7 +12,9 @@
 
   <body class="bg-washed-yellow dark-gray">
     <header class="bg-navy light-red pa3 cf sans-serif" role="banner">
-      <h1 class="ttu f3 ma0 lh-solid fl">Fresh Pots</h1>
+      <h1 class="ttu f3 ma0 lh-solid fl">
+        <%= link_to "Fresh Pots", root_url, class: "light-red link dim" %>
+      </h1>
       <nav class="fr lh-solid" role="navigation">
         <%= link_to "Pots", pots_url, class: "light-red link dim mh2" %>
         <%= link_to "Coffee Types", coffee_types_url, class: "light-red link dim mh2" %>

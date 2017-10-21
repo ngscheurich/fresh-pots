@@ -1,1 +1,21 @@
-<h1>Fresh Pots</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Started</th>
+      <th>Pot</th>
+      <th>Type</th>
+      <th colspan="1"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @recent_brews.each do |brew| %>
+      <tr>
+        <td><%= brew.created_at %></td>
+        <td><%= link_to brew.pot.name, brew.pot %></td>
+        <td><%= link_to brew.coffee_type.name, brew.coffee_type %></td>
+        <td><%= link_to 'Show', brew %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
