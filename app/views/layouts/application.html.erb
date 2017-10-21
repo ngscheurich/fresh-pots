@@ -10,7 +10,16 @@
     <%= breakfast_autoreload_tag %>
   </head>
 
-  <body>
+  <body class="bg-washed-yellow dark-gray">
+    <header class="bg-navy light-red pa3 cf sans-serif" role="banner">
+      <h1 class="ttu f3 ma0 lh-solid fl">Fresh Pots</h1>
+      <nav class="fr lh-solid" role="navigation">
+        <%= link_to "Pots", pots_url, class: "light-red link dim mh2" %>
+        <%= link_to "Coffee Types", coffee_types_url, class: "light-red link dim mh2" %>
+        <%= link_to "Brews", brews_url, class: "light-red link dim mh2" %>
+      </nav>
+    </header>
+
     <div class="mw8 center pa3 sans-serif">
       <%= yield %>
     </div>
