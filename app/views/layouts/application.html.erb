@@ -23,6 +23,16 @@
     </header>
 
     <div class="mw8 center pa3 sans-serif">
+      <% if flash.any? %>
+        <div class="flashes">
+          <% flash.each do |key, value| -%>
+            <div class="flash-<%= key %>">
+              <%= value %>
+            </div>
+            <% end -%>
+        </div>
+      <% end %>
+    
       <%= yield %>
     </div>
   </body>
