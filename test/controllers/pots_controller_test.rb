@@ -1,7 +1,8 @@
-require 'test_helper'
+require "test_helper"
 
 class PotsControllerTest < ActionDispatch::IntegrationTest
   setup do
+    sign_in users(:basic)
     @pot = pots(:one)
   end
 
@@ -16,7 +17,7 @@ class PotsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create pot" do
-    assert_difference('Pot.count') do
+    assert_difference("Pot.count") do
       post pots_url, params: { pot: { name: @pot.name } }
     end
 
@@ -39,7 +40,7 @@ class PotsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should destroy pot" do
-    assert_difference('Pot.count', -1) do
+    assert_difference("Pot.count", -1) do
       delete pot_url(@pot)
     end
 

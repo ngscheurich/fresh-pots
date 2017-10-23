@@ -2,6 +2,7 @@ require "test_helper"
 
 class BrewsControllerTest < ActionDispatch::IntegrationTest
   setup do
+    sign_in users(:basic)
     @brew = brews(:one)
     @valid_params = { brew: { pot_id: @brew.pot_id,
                               coffee_type_id: @brew.coffee_type.id } }
@@ -21,7 +22,12 @@ class BrewsControllerTest < ActionDispatch::IntegrationTest
     pot = Pot.create(name: "pot")
     coffee_type = CoffeeType.create(name: "type")
     assert_difference("Brew.count") do
-      post brews_url, params: { brew: { pot_id: pot.id, coffee_type_id: coffee_type.id } }
+      post brews_url, params: {
+        brew: {
+          pot_id: pot.id,
+          coffee_type_id: coffee_type.id
+        }
+      }
     end
 
     assert_redirected_to brew_url(Brew.last)

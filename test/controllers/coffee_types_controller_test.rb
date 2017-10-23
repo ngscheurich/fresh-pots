@@ -1,8 +1,10 @@
-require 'test_helper'
+require "test_helper"
 
 class CoffeeTypesControllerTest < ActionDispatch::IntegrationTest
   setup do
+    sign_in users(:basic)
     @coffee_type = coffee_types(:one)
+    @valid_params = { coffee_type: { name: "Coffee & Chicory" } }
   end
 
   test "should get index" do
@@ -16,8 +18,8 @@ class CoffeeTypesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create coffee_type" do
-    assert_difference('CoffeeType.count') do
-      post coffee_types_url, params: { coffee_type: { name: @coffee_type.name } }
+    assert_difference("CoffeeType.count") do
+      post coffee_types_url, params: @valid_params
     end
 
     assert_redirected_to coffee_type_url(CoffeeType.last)
@@ -34,12 +36,12 @@ class CoffeeTypesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update coffee_type" do
-    patch coffee_type_url(@coffee_type), params: { coffee_type: { name: @coffee_type.name } }
+    patch coffee_type_url(@coffee_type), params: @valid_params
     assert_redirected_to coffee_type_url(@coffee_type)
   end
 
   test "should destroy coffee_type" do
-    assert_difference('CoffeeType.count', -1) do
+    assert_difference("CoffeeType.count", -1) do
       delete coffee_type_url(@coffee_type)
     end
 
