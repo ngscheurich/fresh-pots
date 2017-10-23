@@ -11,7 +11,7 @@
   <tbody>
     <% @recent_brews.each do |brew| %>
       <tr>
-        <td><%= brew.created_at %></td>
+        <td><%= time_ago_in_words(brew.created_at) %> ago</td>
         <td><%= link_to brew.pot.name, brew.pot %></td>
         <td><%= link_to brew.coffee_type.name, brew.coffee_type %></td>
         <td><%= link_to 'Show', brew %></td>
