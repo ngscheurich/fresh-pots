@@ -15,13 +15,16 @@ module Users
 
     def deny_registration
       custom_message = email_opts["message"]
-      default_message = "Sorry, your email address is not authorized for this app."
       flash[:error] = custom_message.nil? ? default_message : custom_message
       redirect_to new_user_registration_url
     end
 
     def email_opts
       Rails.configuration.email_authorization
+    end
+
+    def default_message
+      "Sorry, your email address is not authorized for this app."
     end
   end
 end

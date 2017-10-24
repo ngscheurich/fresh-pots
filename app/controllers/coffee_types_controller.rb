@@ -1,5 +1,5 @@
 class CoffeeTypesController < ApplicationController
-  before_action :set_coffee_type, only: [:show, :edit, :update, :destroy]
+  before_action :set_coffee_type, only: %i[show edit update destroy]
 
   # GET /coffee_types
   # GET /coffee_types.json
@@ -9,8 +9,7 @@ class CoffeeTypesController < ApplicationController
 
   # GET /coffee_types/1
   # GET /coffee_types/1.json
-  def show
-  end
+  def show; end
 
   # GET /coffee_types/new
   def new
@@ -18,8 +17,7 @@ class CoffeeTypesController < ApplicationController
   end
 
   # GET /coffee_types/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /coffee_types
   # POST /coffee_types.json
@@ -28,7 +26,7 @@ class CoffeeTypesController < ApplicationController
 
     respond_to do |format|
       if @coffee_type.save
-        format.html { redirect_to @coffee_type, notice: 'Coffee type was successfully created.' }
+        format.html { redirect_to @coffee_type, notice: "Coffee type was successfully created." }
         format.json { render :show, status: :created, location: @coffee_type }
       else
         format.html { render :new }
@@ -42,7 +40,7 @@ class CoffeeTypesController < ApplicationController
   def update
     respond_to do |format|
       if @coffee_type.update(coffee_type_params)
-        format.html { redirect_to @coffee_type, notice: 'Coffee type was successfully updated.' }
+        format.html { redirect_to @coffee_type, notice: "Coffee type was successfully updated." }
         format.json { render :show, status: :ok, location: @coffee_type }
       else
         format.html { render :edit }
@@ -56,19 +54,20 @@ class CoffeeTypesController < ApplicationController
   def destroy
     @coffee_type.destroy
     respond_to do |format|
-      format.html { redirect_to coffee_types_url, notice: 'Coffee type was successfully destroyed.' }
+      format.html { redirect_to coffee_types_url, notice: "Coffee type was successfully destroyed." }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_coffee_type
-      @coffee_type = CoffeeType.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def coffee_type_params
-      params.require(:coffee_type).permit(:name)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_coffee_type
+    @coffee_type = CoffeeType.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def coffee_type_params
+    params.require(:coffee_type).permit(:name)
+  end
 end

@@ -37,7 +37,6 @@ module Users
       assert_match(/sorry/i, flash[:error])
     end
 
-
     private
 
     def user_params(email)

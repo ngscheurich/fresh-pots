@@ -1,1 +1,1 @@
-json.array! @pots, partial: 'pots/pot', as: :pot
+json.array! @pots, partial: "pots/pot", as: :pot
