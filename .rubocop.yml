@@ -11,6 +11,9 @@ Rails:
 Metrics/LineLength:
   Max: 80
 
+Rails/HasManyOrHasOneDependent:
+  Enabled: false
+
 Style/ClassAndModuleChildren:
   Enabled: false
 
