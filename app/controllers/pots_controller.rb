@@ -1,4 +1,6 @@
 class PotsController < ApplicationController
+  include Messageable
+  include Renderable
   before_action :set_pot, only: %i[show edit update destroy]
 
   def index
@@ -20,11 +22,10 @@ class PotsController < ApplicationController
 
     respond_to do |format|
       if @pot.save
-        format.html { redirect_to @pot, notice: "Pot was successfully created." }
+        format.html { redirect_to @pot, notice: created_message }
         format.json { render :show, status: :created, location: @pot }
       else
-        format.html { render :new }
-        format.json { render json: @pot.errors, status: :unprocessable_entity }
+        render_errors(:new, @brew)
       end
     end
   end
@@ -32,11 +33,10 @@ class PotsController < ApplicationController
   def update
     respond_to do |format|
       if @pot.update(pot_params)
-        format.html { redirect_to @pot, notice: "Pot was successfully updated." }
+        format.html { redirect_to @pot, notice: updated_message }
         format.json { render :show, status: :ok, location: @pot }
       else
-        format.html { render :edit }
-        format.json { render json: @pot.errors, status: :unprocessable_entity }
+        render_errors(:edit, @brew)
       end
     end
   end
@@ -44,7 +44,7 @@ class PotsController < ApplicationController
   def destroy
     @pot.destroy
     respond_to do |format|
-      format.html { redirect_to pots_url, notice: "Pot was successfully destroyed." }
+      format.html { redirect_to pots_url, notice: destroyed_message }
       format.json { head :no_content }
     end
   end

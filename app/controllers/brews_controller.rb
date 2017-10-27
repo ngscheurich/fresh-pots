@@ -1,4 +1,6 @@
 class BrewsController < ApplicationController
+  include Messageable
+  include Renderable
   before_action :set_brew, only: %i[show edit update destroy]
 
   def index
@@ -18,11 +20,10 @@ class BrewsController < ApplicationController
 
     respond_to do |format|
       if @brew.save
-        format.html { redirect_to @brew, notice: "Brew was successfully created." }
+        format.html { redirect_to @brew, notice: created_message }
         format.json { render :show, status: :created, location: @brew }
       else
-        format.html { render :new }
-        format.json { render json: @brew.errors, status: :unprocessable_entity }
+        render_errors(:new, @brew)
       end
     end
   end
@@ -30,11 +31,10 @@ class BrewsController < ApplicationController
   def update
     respond_to do |format|
       if @brew.update(brew_params)
-        format.html { redirect_to @brew, notice: "Brew was successfully updated." }
+        format.html { redirect_to @brew, notice: updated_message }
         format.json { render :show, status: :ok, location: @brew }
       else
-        format.html { render :edit }
-        format.json { render json: @brew.errors, status: :unprocessable_entity }
+        render_errors(:edit, @brew)
       end
     end
   end
@@ -42,19 +42,17 @@ class BrewsController < ApplicationController
   def destroy
     @brew.destroy
     respond_to do |format|
-      format.html { redirect_to brews_url, notice: "Brew was successfully destroyed." }
+      format.html { redirect_to brews_url, notice: destroyed_message }
       format.json { head :no_content }
     end
   end
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_brew
     @brew = Brew.find(params[:id])
   end
 
-  # Never trust parameters from the scary internet, only allow the white list through.
   def brew_params
     params.require(:brew).permit(:pot_id, :coffee_type_id)
   end
