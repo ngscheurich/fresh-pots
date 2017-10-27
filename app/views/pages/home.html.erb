@@ -1,21 +1,8 @@
-<table>
-  <thead>
-    <tr>
-      <th>Started</th>
-      <th>Pot</th>
-      <th>Type</th>
-      <th colspan="1"></th>
-    </tr>
-  </thead>
+<div class="ph4">
+  <h1 class="tc f1 mb2">What’s fresh</h1>
+  <p class="tc f3 fw3 white-60 mt0 mb5">
+    @ <span id="current-time"></span>
+  </p>
 
-  <tbody>
-    <% @recent_brews.each do |brew| %>
-      <tr>
-        <td><%= time_ago_in_words(brew.created_at) %> ago</td>
-        <td><%= link_to brew.pot.name, brew.pot %></td>
-        <td><%= link_to brew.coffee_type.name, brew.coffee_type %></td>
-        <td><%= link_to 'Show', brew %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <div id="brew-list" class="mw8 center"></div>
+</div>
