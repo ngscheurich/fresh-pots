@@ -11,4 +11,6 @@ Rails.application.routes.draw do
 
   get "/home", to: "pages#home"
   root to: "pages#home"
+
+  get "/recent_brews", to: "recent_brews#index", format: "json"
 end
