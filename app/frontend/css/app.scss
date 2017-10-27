@@ -1,1 +1,58 @@
 @import "tachyons";
+@import "variables";
+@import "extensions";
+
+body {
+  background-color: #222327;
+  font-family: $sans-serif;
+}
+
+.recent-brew {
+  &__when {
+    background: {
+      color: rgba(255, 255, 255, 0.01);
+      image: url(/assets/icons/clock.svg);
+      position: center 2.5rem;
+      repeat: no-repeat;
+      size: 40px;
+    }
+
+    line-height: 40px;
+  }
+
+  &__meter {
+    background: linear-gradient(to right, $cold, $hot);
+    text-indent: 1rem;
+  }
+
+  &__meta {
+    background: left center / auto 30px no-repeat;
+    line-height: 40px;
+    height: 40px;
+    text-indent: 40px;
+    text-transform: uppercase;
+
+    &--where {
+      background-image: url(/assets/icons/location.svg);
+    }
+
+    &--what {
+      background-image: url(/assets/icons/beans.svg);
+    }
+  }
+
+  &__info {
+    background-color: rgba(0, 0, 0, 0.02);
+  }
+
+  &__details {
+    background-color: rgba(0, 0, 0, 0.04);
+  }
+
+  &__button {
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.09);
+    line-height: 30px;
+    margin-top: 5px;
+    text-transform: uppercase;
+  }
+}
