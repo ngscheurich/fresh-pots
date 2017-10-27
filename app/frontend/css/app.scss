@@ -2,22 +2,26 @@
 @import "variables";
 @import "extensions";
 
+header { display: none; }
+
 body {
   background-color: #222327;
   font-family: $sans-serif;
 }
 
 .recent-brew {
+  transition: all 0.2s;
+
   &__when {
     background: {
       color: rgba(255, 255, 255, 0.01);
       image: url(/assets/icons/clock.svg);
-      position: center 2.5rem;
+      position: center top;
       repeat: no-repeat;
       size: 40px;
     }
 
-    line-height: 40px;
+    padding-top: 60px;
   }
 
   &__meter {
