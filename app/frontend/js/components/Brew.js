@@ -16,11 +16,15 @@ class Brew extends React.Component {
       timezone: timezone,
       started: started,
       timeAgo: started,
-      opacity: 1
+      style: {
+        opacity: 1,
+        colorStops: ""
+      }
     };
 
     this.state.timeAgo = this.calcTimeAgo();
-    this.state.opacity = this.calcOpacity();
+    this.state.style.opacity = this.calcOpacity();
+    this.state.style.colorStops = this.generateColorStops();
   }
 
   calcTimeAgo() {
@@ -29,11 +33,24 @@ class Brew extends React.Component {
 
   calcOpacity() {
     const maxAge = 180;
-    const minOpacity = 0.35;
     const minutesOld = this.state.started.diff(moment(), "minutes");
-    let opacity = (maxAge + minutesOld) / maxAge + 0.05;
-    opacity = opacity > 1 ? 1 : opacity;
+    return (maxAge + minutesOld) / maxAge;
+  }
 
+  generateColorStops() {
+    const opacity = this.state.style.opacity;
+    const spread = 0.1;
+    let stops = [0, opacity - spread, opacity + spread, 1];
+    stops = stops.map((x, i) => {
+      const color = i > 1 ? "#03639F" : "#F5515F";
+      return `${color} ${x * 100}%`;
+    });
+    return stops.join();
+  }
+
+  boundedOpacity(opacity) {
+    const minOpacity = 0.35;
+    opacity = opacity > 1 ? 1 : opacity;
     return opacity < minOpacity ? minOpacity : opacity;
   }
 
@@ -41,7 +58,10 @@ class Brew extends React.Component {
     this.setState(
       Object.assign(...this.state, {
         timeAgo: this.calcTimeAgo(),
-        opacity: this.calcOpacity()
+        style: {
+          opacity: this.calcOpacity(),
+          gradient: this.generateColorStops()
+        }
       })
     );
   }
@@ -58,7 +78,7 @@ class Brew extends React.Component {
     return (
       <div
         className="recent-brew df mb4 br2 box bg-white-10"
-        style={{ opacity: this.state.opacity }}
+        style={{ opacity: this.boundedOpacity(this.state.style.opacity) }}
       >
         <div className="pv3 ph4 br b--black-20 df bg-white-05">
           <div className="recent-brew__when f4 fw3 as-center">
@@ -66,7 +86,13 @@ class Brew extends React.Component {
           </div>
         </div>
         <div className="recent-brew__info fx-1">
-          <div className="recent-brew__meter f4 fw3 pa4 bb b--black-50">
+          <div
+            className="recent-brew__meter f4 fw3 pa4 bb b--black-50"
+            style={{
+              background: `linear-gradient(to right, ${this.state.style
+                .colorStops}`
+            }}
+          >
             Brewed {this.state.timeAgo.fromNow()}
           </div>
 
