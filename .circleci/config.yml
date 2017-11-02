@@ -14,18 +14,20 @@ jobs:
     steps:
       - checkout
 
-      # Download and cache dependencies
+      # Restore bundle cache
       - restore_cache:
           keys:
           - v1-dependencies-{{ checksum "Gemfile.lock" }}
           # Fallback to using the latest cache if no exact match is found
           - v1-dependencies-
 
+      # Bundle install dependencies
       - run:
           name: Installing application dependencies
           command: |
             bundle install --jobs=4 --retry=3 --path vendor/bundle
 
+      # Store bundle cache
       - save_cache:
           paths:
             - ./vendor/bundle
@@ -39,10 +41,15 @@ jobs:
           name: Initializing database
           command: bundle exec rake db:schema:load
 
-      # Run tests!
-      - run:
-          name: Running tests
-          command: bin/rails test
-      # - run:
-      #     name: Running system tests
-      #     command: bin/rails test:system
+      # Run rspec in parallel
+      - run: |
+          bundle exec rspec --profile 10 \
+                            --format RspecJunitFormatter \
+                            --out test_results/rspec.xml \
+                            --format progress \
+                            $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
+
+      # Save test results for timing analysis
+      - store_test_results:
+          path: test_results
+
