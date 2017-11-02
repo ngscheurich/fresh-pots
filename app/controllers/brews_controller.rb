@@ -17,33 +17,24 @@ class BrewsController < ApplicationController
   def create
     @brew = Brew.new(brew_params)
 
-    respond_to do |format|
-      if @brew.save
-        format.html { redirect_to @brew, notice: created_message }
-        format.json { render :show, status: :created, location: @brew }
-      else
-        render_errors(:new, @brew)
-      end
+    if @brew.save
+      redirect_to @brew, notice: created_message
+    else
+      render :new
     end
   end
 
   def update
-    respond_to do |format|
-      if @brew.update(brew_params)
-        format.html { redirect_to @brew, notice: updated_message }
-        format.json { render :show, status: :ok, location: @brew }
-      else
-        render_errors(:edit, @brew)
-      end
+    if @brew.update(brew_params)
+      redirect_to @brew, notice: updated_message
+    else
+      render :edit
     end
   end
 
   def destroy
     @brew.destroy
-    respond_to do |format|
-      format.html { redirect_to brews_url, notice: destroyed_message }
-      format.json { head :no_content }
-    end
+    redirect_to brews_url, notice: destroyed_message
   end
 
   private
@@ -53,6 +44,6 @@ class BrewsController < ApplicationController
   end
 
   def brew_params
-    params.require(:brew).permit(:pot_id, :coffee_type_id)
+    params.require(:brew).permit(:pot_id, :variety_id)
   end
 end

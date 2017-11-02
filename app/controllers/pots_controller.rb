@@ -19,33 +19,24 @@ class PotsController < ApplicationController
   def create
     @pot = Pot.new(pot_params)
 
-    respond_to do |format|
-      if @pot.save
-        format.html { redirect_to @pot, notice: created_message }
-        format.json { render :show, status: :created, location: @pot }
-      else
-        render_errors(:new, @brew)
-      end
+    if @pot.save
+      redirect_to @pot, notice: created_message
+    else
+      render :new
     end
   end
 
   def update
-    respond_to do |format|
-      if @pot.update(pot_params)
-        format.html { redirect_to @pot, notice: updated_message }
-        format.json { render :show, status: :ok, location: @pot }
-      else
-        render_errors(:edit, @brew)
-      end
+    if @pot.update(pot_params)
+      redirect_to @pot, notice: updated_message
+    else
+      render :edit
     end
   end
 
   def destroy
     @pot.destroy
-    respond_to do |format|
-      format.html { redirect_to pots_url, notice: destroyed_message }
-      format.json { head :no_content }
-    end
+    redirect_to pots_url, notice: destroyed_message
   end
 
   private
