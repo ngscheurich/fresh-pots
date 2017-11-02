@@ -11,17 +11,18 @@
     <%= breakfast_autoreload_tag %>
   </head>
 
-  <body class="white-80 aa">
-    <header class="pa3 cf" role="banner">
-      <h1 class="ttu f4 ma0 lh-solid fl">
-        <%= link_to "Fresh Pots", root_url, class: "link dim" %>
-      </h1>
-      <nav class="fr lh-solid" role="navigation">
-        <%= link_to "Pots", pots_url, class: "link dim mh2" %>
-        <%= link_to "Coffee Types", coffee_types_url, class: "link dim mh2" %>
-        <%= link_to "Brews", brews_url, class: "link dim mh2" %>
-      </nav>
-    </header>
+  <body class="white-90 aa">
+    <header class="cf pa4 bg-black-20" role="banner">
+      <div class="fl">
+        <h1 class="ttu f4 ma0 lh-solid dib">
+          <%= link_to "Fresh Pots", root_url, class: "link dim", style: "color: #f9f18d;" %>
+        </h1>
+        <nav class="dib lh-solid" role="navigation">
+          <%= link_to "Pots", pots_url, class: "white link dim ml4" %>
+          <%= link_to "Varieties", varieties_url, class: "white link dim ml4" %>
+          <%= link_to "Brews", brews_url, class: "white link dim ml4" %>
+        </nav>
+      </div>
 
     <% if flash.any? %>
       <div class="flashes">

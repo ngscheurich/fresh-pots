@@ -7,7 +7,7 @@
     <tr>
       <th>Started</th>
       <th>Pot</th>
-      <th>Type</th>
+      <th>Variety</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -17,7 +17,7 @@
       <tr>
         <td><%= brew.created_at %></td>
         <td><%= link_to brew.pot.name, brew.pot %></td>
-        <td><%= link_to brew.coffee_type.name, brew.coffee_type %></td>
+        <td><%= link_to brew.variety.name, brew.variety %></td>
         <td><%= link_to 'Show', brew %></td>
         <td><%= link_to 'Edit', edit_brew_path(brew) %></td>
         <td><%= link_to 'Destroy', brew, method: :delete, data: { confirm: 'Are you sure?' } %></td>

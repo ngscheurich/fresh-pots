@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171023051810) do
+ActiveRecord::Schema.define(version: 20171102203046) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,15 +19,9 @@ ActiveRecord::Schema.define(version: 20171023051810) do
     t.bigint "pot_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "coffee_type_id"
-    t.index ["coffee_type_id"], name: "index_brews_on_coffee_type_id"
+    t.bigint "variety_id"
     t.index ["pot_id"], name: "index_brews_on_pot_id"
-  end
-
-  create_table "coffee_types", force: :cascade do |t|
-    t.string "name", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.index ["variety_id"], name: "index_brews_on_variety_id"
   end
 
   create_table "pots", force: :cascade do |t|
@@ -53,11 +47,21 @@ ActiveRecord::Schema.define(version: 20171023051810) do
     t.string "unconfirmed_email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "avatar_file_name"
+    t.string "avatar_content_type"
+    t.integer "avatar_file_size"
+    t.datetime "avatar_updated_at"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "brews", "coffee_types"
+  create_table "varieties", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   add_foreign_key "brews", "pots"
+  add_foreign_key "brews", "varieties"
 end

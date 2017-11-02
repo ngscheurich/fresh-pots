@@ -1,19 +1,20 @@
 pots = Pot.create(
   [
-    { name: "Break Room" },
-    { name: "Kitchen" },
-    { name: "Basement" }
+    { name: "First Floor Kitchen" },
+    { name: "Second Floor Kitchen" },
+    { name: "Third Floor Kitchen" }
   ]
 )
 
-coffee_types = CoffeeType.create(
+varieties = Variety.create(
   [
     { name: "Dark Roast" },
-    { name: "Coffee & Chicory" }
+    { name: "Café Special" },
+    { name: "Other" }
   ]
 )
 
-1.upto(20) do
+1.upto(5) do
   Brew.create(pot: pots.sample,
-              coffee_type: coffee_types.sample)
+              variety: varieties.sample)
 end
