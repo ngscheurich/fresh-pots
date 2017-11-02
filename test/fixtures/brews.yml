@@ -1,7 +1,0 @@
-one:
-  pot: pot_with_brews
-  coffee_type: dark_roast
-
-two:
-  pot: pot_with_brews
-  coffee_type: dark_roast
