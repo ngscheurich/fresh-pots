@@ -1,6 +1,5 @@
 class BrewsController < ApplicationController
   include Messageable
-  include Renderable
   before_action :set_brew, only: %i[show edit update destroy]
 
   def index

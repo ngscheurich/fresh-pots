@@ -1,6 +1,5 @@
 class PotsController < ApplicationController
   include Messageable
-  include Renderable
   before_action :set_pot, only: %i[show edit update destroy]
 
   def index
