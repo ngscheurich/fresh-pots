@@ -1,4 +1,4 @@
-class CoffeeType < ApplicationRecord
+class Variety < ApplicationRecord
   validates :name, presence: true
 
   has_many :brews
