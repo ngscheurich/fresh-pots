@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import ReactModal from "react-modal";
 import moment from "moment";
 import "moment-timezone";
 
@@ -25,6 +26,16 @@ class Brew extends React.Component {
     this.state.timeAgo = this.calcTimeAgo();
     this.state.style.opacity = this.calcOpacity();
     this.state.style.colorStops = this.generateColorStops();
+    this.handleOpenModal = this.handleOpenModal.bind(this);
+    this.handleCloseModal = this.handleCloseModal.bind(this);
+  }
+
+  handleOpenModal() {
+    this.setState(Object.assign(...this.state, { showModal: true }));
+  }
+
+  handleCloseModal() {
+    this.setState(Object.assign(...this.state, { showModal: false }));
   }
 
   calcTimeAgo() {
@@ -115,6 +126,30 @@ class Brew extends React.Component {
             </div>
           </div>
         </div>
+
+        <ReactModal
+          isOpen={this.state.showModal}
+          contentLable="My my my…"
+          style={{
+            content: {
+              color: "#222",
+              top: "50%",
+              right: "auto",
+              bottom: "auto",
+              left: "50%",
+              transform: "translate(-50%, -50%)"
+            },
+            overlay: { backgroundColor: "rgba(0, 0, 0, 0.5)" }
+          }}
+        >
+          <p>
+            <strong>Are you sure you want to kill this pot?</strong>
+          </p>
+          <p>This will let everyone know this pot is now empty.</p>
+          <button onClick={this.handleCloseModal}>
+            Yes, {this.props.brew.id}
+          </button>
+        </ReactModal>
       </div>
     );
   }
