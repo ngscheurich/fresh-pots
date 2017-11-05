@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import ReactModal from "react-modal";
 import moment from "moment";
 import "moment-timezone";
+import Clock from "./Clock";
 
 class Brew extends React.Component {
   constructor(props) {
@@ -87,12 +88,12 @@ class Brew extends React.Component {
 
   render() {
     return (
-      <div
-        className="recent-brew df mb4 br2 box bg-white-10"
-        style={{ opacity: this.boundedOpacity(this.state.style.opacity) }}
-      >
-        <div className="pv3 ph4 br b--black-20 df bg-white-05">
+      <div className="recent-brew df mb4 br3 box bg-white animated fadeIn">
+        <div className="pv3 ph4 br b--black-20 df">
           <div className="recent-brew__when f4 fw3 as-center">
+            <div className="recent-brew__clock center mb3">
+              <Clock date={new Date(this.props.brew.created_at)} color="#444" />
+            </div>
             {moment(this.state.started).format("h:mm a")}
           </div>
         </div>
