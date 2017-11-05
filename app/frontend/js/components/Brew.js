@@ -116,13 +116,8 @@ class Brew extends React.Component {
               {this.state.type}
             </div>
 
-            <div className="fx-1">
-              <a
-                className="recent-brew__button f6 bg-white-10 fr ph3 br2 link white dim"
-                href="#"
-              >
-                Kill pot
-              </a>
+            <div className="recent-brew__meta recent-brew__meta--what f5 fw6 mr3">
+              {this.props.brew.user.email}
             </div>
           </div>
         </div>
