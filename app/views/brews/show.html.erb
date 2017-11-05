@@ -8,5 +8,10 @@
   <%= link_to @brew.variety.name, @brew.variety %>
 </p>
 
+<p>
+  <strong>Brewed by:</strong>
+  <%= @brew.user.email %>
+</p>
+
 <%= link_to 'Edit', edit_brew_path(@brew) %> |
 <%= link_to 'Back', brews_path %>
