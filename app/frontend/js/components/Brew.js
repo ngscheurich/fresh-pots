@@ -13,20 +13,19 @@ class Brew extends React.Component {
     const started = moment.tz(brew.created_at, timezone);
 
     this.state = {
+      colorStops: "",
+      heatLevel: 1,
       pot: brew.pot.name,
-      type: brew.coffee_type.name,
-      timezone: timezone,
+      showModal: false,
       started: started,
       timeAgo: started,
-      style: {
-        opacity: 1,
-        colorStops: ""
-      }
+      timezone: timezone,
+      variety: brew.variety.name
     };
-
     this.state.timeAgo = this.calcTimeAgo();
-    this.state.style.opacity = this.calcOpacity();
-    this.state.style.colorStops = this.generateColorStops();
+    this.state.heatLevel = this.calcHeatLevel();
+    this.state.colorStops = this.generateColorStops();
+
     this.handleOpenModal = this.handleOpenModal.bind(this);
     this.handleCloseModal = this.handleCloseModal.bind(this);
   }
@@ -43,37 +42,29 @@ class Brew extends React.Component {
     return moment(this.state.started).tz(this.state.timezone);
   }
 
-  calcOpacity() {
+  calcHeatLevel() {
     const maxAge = 180;
     const minutesOld = this.state.started.diff(moment(), "minutes");
     return (maxAge + minutesOld) / maxAge;
   }
 
   generateColorStops() {
-    const opacity = this.state.style.opacity;
+    const heatLevel = this.state.heatLevel;
     const spread = 0.1;
-    let stops = [0, opacity - spread, opacity + spread, 1];
+    let stops = [0, heatLevel - spread, heatLevel + spread, 1];
     stops = stops.map((x, i) => {
-      const color = i > 1 ? "#03639F" : "#F5515F";
+      const color = i > 1 ? "#1d7db9" : "#fd4757";
       return `${color} ${x * 100}%`;
     });
     return stops.join();
-  }
-
-  boundedOpacity(opacity) {
-    const minOpacity = 0.35;
-    opacity = opacity > 1 ? 1 : opacity;
-    return opacity < minOpacity ? minOpacity : opacity;
   }
 
   tick() {
     this.setState(
       Object.assign(...this.state, {
         timeAgo: this.calcTimeAgo(),
-        style: {
-          opacity: this.calcOpacity(),
-          gradient: this.generateColorStops()
-        }
+        heatLevel: this.calcHeatLevel(),
+        colorStops: this.generateColorStops()
       })
     );
   }
@@ -99,22 +90,21 @@ class Brew extends React.Component {
         </div>
         <div className="recent-brew__info fx-1">
           <div
-            className="recent-brew__meter f4 fw3 pa4 bb b--black-50"
+            className="recent-brew__meter aa white-90 f3 fw3 pa3 bb b--black-20"
             style={{
-              background: `linear-gradient(to right, ${this.state.style
-                .colorStops}`
+              background: `linear-gradient(to right, ${this.state.colorStops}`
             }}
           >
             Brewed {this.state.timeAgo.fromNow()}
           </div>
 
-          <div className="recent-brew__details df pv2 ph4 bt b--black-10">
-            <div className="recent-brew__meta recent-brew__meta--where fx-1 f6">
+          <div className="recent-brew__details df pv2 ph2 bt b--black-10">
+            <div className="recent-brew__meta recent-brew__meta--where f5 fw6 mr3">
               {this.state.pot}
             </div>
 
-            <div className="recent-brew__meta recent-brew__meta--what fx-1 f6">
-              {this.state.type}
+            <div className="recent-brew__meta recent-brew__meta--what f5 fw6 mr3">
+              {this.state.variety}
             </div>
 
             <div className="recent-brew__meta recent-brew__meta--what f5 fw6 mr3">
