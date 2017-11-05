@@ -28,6 +28,7 @@
     "moment-timezone": "^0.5.13",
     "prettier": "^1.7.4",
     "prop-types": "^15.6.0",
+    "rails-ujs": "^5.1.4",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "sass-brunch": "^2.10.4",

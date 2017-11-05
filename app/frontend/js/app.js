@@ -3,6 +3,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import CurrentTime from "./components/CurrentTime";
 import RecentBrews from "./components/RecentBrews";
+import "rails-ujs";
 
 Turbolinks.start();
 
