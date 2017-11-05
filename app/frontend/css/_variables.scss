@@ -1,8 +1,10 @@
 // Colors
-$cold: #03639F;
-$hot: #F5515F;
+$cold: #1d7db9;
+$hot: #fd4757;
 $tan: rgb(241, 234, 223);
-$yellow: #F9F18D;
+$yellow: #f9f18d;
 
 // Fonts
-$sans-serif: "Montserrat", sans-serif;
+$sans-serif: "Inter UI", -apple-system, BlinkMacSystemFont, "Roboto",
+  "Helvetica Neue", "Arial", sans-serif;
+$display: "Montserrat", $sans-serif;

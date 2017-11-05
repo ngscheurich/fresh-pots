@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "actioncable": "^5.1.4",
+    "animate.css": "^3.5.2",
     "axios": "^0.17.0",
     "babel": "^6.23.0",
     "babel-brunch": "^6.1.1",
