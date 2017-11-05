@@ -16,6 +16,7 @@ class BrewsController < ApplicationController
 
   def create
     @brew = Brew.new(brew_params)
+    @brew.user = current_user
 
     if @brew.save
       redirect_to @brew, notice: created_message

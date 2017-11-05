@@ -10,17 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171102203046) do
+ActiveRecord::Schema.define(version: 20171105191519) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "brew_counts_by_user", force: :cascade do |t|
+    t.bigint "user_id"
+    t.integer "brew_count"
+    t.index ["user_id"], name: "index_brew_counts_by_user_on_user_id"
+  end
 
   create_table "brews", force: :cascade do |t|
     t.bigint "pot_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "variety_id"
+    t.bigint "user_id"
     t.index ["pot_id"], name: "index_brews_on_pot_id"
+    t.index ["user_id"], name: "index_brews_on_user_id"
     t.index ["variety_id"], name: "index_brews_on_variety_id"
   end
 
@@ -51,6 +59,7 @@ ActiveRecord::Schema.define(version: 20171102203046) do
     t.string "avatar_content_type"
     t.integer "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.integer "brews_count", default: 0
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
@@ -62,6 +71,8 @@ ActiveRecord::Schema.define(version: 20171102203046) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "brew_counts_by_user", "users"
   add_foreign_key "brews", "pots"
+  add_foreign_key "brews", "users"
   add_foreign_key "brews", "varieties"
 end
