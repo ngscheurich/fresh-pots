@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class="h-100">
   <head>
     <title>FreshPots</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,38 +10,10 @@
     <%= breakfast_autoreload_tag %>
   </head>
 
-  <body class="black-80">
-    <header class="cf pa4 bg-black-05" role="banner">
-      <div class="fl">
-        <h1 class="ttu f4 ma0 lh-solid dib">
-          <%= link_to "Fresh Pots", root_url, class: "link dim dark-gray" %>
-        </h1>
-        <nav class="dib lh-solid" role="navigation">
-          <%= link_to "Pots", pots_url, class: "link dim dark-gray ml4" %>
-          <%= link_to "Varieties", varieties_url, class: "link dim dark-gray ml4" %>
-          <%= link_to "Brews", brews_url, class: "link dim dark-gray ml4" %>
-        </nav>
-      </div>
-
-      <div class="fr">
-        <% if signed_in? %>
-          Logged in as <%= current_user.email %>
-        <% end %>
-      </div>
-    </header>
-
-    <div class="pa3 mw9 center">
-      <% if flash.any? %>
-        <div class="flashes">
-          <% flash.each do |key, value| -%>
-            <div class="flash-<%= key %>">
-              <%= value %>
-            </div>
-          <% end -%>
-        </div>
-      <% end %>
-
+  <body class="black-80 h-100 relative pb4">
+    <%= render partial: "shared/header" %>
     <%= yield %>
-  </div>
+    <%= render partial: "shared/footer" %>
+    <%= render partial: "shared/flashes" %>
   </body>
 </html>
