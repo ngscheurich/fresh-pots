@@ -4,7 +4,11 @@ class Pot < ApplicationRecord
 
   has_many :brews
 
-  def recent_brews(amt = 5)
-    brews.order(created_at: :desc).first(amt)
+  def self.most_used
+    Pot.order(brews_count: :desc).first
+  end
+
+  def recent_brews(limit = 5)
+    brews.order(created_at: :desc).first(limit)
   end
 end
