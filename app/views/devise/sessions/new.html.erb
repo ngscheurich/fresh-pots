@@ -1,0 +1,19 @@
+<div class="measure center pv5 ph3 black-80">
+  <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <fieldset class="ba b--transparent ph0 mh0">
+      <legend class="f1 fw6 ph0 mh0 display">Log in</legend>
+      <%= f.input :email, required: false, autofocus: true %>
+      <%= f.input :password, required: false %>
+      <label class="mt1 db lh-copy f4 pointer">
+        <%= f.input_field :remember_me, as: :boolean if devise_mapping.rememberable? %>
+        Remember me
+      </label>
+    </fieldset>
+
+    <%= f.button :submit, "Log in",
+                 class: "aa dib mt2 tc pa3 ph4 ttu br2 input-reset bn f5 pointer btn" %>
+  <% end %>
+
+  <div class="mt4">
+    <%= render "devise/shared/links" %>
+  </div>
