@@ -15,5 +15,6 @@ FactoryBot.define do
   factory :brew do
     pot
     variety
+    user
   end
 end

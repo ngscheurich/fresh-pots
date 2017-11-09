@@ -63,6 +63,10 @@ describe BrewsController do
   describe "POST #create" do
     context "with valid params" do
       before(:each) do
+        allow(controller)
+          .to receive(:current_user)
+          .and_return(create(:user))
+
         @params = { brew: valid_params }
       end
 
@@ -126,7 +130,7 @@ describe BrewsController do
     context "with invalid params" do
       before(:each) do
         @brew = create(:brew)
-        @params = { brew: { pot_id: nil} }.merge(id: @brew.id)
+        @params = { brew: { pot_id: nil } }.merge(id: @brew.id)
       end
 
       it "assigns @brews" do
