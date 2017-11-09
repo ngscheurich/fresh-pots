@@ -1,7 +1,7 @@
-import React from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 
-class Clock extends React.Component {
+class Clock extends Component {
   constructor(props) {
     super(props);
     this.tick =
@@ -57,37 +57,48 @@ class Clock extends React.Component {
   }
 
   render() {
+    const size = this.props.size;
+    const strokeWidth = this.props.strokeWidth;
+    const hourHandWidth = this.props.hourHandWidth;
+    const hourHandLength = this.props.hourHandLength;
+    const minuteHandWidth = this.props.minuteHandWidth;
+    const minuteHandLength = this.props.minuteHandLength;
+
     return (
-      <svg viewBox="0 0 100 100">
+      <svg viewBox={`0 0 ${size * 2} ${size * 2}`}>
         <circle
-          cx="50"
-          cy="50"
-          r="47"
+          cx={size}
+          cy={size}
+          r={size - strokeWidth / 2}
           fill="transparent"
           stroke={this.props.color}
-          strokeWidth="6"
+          strokeWidth={strokeWidth}
         />
         <rect
-          x="47"
-          y="20"
-          width="6"
-          height="30"
+          x={size - hourHandWidth / 2}
+          y={size - size * hourHandLength}
+          width={hourHandWidth}
+          height={size * hourHandLength}
           fill={this.props.color}
           style={this.hourStyle()}
         />
         <rect
-          x="47"
-          y="10"
-          width="6"
-          height="40"
+          x={size - minuteHandWidth / 2}
+          y={size - size * minuteHandLength}
+          width={minuteHandWidth}
+          height={size * minuteHandLength}
           fill={this.props.color}
           style={this.minuteStyle()}
         />
         <circle
           className="clock__anchor"
-          cx="50"
-          cy="50"
-          r="3"
+          cx={size}
+          cy={size}
+          r={
+            minuteHandWidth > hourHandWidth
+              ? minuteHandWidth * 0.375
+              : hourHandWidth * 0.375
+          }
           fill={this.props.color}
         />
       </svg>
@@ -96,8 +107,14 @@ class Clock extends React.Component {
 }
 
 Clock.propTypes = {
+  color: PropTypes.string.isRequired,
   date: PropTypes.object.isRequired,
-  color: PropTypes.string.isRequired
+  hourHandLength: PropTypes.number.isRequired,
+  hourHandWidth: PropTypes.number.isRequired,
+  minuteHandWidth: PropTypes.number.isRequired,
+  minuteHandLength: PropTypes.number.isRequired,
+  size: PropTypes.number.isRequired,
+  strokeWidth: PropTypes.number.isRequired
 };
 
 export default Clock;
