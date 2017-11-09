@@ -1,0 +1,16 @@
+<div class="flex-l justify-between ph3 ph4-ns pb5 pt4 pv5-l mw9-l center">
+  <div class="justify-between items-start flex-m w-30-l mb4 mb0-l pl4-l">
+    <div class="dn db-ns">
+      <h1 class="fw9 f2 f1-m f-subheadline-l mt0 mb2 display">What’s fresh?</h1>
+      <p class="f4 f3-ns fw3 black-50 mt0 mb3 mb5-l">
+        @ <span id="current-time"></span>
+      </p>
+    </div>
+    <%= link_to "Log a brew", new_brew_url,
+                class: "aa db dib-ns fr-m fl-l f5 f4-l tc ph4 pv3 ttu br2 link btn" %>
+  </div>
+
+  <div class="w-two-thirds-l pr4-l">
+    <div id="brew-list"></div>
+  </div>
+</div>
