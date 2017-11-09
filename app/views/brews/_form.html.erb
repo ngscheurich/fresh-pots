@@ -1,17 +1,25 @@
-<%= simple_form_for @brew do |f| %>
-  <% if brew.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(brew.errors.count, "error") %> prohibited this brew from being saved:</h2>
+<div class="mw9 ph3 center">
+  <%= simple_form_for @brew do |f| %>
+    <% if brew.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(brew.errors.count, "error") %> prohibited this brew from being saved:</h2>
 
-      <ul>
-      <% brew.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+        <ul>
+          <% brew.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="control control--select">
+      <%= f.association :pot, prompt: "Which pot?" %>
+    </div>
+    <div class="control control--select">
+      <%= f.association :variety, prompt: "Which variety?" %>
+    </div>
+    <div class="control control--select">
+      <%= f.button :submit, class: "br3 bg-black-60 white bn pa3" %>
     </div>
   <% end %>
-
-  <%= f.association :pot %>
-  <%= f.association :variety %>
-  <%= f.button :submit %>
-<% end %>
+</div>
