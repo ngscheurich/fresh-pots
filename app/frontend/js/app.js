@@ -3,15 +3,35 @@ import React from "react";
 import ReactDOM from "react-dom";
 import CurrentTime from "./components/CurrentTime";
 import RecentBrews from "./components/RecentBrews";
+import Toast from "./components/Toast";
 import "rails-ujs";
 
 Turbolinks.start();
 
+function renderComponent(component, selector) {
+  const node = document.querySelector(selector);
+
+  if (node) {
+    ReactDOM.render(component, node);
+  }
+}
+
+function renderToast() {
+  const node = document.querySelector("#toast");
+
+  if (node) {
+    const type = node.dataset.type;
+    const text = node.dataset.text;
+    ReactDOM.render(<Toast type={type} text={text} />, node);
+  }
+}
+
 const App = {
   init() {
     document.addEventListener("turbolinks:load", () => {
-      ReactDOM.render(<CurrentTime />, document.querySelector("#current-time"));
-      ReactDOM.render(<RecentBrews />, document.querySelector("#brew-list"));
+      renderComponent(<CurrentTime />, "#current-time");
+      renderComponent(<RecentBrews />, "#brew-list");
+      renderToast();
     });
   }
 };
