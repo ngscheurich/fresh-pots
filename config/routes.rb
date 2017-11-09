@@ -8,8 +8,10 @@ Rails.application.routes.draw do
     registrations: "users/registrations"
   }
 
-  get "/home", to: "pages#home"
-  root to: "pages#home"
+  devise_scope :user do
+    get "/signup", to: "users/registrations#new"
+    get "/login", to: "devise/sessions#new"
+  end
 
   authenticate :user do
     resources :brews
