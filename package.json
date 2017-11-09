@@ -32,6 +32,7 @@
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-modal": "^3.1.0",
+    "react-toastify": "^2.2.0",
     "sass-brunch": "^2.10.4",
     "stylelint": "^8.2.0",
     "stylelint-config-standard": "^17.0.0",

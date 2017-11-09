@@ -19,7 +19,8 @@ module.exports = {
       options: {
         includePaths: [
           "node_modules/tachyons-sass",
-          "./node_modules/animate.css"
+          "node_modules/animate.css",
+          "node_modules/react-toastify/dist"
         ]
       }
     }
