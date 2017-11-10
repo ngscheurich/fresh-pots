@@ -8,7 +8,8 @@ describe Users::RegistrationsController do
 
     context "when email authorization is disabled" do
       it "should allow any email address for signup" do
-        Rails.configuration.email_authorization["enabled"] = false
+        Rails.configuration.fresh_pots["email_whitelist"] = {}
+        Rails.configuration.fresh_pots["email_whitelist"]["enabled"] = false
 
         post :create, params: user_params("test@example.com")
 
@@ -18,8 +19,9 @@ describe Users::RegistrationsController do
 
     context "when email authorization is enabled" do
       before(:all) do
-        Rails.configuration.email_authorization["enabled"] = true
-        Rails.configuration.email_authorization["domains"] = ["allowed.com"]
+        Rails.configuration.fresh_pots["email_whitelist"] = {}
+        Rails.configuration.fresh_pots["email_whitelist"]["enabled"] = true
+        Rails.configuration.fresh_pots["email_whitelist"]["domains"] = ["allowed.com"]
       end
 
       it "should allow whitelisted domains" do

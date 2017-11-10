@@ -5,22 +5,22 @@ module Users
     private
 
     def email_authorization
-      return unless email_opts["enabled"]
+      return unless whitelist["enabled"]
 
       user_domain = params["user"]["email"].split("@").last
-      allowed_domains = email_opts["domains"]
+      allowed_domains = whitelist["domains"]
 
       deny_registration unless allowed_domains.include?(user_domain)
     end
 
     def deny_registration
-      custom_message = email_opts["message"]
+      custom_message = whitelist["message"]
       flash[:error] = custom_message.nil? ? default_message : custom_message
       redirect_to new_user_registration_url
     end
 
-    def email_opts
-      Rails.configuration.email_authorization
+    def whitelist
+      Rails.configuration.fresh_pots["email_whitelist"]
     end
 
     def default_message

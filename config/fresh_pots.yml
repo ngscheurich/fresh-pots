@@ -1,0 +1,7 @@
+development:
+  email_whitelist:
+    enabled: true
+    domains:
+      - domain.com
+
+  max_brew_hours: 5

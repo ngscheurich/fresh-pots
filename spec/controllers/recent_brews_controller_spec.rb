@@ -10,6 +10,7 @@ describe RecentBrewsController do
       expect(assigns(:recent_brews)).to eq([brew])
     end
 
+
     it "renders the index template" do
       get :index, params: { format: :json }
       expect(response).to render_template("index")

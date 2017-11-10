@@ -15,7 +15,7 @@ Bundler.require(*Rails.groups)
 module FreshPots
   class Application < Rails::Application
     config.action_controller.action_on_unpermitted_parameters = :raise
-    config.email_authorization = config_for(:email_authorization)
+    config.fresh_pots = config_for(:fresh_pots)
     config.load_defaults 5.1
     config.generators do |generate|
       generate.assets false
