@@ -6,50 +6,21 @@
 @import "extensions";
 
 body {
-  background-color: #f5f5f5;
   font-family: $sans-serif;
 }
 
-.recent-brew {
-  transition: all 0.2s;
-
-  &__meter {
-    background-color: $cold;
-  }
-
-  &__meta {
-    background: left center / 40px auto no-repeat;
-    text-indent: 50px;
-
-    &--where {
-      background-image: url(/assets/icons/coffee-pot.svg);
-    }
-
-    &--what {
-      background-image: url(/assets/icons/coffee-bag.svg);
-    }
-  }
-
-  &__clock {
-    height: 50px;
-    width: 50px;
-  }
-
-  &__details {
-    background-color: rgba(0, 0, 0, 0.02);
-  }
-
-  &__button {
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.09);
-    line-height: 30px;
-    text-transform: uppercase;
-  }
+.pattern-1 {
+  background-color: #fafafa;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23000000' fill-opacity='0.08' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
 }
 
 .emoji {
-  font-size: 2em;
-  margin-right: 5px;
   vertical-align: middle;
+
+  &--big {
+    font-size: 2em;
+    margin-right: 5px;
+  }
 }
 
 .btn {
@@ -78,6 +49,43 @@ body {
   &::before {
     content: "×";
     font-size: 18px;
+  }
+}
+
+.burger {
+  height: 18px;
+}
+
+@media screen and (min-width: 60em) {
+  .burger {
+    height: 24px;
+  }
+
+  .whats-fresh {
+    font-size: 4rem;
+  }
+}
+
+@media screen and (min-width: 80em) {
+  .whats-fresh {
+    font-size: 5rem;
+  }
+}
+
+@media screen and (max-width: 30em) {
+  .brew {
+    &__meter,
+    &__details {
+      width: 100% !important;
+    }
+
+    &__meter {
+      border-radius: 0.5rem 0.5rem 0 0 !important;
+    }
+
+    &__details {
+      border-radius: 0 0 0.5rem 0.5rem !important;
+    }
   }
 }
 
