@@ -71,7 +71,9 @@ describe BrewsController do
       end
 
       it "creates a new brew" do
-        expect { post :create, params: @params }.to change { Brew.count }.by(1)
+        expect {
+          post :create, params: @params
+        }.to change { Brew.count }.by(1)
       end
 
       it "assigns @brew" do
