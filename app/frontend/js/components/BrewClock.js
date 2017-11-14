@@ -4,7 +4,7 @@ import Clock from "./Clock";
 
 const BrewClock = ({ date, width }) => {
   return (
-    <div className="dn db-ns pv2" style={{ width: `${width}%` }}>
+    <div className="brew__clock dn db-ns pv2" style={{ width: `${width}%` }}>
       <div className="center mt2" style={{ width: "45px", height: "45px" }}>
         <Clock
           date={date}
