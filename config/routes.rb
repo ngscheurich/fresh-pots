@@ -18,6 +18,9 @@ Rails.application.routes.draw do
     resources :pots
     resources :varieties
 
-    get "/recent_brews", to: "recent_brews#index", format: "json"
+    namespace :api, format: "json" do
+      get "brews/recent", to: "brews#recent"
+      delete "brews/:id", to: "brews#destroy"
+    end
   end
 end
