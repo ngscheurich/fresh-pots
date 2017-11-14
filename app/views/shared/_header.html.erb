@@ -1,17 +1,16 @@
-<header class="cf pa3 pa4-l flex items-center bg-black-0" role="banner">
-  <h1 class="ttu f4 ma0 lh-solid dib">
-    <%= link_to "<span class='emoji'>☕</span>Fresh Pots".html_safe,
-      root_url, class: "link dim black-80" %>
-  </h1>
+<div class="pattern-1">
+  <header class="cf pa3 pa4-l flex items-center bg-white-60" role="banner">
+    <h1 class="ttu f5 f4-ns ma0 lh-solid dib">
+      <%= link_to "<span class='emoji emoji--big'>☕</span>Fresh Pots".html_safe,
+        root_url, class: "link dim black-80" %>
+    </h1>
 
-  <% if signed_in? %>
-    <div class="flex-1">
-      <div class="fr">
-        <%= current_user.email %>
-        <%= link_to "Sign out", destroy_user_session_url, method: :delete %>
+    <% if signed_in? %>
+      <div class="flex-1">
+        <div class="fr">
+          <div id="user-menu"></div>
+        </div>
       </div>
-    </div>
-  <% end %>
-</header>
-
-
+    <% end %>
+  </header>
+</div>

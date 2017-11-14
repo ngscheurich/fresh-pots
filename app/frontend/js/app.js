@@ -4,6 +4,7 @@ import ReactDOM from "react-dom";
 import CurrentTime from "./components/CurrentTime";
 import RecentBrews from "./components/RecentBrews";
 import Toast from "./components/Toast";
+import UserMenu from "./components/UserMenu";
 import "rails-ujs";
 
 Turbolinks.start();
@@ -31,6 +32,7 @@ const App = {
     document.addEventListener("turbolinks:load", () => {
       renderComponent(<CurrentTime />, "#current-time");
       renderComponent(<RecentBrews />, "#brew-list");
+      renderComponent(<UserMenu />, "#user-menu");
       renderToast();
     });
   }
