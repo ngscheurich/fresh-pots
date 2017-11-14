@@ -10,9 +10,11 @@
     <%= breakfast_autoreload_tag %>
   </head>
 
-  <body class="black-80 h-100 relative pb4">
+  <body class="bg-black-90 black-80 h-100 relative pb4">
     <%= render partial: "shared/header" %>
-    <%= yield %>
+    <main class="pattern-1" role="main">
+      <%= yield %>
+    </main>
     <%= render partial: "shared/footer" %>
     <%= render partial: "shared/flashes" %>
   </body>

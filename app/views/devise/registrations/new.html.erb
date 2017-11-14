@@ -1,4 +1,4 @@
-<div class="measure center pv5 ph3 black-80">
+<div class="measure center pa3 pv5-ns black-80">
   <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <fieldset class="ba b--transparent ph0 mh0">
       <legend class="f1 fw6 ph0 mh0 display">Sign up</legend>
@@ -9,7 +9,8 @@
     </fieldset>
 
     <%= f.button :submit, "Sign up",
-      class: "aa dib mt2 tc pa3 ph4 ttu br2 white bg-black-80 input-reset bn f5 pointer btn" %>
+      class: "aa dib mt2 tc pa3 ph4 ttu br2 white bg-black-80 input-reset bn f5 pointer btn mr3" %>
+    <%= link_to "Log in", new_session_path(resource_name), class: "link dim black-60 dib mb2 f5" %>
   <% end %>
 
   <div class="mt4">
