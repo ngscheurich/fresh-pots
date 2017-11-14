@@ -25,14 +25,14 @@ class Clock extends Component {
   hourStyle() {
     return {
       transform: `rotate(${this.rotation("hour")}deg)`,
-      transformOrigin: "bottom center"
+      transformOrigin: `${this.props.size}px ${this.props.size}px`
     };
   }
 
   minuteStyle() {
     return {
       transform: `rotate(${this.rotation("minute")}deg)`,
-      transformOrigin: "bottom center"
+      transformOrigin: `${this.props.size}px ${this.props.size}px`
     };
   }
 
