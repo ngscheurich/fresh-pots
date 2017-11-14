@@ -4,14 +4,14 @@ import PropTypes from "prop-types";
 const BrewMeter = ({ colorStops, timeAgo, width }) => {
   return (
     <div
-      className="flex items-center"
+      className="brew__meter flex items-center"
       style={{
         background: `linear-gradient(to right, ${colorStops}`,
         width: `${width}%`,
         borderRadius: "0 .5rem 0 0"
       }}
     >
-      <div className="aa white-90 f3 fw4 pa3 ph4-ns pv0-ns tshadow">
+      <div className="aa white-90 f4 f3-ns fw4 pa3 ph4-ns pv0-ns tshadow">
         Brewed {timeAgo}
       </div>
     </div>

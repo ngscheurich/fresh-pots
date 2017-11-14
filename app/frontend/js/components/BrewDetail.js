@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 const BrewDetail = ({ text, icon, iconAltText }) => {
   return (
-    <div className="mh3 mh4-ns f5 flex-1">
+    <div className="brew__detail mh3 mh4-ns f6 f5-ns flex-1">
       <img
         className="v-mid mr1 o-50"
         src={`/assets/icons/${icon}.svg`}
