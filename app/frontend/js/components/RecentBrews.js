@@ -10,7 +10,7 @@ export default class RecentBrews extends React.Component {
 
   componentDidMount() {
     axios
-      .get("/recent_brews")
+      .get("/api/brews/recent")
       .then(response => this.setState({ brews: response.data }))
       .catch(error => console.log(error));
   }
