@@ -3,6 +3,8 @@ import PropTypes from "prop-types";
 import Modal from "react-modal";
 import moment from "moment";
 import "moment-timezone";
+import { ToastContainer, toast } from "react-toastify";
+import axios from "axios";
 import BrewClock from "./BrewClock";
 import BrewMeter from "./BrewMeter";
 import BrewStarted from "./BrewStarted";
@@ -30,7 +32,8 @@ class Brew extends React.Component {
       heatLevel: 1,
       showMenu: false,
       showModal: false,
-      timeAgo: this.started
+      timeAgo: this.started,
+      showBrew: true
     };
     this.state.timeAgo = this.calcTimeAgo();
     this.state.heatLevel = this.calcHeatLevel();
@@ -39,6 +42,7 @@ class Brew extends React.Component {
     this.handleOpenModal = this.handleOpenModal.bind(this);
     this.handleCloseModal = this.handleCloseModal.bind(this);
     this.handleToggleMenu = this.handleToggleMenu.bind(this);
+    this.killPot = this.killPot.bind(this);
   }
 
   handleOpenModal() {
@@ -91,13 +95,27 @@ class Brew extends React.Component {
     this.setState({ showMenu: !this.state.showMenu });
   }
 
+  killPot() {
+    axios
+      .delete(`/api/brews/${this.props.brew.id}`)
+      .then(() => {
+        this.handleCloseModal();
+        this.setState({ showBrew: false });
+        toast("Pot successfully removed", { type: "success" });
+      })
+      .catch(error => toast(error), { type: "error" });
+  }
+
   render() {
     const { brew } = this.props;
 
     return (
-      <div>
+      <div
+        className="flex-1"
+        style={{ display: this.state.showBrew ? "block" : "none" }}
+      >
         <div
-          className="mb3 mb4-ns br3 box bg-white animated fadeIn relative overflow-visible"
+          className="brew mb3 mb4-ns br3 box bg-white animated fadeIn relative overflow-visible"
           key={brew.id}
         >
           <button
@@ -120,10 +138,17 @@ class Brew extends React.Component {
             style={{ display: this.state.showMenu ? "block" : "none" }}
           >
             <button
-              className="pointer bn-reset bg-transparent bn db black-80 lh-solid pa3 f5 z-1"
+              className="pointer bn-reset bg-transparent bn db black-80 pa3 f5 z-1"
               onClick={this.handleOpenModal}
+              style={{ lineHeight: "18px" }}
             >
-              <span className="mr2">💀</span>Kill pot
+              <img
+                className="v-mid mr2"
+                src="/assets/icons/skull.svg"
+                style={{ height: "18px" }}
+                alt="Skull icon"
+              />
+              Kill pot
             </button>
             <div
               className="fixed left-0 top-0"
@@ -144,7 +169,7 @@ class Brew extends React.Component {
 
           <div className="flex">
             <BrewStarted
-              time={moment(this.state.started).format("h:mm a")}
+              time={moment(brew.created_at).format("h:mm a")}
               width="18"
             />
 
@@ -156,9 +181,15 @@ class Brew extends React.Component {
           </div>
         </div>
         <Modal isOpen={this.state.showModal} style={modalStyle}>
-          <h1>Well, hello there!</h1>
-          <button onClick={this.handleCloseModal}>Go away</button>
+          <h1 className="f2 ma0">Kill pot?</h1>
+          <p>
+            This will mark this pot as empty and prevent it from being
+            displayed. Is this what you want to do?
+          </p>
+          <button onClick={this.handleCloseModal}>No, never mind</button>
+          <button onClick={this.killPot}>Yep, I grabbed the last cup</button>
         </Modal>
+        <ToastContainer />
       </div>
     );
   }
