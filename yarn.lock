@@ -114,6 +114,13 @@ anysort@~1.0:
   dependencies:
     anymatch "~1.3.0"
 
+aphrodite@^0.6.0:
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/aphrodite/-/aphrodite-0.6.0.tgz#a4622601ed5a14f0bd230fcea0b99c83ff157b4c"
+  dependencies:
+    asap "^2.0.3"
+    inline-style-prefixer "^2.0.0"
+
 aproba@^1.0.3:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/aproba/-/aproba-1.2.0.tgz#6802e6264efd18c790a1b0d517f0f2627bf2c94a"
@@ -171,7 +178,7 @@ arrify@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/arrify/-/arrify-1.0.1.tgz#898508da2226f380df904728456849c1501a4b0d"
 
-asap@~2.0.3:
+asap@^2.0.3, asap@~2.0.3:
   version "2.0.6"
   resolved "https://registry.yarnpkg.com/asap/-/asap-2.0.6.tgz#e50347611d7e690943208bbdafebcbc2fb866d46"
 
@@ -2621,7 +2628,7 @@ init-skeleton@~1.0:
     ncp "^2.0.0"
     normalize-git-url "~3.0.1"
 
-inline-style-prefixer@^2.0.5:
+inline-style-prefixer@^2.0.0, inline-style-prefixer@^2.0.5:
   version "2.0.5"
   resolved "https://registry.yarnpkg.com/inline-style-prefixer/-/inline-style-prefixer-2.0.5.tgz#c153c7e88fd84fef5c602e95a8168b2770671fe7"
   dependencies:
@@ -3891,6 +3898,13 @@ react-dom@^16.0.0:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
     prop-types "^15.6.0"
+
+react-loading-indicator@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/react-loading-indicator/-/react-loading-indicator-1.0.2.tgz#288488822824c0a9ced94b0b873f8506f222f749"
+  dependencies:
+    aphrodite "^0.6.0"
+    classnames "^2.2.5"
 
 react-modal@^3.1.0:
   version "3.1.0"
