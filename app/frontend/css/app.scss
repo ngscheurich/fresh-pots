@@ -56,6 +56,17 @@ body {
   height: 18px;
 }
 
+.control--select {
+  label {
+    display: none;
+  }
+
+  select {
+    background: center right / contain no-repeat #fff
+      url(/assets/icons/down.svg);
+  }
+}
+
 @media screen and (min-width: 60em) {
   .burger {
     height: 24px;
@@ -90,5 +101,5 @@ body {
 }
 
 .breakfast-status-bar {
-  display: none !important;
+  // display: none !important;
 }
