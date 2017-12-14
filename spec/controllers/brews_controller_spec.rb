@@ -81,9 +81,9 @@ describe BrewsController do
         expect(assigns(:brew)).to eq(Brew.last)
       end
 
-      it "redirects to the created brew" do
+      it "redirects to the dashboard" do
         post :create, params: @params
-        expect(response).to redirect_to(Brew.last)
+        expect(response).to redirect_to(root_url)
       end
     end
 

@@ -19,7 +19,7 @@ class BrewsController < ApplicationController
     @brew.user = current_user
 
     if @brew.save
-      redirect_to @brew, notice: created_message
+      redirect_to root_url, notice: created_message
     else
       render :new
     end
