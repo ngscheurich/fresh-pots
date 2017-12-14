@@ -1,21 +1,60 @@
-import BrewList from "./BrewList";
 import React from "react";
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import BrewList from "./BrewList";
+import * as fetchStates from "../fetchStates";
 
 export default class RecentBrews extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { brews: [] };
+
+    this.state = {
+      brews: [],
+      fetchState: fetchStates.NOT_STARTED,
+      errorMsg: ""
+    };
+
+    this.deleteBrew = this.deleteBrew.bind(this);
   }
 
   componentDidMount() {
     axios
-      .get("/api/brews/recent")
-      .then(response => this.setState({ brews: response.data }))
-      .catch(error => console.log(error));
+      .get("/api/brews/recent", {
+        onDownloadProgress: event => {
+          this.setState({ fetchState: fetchStates.IN_PROGRESS });
+        }
+      })
+      .then(response => {
+        this.setState({
+          brews: response.data,
+          fetchState: fetchStates.SUCCESS
+        });
+      })
+      .catch(error => {
+        this.setState({
+          fetchState: fetchStates.FAILURE,
+          errorMsg: error.message
+        });
+      });
+  }
+
+  deleteBrew(id) {
+    const brews = this.state.brews;
+    this.setState({ brews: brews.filter(brew => brew.id !== id) });
+    toast("Pot successfully removed", { type: "success" });
   }
 
   render() {
-    return <BrewList brews={this.state.brews} />;
+    return (
+      <div>
+        <BrewList
+          brews={this.state.brews}
+          fetchState={this.state.fetchState}
+          errorMsg={this.state.errorMsg}
+          deleteBrew={this.deleteBrew}
+        />
+        <ToastContainer />
+      </div>
+    );
   }
 }
