@@ -5,7 +5,7 @@ const BrewDetail = ({ text, icon, iconAltText }) => {
   return (
     <div className="brew__detail mh3 mh4-ns f6 f5-ns flex-1">
       <img
-        className="v-mid mr1 o-50"
+        className="v-mid mr1 o-60"
         src={`/assets/icons/${icon}.svg`}
         alt={iconAltText}
         style={{ height: "24px" }}
