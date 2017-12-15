@@ -20,7 +20,7 @@ Rails.application.routes.draw do
 
     namespace :api, format: "json" do
       get "brews/recent", to: "brews#recent"
-      delete "brews/:id", to: "brews#exhaust"
+      patch "brews/:id", to: "brews#exhaust"
     end
   end
 end
