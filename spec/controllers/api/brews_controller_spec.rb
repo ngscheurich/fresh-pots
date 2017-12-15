@@ -14,8 +14,7 @@ describe Api::BrewsController do
       Rails.configuration.fresh_pots["max_brew_hours"] = 5
       @brew = create(:brew)
 
-      Timecop.freeze(Time.current - 6.hours) do
-        get :recent, params: { format: :json }
+      Timecop.freeze(Time.current - 6.hours) do get :recent, params: { format: :json }
         expect(assigns[:recent_brews]).not_to include(@brew)
       end
     end
@@ -36,19 +35,18 @@ describe Api::BrewsController do
     end
   end
 
-  describe "DELETE #destroy" do
+  describe "PATCH #exhaust" do
     before(:each) do
       @brew = create(:brew)
     end
 
-    it "destroys the brew" do
-      expect {
-        delete :destroy, params: { id: @brew.id }
-      }.to change { Brew.count }.by(-1)
+    it "exhausts the brew" do
+      patch :exhaust, params: { id: @brew.id }
+      expect(@brew.reload.status).to eq("exhausted")
     end
 
     it "responds with no content" do
-      delete :destroy, params: { id: @brew.id, format: :json }
+      patch :exhaust, params: { id: @brew.id }
       expect(response.status).to eq(204)
     end
   end
