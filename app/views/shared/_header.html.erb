@@ -8,7 +8,7 @@
     <% if signed_in? %>
       <div class="flex-1">
         <div class="fr">
-          <div id="user-menu"></div>
+          <img class="avatar br-100" src="<%= current_user.avatar %>" />
         </div>
       </div>
     <% end %>
