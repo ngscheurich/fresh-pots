@@ -14,7 +14,7 @@ export default class RecentBrews extends React.Component {
       errorMsg: ""
     };
 
-    this.deleteBrew = this.deleteBrew.bind(this);
+    this.exhaustBrew = this.exhaustBrew.bind(this);
   }
 
   componentDidMount() {
@@ -38,7 +38,7 @@ export default class RecentBrews extends React.Component {
       });
   }
 
-  deleteBrew(id) {
+  exhaustBrew(id) {
     const brews = this.state.brews;
     this.setState({ brews: brews.filter(brew => brew.id !== id) });
     toast("Pot successfully removed", { type: "success" });
@@ -51,7 +51,7 @@ export default class RecentBrews extends React.Component {
           brews={this.state.brews}
           fetchState={this.state.fetchState}
           errorMsg={this.state.errorMsg}
-          deleteBrew={this.deleteBrew}
+          exhaustBrew={this.exhaustBrew}
         />
         <ToastContainer />
       </div>

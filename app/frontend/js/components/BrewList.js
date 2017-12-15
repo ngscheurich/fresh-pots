@@ -5,13 +5,13 @@ import LoadingIndicator from "react-loading-indicator";
 import Brew from "./Brew";
 import * as fetchStates from "../fetchStates";
 
-const BrewList = ({ brews, fetchState, errorMsg, deleteBrew }) => {
+const BrewList = ({ brews, fetchState, errorMsg, exhaustBrew }) => {
   switch (fetchState) {
     case fetchStates.NOT_STARTED || fetchStates.IN_PROGRESS:
       return loadingIndicator();
 
     case fetchStates.SUCCESS:
-      return renderBrews(brews, deleteBrew);
+      return renderBrews(brews, exhaustBrew);
 
     case fetchStates.FAILURE:
       return renderErrorMsg(errorMsg);
@@ -25,7 +25,7 @@ BrewList.propTypes = {
   brews: PropTypes.array.isRequired,
   fetchState: PropTypes.string.isRequired,
   errorMsg: PropTypes.string.isRequired,
-  deleteBrew: PropTypes.func.isRequired
+  exhaustBrew: PropTypes.func.isRequired
 };
 
 const loadingIndicator = () => {
@@ -41,12 +41,12 @@ const loadingIndicator = () => {
   );
 };
 
-const renderBrews = (brews, deleteBrew) => {
+const renderBrews = (brews, exhaustBrew) => {
   if (brews.length === 0) {
     return renderNoBrewsMsg();
   } else {
     return brews.map(brew => (
-      <Brew key={brew.id} brew={brew} deleteBrew={deleteBrew} />
+      <Brew key={brew.id} brew={brew} exhaustBrew={exhaustBrew} />
     ));
   }
 };

@@ -1,7 +1,4 @@
 class PagesController < ApplicationController
-  before_action :fetch_usage_stats, only: :dashboard
-  before_action :fetch_brew_stats, only: :dashboard
-
   def home
     if signed_in?
       redirect_to dashboard_url
@@ -12,7 +9,8 @@ class PagesController < ApplicationController
 
   def dashboard
     redirect_to root_url unless signed_in?
-    @recent_brews = Brew.order(created_at: :desc).first(5)
+    fetch_usage_stats
+    fetch_brew_stats
   end
 
   private

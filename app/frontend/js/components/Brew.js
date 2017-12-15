@@ -3,8 +3,8 @@ import PropTypes from "prop-types";
 import Modal from "react-modal";
 import moment from "moment";
 import "moment-timezone";
-import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
 import BrewClock from "./BrewClock";
 import BrewMeter from "./BrewMeter";
 import BrewStarted from "./BrewStarted";
@@ -32,8 +32,7 @@ class Brew extends React.Component {
       heatLevel: 1,
       showMenu: false,
       showModal: false,
-      timeAgo: this.started,
-      showBrew: true
+      timeAgo: this.started
     };
     this.state.timeAgo = this.calcTimeAgo();
     this.state.heatLevel = this.calcHeatLevel();
@@ -95,25 +94,23 @@ class Brew extends React.Component {
     this.setState({ showMenu: !this.state.showMenu });
   }
 
-  killPot() {
+  killPot(event) {
+    event.preventDefault();
+
     axios
       .delete(`/api/brews/${this.props.brew.id}`)
       .then(() => {
         this.handleCloseModal();
-        this.setState({ showBrew: false });
-        toast("Pot successfully removed", { type: "success" });
+        this.props.exhaustBrew(this.props.brew.id);
       })
-      .catch(error => toast(error), { type: "error" });
+      .catch(error => toast(error.message, { type: "error" }));
   }
 
   render() {
     const { brew } = this.props;
 
     return (
-      <div
-        className="flex-1"
-        style={{ display: this.state.showBrew ? "block" : "none" }}
-      >
+      <div className="flex-1">
         <div
           className="brew mb3 mb4-ns br3 box bg-white animated fadeIn relative overflow-visible"
           key={brew.id}
@@ -134,11 +131,11 @@ class Brew extends React.Component {
           </button>
 
           <div
-            className="absolute right-1 top-1 shadow-2 bg-white br2 z-2"
+            className="absolute right-2 top-2 shadow-2 bg-white br2 z-2"
             style={{ display: this.state.showMenu ? "block" : "none" }}
           >
             <button
-              className="pointer bn-reset bg-transparent bn db black-80 pa3 f5 z-1"
+              className="pointer bn-reset bg-transparent bn db black-90 pa3 f5 z-1"
               onClick={this.handleOpenModal}
               style={{ lineHeight: "18px" }}
             >
@@ -189,6 +186,7 @@ class Brew extends React.Component {
           <button onClick={this.handleCloseModal}>No, never mind</button>
           <button onClick={this.killPot}>Yep, I grabbed the last cup</button>
         </Modal>
+
         <ToastContainer />
       </div>
     );
@@ -196,7 +194,8 @@ class Brew extends React.Component {
 }
 
 Brew.propTypes = {
-  brew: PropTypes.object.isRequired
+  brew: PropTypes.object.isRequired,
+  exhaustBrew: PropTypes.func.isRequired
 };
 
 export default Brew;
