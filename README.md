@@ -7,14 +7,14 @@
 
 There are a lot of coffee pots [where I work](http://theadvocate.com), in
 different locations spread across multiple floors and buildings. It’s no fun to
-venture out to my nearby coffee station only to be greeted by stale, tepid
-brew. Furthermore, it seems somehow tragic* to make a fresh pot only to have
-its contents languish away into an unpalatable state because you are the only
-one aware of its being.
+venture out to my nearby coffee station only to be greeted by a stale, tepid
+brew. Furthermore, it seems wasteful to make a fresh pot only to have
+its contents languish away into unpalatability because you are the only
+one aware of its existence.
 
 Fresh Pots is a web application that helps to keep teams *au courant* with
 their coffee situation by allowing coffee drinkers to easily log when and where
-they initiate a brew and to quickly scan the freshness of available pots.
+they start a brew and to quickly scan the freshness of available pots.
 
 ## Table of Contents
 
@@ -26,7 +26,7 @@ they initiate a brew and to quickly scan the freshness of available pots.
 
 ## Install
 
-You should totally set up Fres hPots for your organization! It requires the
+You should totally set up Fresh Pots for your organization! It requires the
 following to be installed:
 
 * Ruby 2.4.x
@@ -83,7 +83,7 @@ brew.pot
 # => #<Pot ...>
 ```
 
-Brews will degrade in quality over time, as shown on the application’s main
+Brews will degrade in freshness over time, as shown on the application’s main
 screen.
 
 
