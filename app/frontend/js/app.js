@@ -42,7 +42,6 @@ function renderBrewDoughnutCharts() {
   const nodes = document.querySelectorAll(
     "[data-component='brew-doughnut-chart']"
   );
-  console.log(nodes);
 
   if (nodes.length > 0) {
     nodes.forEach(node => {
