@@ -4,9 +4,13 @@ class User < ApplicationRecord
 
   has_attached_file :avatar, s3_region: ENV["aws_region"]
 
-  validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
+  validates_attachment_content_type :avatar, content_type: %r{\Aimage\/.*\z}
 
   def self.most_active
     User.order(brews_count: :desc).first
+  end
+
+  def avatar
+    self[:avatar] || "https://api.adorable.io/avatars/200/#{email}"
   end
 end
