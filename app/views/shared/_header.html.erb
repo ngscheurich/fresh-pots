@@ -10,7 +10,7 @@
     <% if signed_in? %>
       <div class="flex-1">
         <div class="fr">
-          <img class="avatar br-100" src="<%= current_user.avatar %>" />
+          <img class="avatar br-100" src="<%= current_user.avatar_with_fallback %>" />
         </div>
       </div>
     <% end %>

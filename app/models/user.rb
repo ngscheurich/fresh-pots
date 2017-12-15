@@ -10,7 +10,7 @@ class User < ApplicationRecord
     User.order(brews_count: :desc).first
   end
 
-  def avatar
+  def avatar_with_fallback
     self[:avatar] || "https://api.adorable.io/avatars/200/#{email}"
   end
 end
