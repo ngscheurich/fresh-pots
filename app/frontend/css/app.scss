@@ -67,6 +67,15 @@ body {
   }
 }
 
+.avatar {
+  height: 45px;
+}
+
+.pot {
+  background: left center / contain no-repeat url(/assets/icons/pot1.svg);
+  text-indent: 60px;
+}
+
 @media screen and (min-width: 60em) {
   .burger {
     height: 24px;

@@ -29,14 +29,14 @@ class UserMenu extends Component {
         </button>
 
         <div
-          className="fixed bg-dark-gray z-2 right-0 top-0 h-100 fw3 w-33-ns"
+          className="fixed z-2 right-0 top-0 h-100 fw3 w-33-ns"
           style={[
             styles.base,
             this.state.isOpen ? styles.expanded : styles.isClosed
           ]}
         >
           <a
-            className="db ma4 link white-80 ttu f4"
+            className="db ma4 link dim white-80 ttu f4"
             href="/users/sign_out"
             rel="nofollow"
             data-method="delete"
@@ -50,7 +50,7 @@ class UserMenu extends Component {
             Sign out
           </a>
 
-          <a className="db ma4 link white-80 ttu f4" href="#">
+          <a className="db ma4 link dim white-80 ttu f4" href="#">
             <img
               className="v-mid mr2 o-50"
               src="/assets/icons/edit.svg"
@@ -73,6 +73,8 @@ class UserMenu extends Component {
 
 const styles = {
   base: {
+    backgroundColor: "#222222",
+    boxShadow: "0 0 30px rgba(0, 0, 0, 0.4)",
     transition: "all 0.2s ease-in-out"
   },
   isOpen: {
