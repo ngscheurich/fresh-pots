@@ -14,6 +14,7 @@ gem "paperclip", "~> 5.0.0"
 gem "pg", "~> 0.18"
 gem "puma", "~> 3.7"
 gem "rails", "~> 5.1.4"
+gem "redis", "~> 3.0"
 gem "rubocop", require: false
 gem "simple_form"
 
