@@ -15,9 +15,12 @@ Bundler.require(*Rails.groups)
 module FreshPots
   class Application < Rails::Application
     config.action_controller.action_on_unpermitted_parameters = :raise
+
     config.fresh_pots = config_for(:fresh_pots)
     config.fresh_pots["max_brew_hours"] ||= "5"
+
     config.time_zone = "America/Chicago"
+
     config.load_defaults 5.1
     config.generators do |generate|
       generate.assets false
