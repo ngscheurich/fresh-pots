@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     resources :brews
     resources :pots
     resources :varieties
+    resources :users, only: [:show, :edit, :update]
 
     namespace :api, format: "json" do
       get "brews/recent", to: "brews#recent"
