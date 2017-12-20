@@ -98,7 +98,7 @@ class Brew extends React.Component {
     event.preventDefault();
 
     axios
-      .delete(`/api/brews/${this.props.brew.id}`)
+      .patch(`/api/brews/${this.props.brew.id}`)
       .then(() => {
         this.handleCloseModal();
         this.props.exhaustBrew(this.props.brew.id);
