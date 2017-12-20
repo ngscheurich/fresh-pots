@@ -1,7 +1,7 @@
 <% if flash.any? %>
   <% flash.each do |key, value| -%>
     <div
-      id="toast"
+      data-component="toast"
       data-type="<%= flash_key_to_toast_type(key) %>"
       data-text="<%= value %>"
       ></div>
