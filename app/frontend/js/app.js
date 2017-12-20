@@ -7,20 +7,26 @@ import Toast from "./components/Toast";
 import UserMenu from "./components/UserMenu";
 import BrewTimesChart from "./components/BrewTimesChart";
 import BrewDoughnutChart from "./components/BrewDoughnutChart";
+import ActionCable from "actioncable";
 import "rails-ujs";
 
 Turbolinks.start();
 
-function renderComponent(component, selector) {
-  const node = document.querySelector(selector);
+function DOMElement(name) {
+  return document.querySelector(`[data-component='${name}']`);
+}
 
-  if (node) {
-    ReactDOM.render(component, node);
-  }
+function DOMElements(name) {
+  return document.querySelectorAll(`[data-component='${name}']`);
+}
+
+function renderComponent(component, name) {
+  const node = DOMElement(name);
+  if (node) ReactDOM.render(component, node);
 }
 
 function renderToast() {
-  const node = document.querySelector("#toast");
+  const node = DOMElement("toast");
 
   if (node) {
     const type = node.dataset.type;
@@ -30,7 +36,7 @@ function renderToast() {
 }
 
 function renderBrewTimesChart() {
-  const node = document.querySelector("[data-component='brew-times-chart']");
+  const node = DOMElement("brew-times-chart");
 
   if (node) {
     const data = JSON.parse(node.dataset.chartData);
@@ -39,9 +45,7 @@ function renderBrewTimesChart() {
 }
 
 function renderBrewDoughnutCharts() {
-  const nodes = document.querySelectorAll(
-    "[data-component='brew-doughnut-chart']"
-  );
+  const nodes = DOMElements("brew-doughnut-chart");
 
   if (nodes.length > 0) {
     nodes.forEach(node => {
@@ -51,12 +55,26 @@ function renderBrewDoughnutCharts() {
   }
 }
 
+function renderUserMenu() {
+  const node = DOMElement("user-menu");
+
+  if (node) {
+    const data = node.dataset;
+    ReactDOM.render(
+      <UserMenu avatar={data.avatar} editUrl={data.editUrl} />,
+      node
+    );
+  }
+}
+
+const cable = ActionCable.createConsumer("ws://localhost:3000/cable");
+
 const App = {
   init() {
     document.addEventListener("turbolinks:load", () => {
-      renderComponent(<CurrentTime />, "#current-time");
-      renderComponent(<RecentBrews />, "#brew-list");
-      renderComponent(<UserMenu />, "#user-menu");
+      renderComponent(<CurrentTime />, "current-time");
+      renderComponent(<RecentBrews cable={cable} />, "brew-list");
+      renderUserMenu();
       renderBrewTimesChart();
       renderBrewDoughnutCharts();
       renderToast();
