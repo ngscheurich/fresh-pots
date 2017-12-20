@@ -1,0 +1,12 @@
+<div class="measure center pa3 pv5-ns black-90">
+  <%= simple_form_for(@user) do |f| %>
+    <fieldset class="ba b--transparent ph0 mh0">
+      <%= f.input :first_name, required: true %>
+      <%= f.input :last_name, required: true %>
+      <%= f.input :avatar, as: :file %>
+    </fieldset>
+
+    <%= f.button :submit, "Save changes",
+      class: "aa dib mt2 tc pa3 ph4 ttu br2 white bg-black-90 input-reset bn f5 pointer btn mr3" %>
+  <% end %>
+</div>
