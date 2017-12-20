@@ -1,10 +1,12 @@
 import React from "react";
+import PropTypes from "prop-types";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
+import Brew from "./Brew";
 import BrewList from "./BrewList";
 import * as fetchStates from "../fetchStates";
 
-export default class RecentBrews extends React.Component {
+class RecentBrews extends React.Component {
   constructor(props) {
     super(props);
 
@@ -14,7 +16,25 @@ export default class RecentBrews extends React.Component {
       errorMsg: ""
     };
 
+    this.props.cable.subscriptions.create("BrewsChannel", {
+      received: data => this.addBrew(data)
+    });
+
+    this.addBrew = this.addBrew.bind(this);
     this.exhaustBrew = this.exhaustBrew.bind(this);
+  }
+
+  addBrew(data) {
+    const brew = JSON.parse(data);
+    this.setState({
+      brews: [brew, ...this.state.brews]
+    });
+  }
+
+  exhaustBrew(id) {
+    const brews = this.state.brews;
+    this.setState({ brews: brews.filter(brew => brew.id !== id) });
+    toast("Pot successfully removed", { type: "success" });
   }
 
   componentDidMount() {
@@ -38,12 +58,6 @@ export default class RecentBrews extends React.Component {
       });
   }
 
-  exhaustBrew(id) {
-    const brews = this.state.brews;
-    this.setState({ brews: brews.filter(brew => brew.id !== id) });
-    toast("Pot successfully removed", { type: "success" });
-  }
-
   render() {
     return (
       <div>
@@ -58,3 +72,9 @@ export default class RecentBrews extends React.Component {
     );
   }
 }
+
+RecentBrews.propTypes = {
+  cable: PropTypes.object.isRequired
+};
+
+export default RecentBrews;
