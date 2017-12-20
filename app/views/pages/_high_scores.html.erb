@@ -1,0 +1,22 @@
+<div class="flex-l justify-around relative ph3 ph4-ns pb5 pt4 pv5-l mw9-l center">
+  <div class="tc">
+    <h2 class="f4 fw7 ttu tracked">Most active user</h2>
+    <img src="<%= @most_active_user.avatar %>" class="db mb3 center br-100 high-score-img" />
+    <%= @most_active_user.full_name %>
+  </div>
+
+  <div class="tc">
+    <h2 class="f4 fw7 ttu tracked">Most brewed variety</h2>
+    <%= @most_brewed_variety.name %>
+  </div>
+
+  <div class="tc">
+    <h2 class="f4 fw7 ttu tracked">Most used pot</h2>
+    <%= @most_used_pot.name %>
+  </div>
+
+  <div class="tc">
+    <h2 class="f4 fw7 ttu tracked">Brews this week</h2>
+    <%= @brews_this_week %>
+  </div>
+</div>

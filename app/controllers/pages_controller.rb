@@ -16,9 +16,9 @@ class PagesController < ApplicationController
   private
 
   def fetch_usage_stats
-    @most_used_pot = Pot.most_used.name
-    @most_brewed_variety = Variety.most_brewed.name
-    @most_active_user = User.most_active.email
+    @most_used_pot = Pot.most_used
+    @most_brewed_variety = Variety.most_brewed
+    @most_active_user = User.most_active
   end
 
   def fetch_brew_stats
