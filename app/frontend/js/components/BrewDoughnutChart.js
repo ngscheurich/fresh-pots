@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Doughnut } from "react-chartjs-2";
+import { primaryColor } from "../colors";
 
 const BrewDoughnutChart = ({ chartData }) => {
   const varieties = [];
@@ -11,9 +12,13 @@ const BrewDoughnutChart = ({ chartData }) => {
     qtys.push(datum[1]);
   });
 
+  const colors = qtys.map((x, i) => {
+    return primaryColor((i + 1) * 0.2);
+  });
+
   const data = {
     labels: varieties,
-    datasets: [{ data: qtys }]
+    datasets: [{ data: qtys, backgroundColor: colors }]
   };
 
   const options = {

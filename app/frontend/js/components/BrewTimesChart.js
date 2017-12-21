@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Line } from "react-chartjs-2";
+import { primaryColor } from "../colors";
 
 const BrewTimesChart = ({ chartData }) => {
   const times = [];
@@ -13,7 +14,13 @@ const BrewTimesChart = ({ chartData }) => {
 
   const data = {
     labels: times,
-    datasets: [{ data: qtys }]
+    datasets: [
+      {
+        data: qtys,
+        backgroundColor: primaryColor(0.3),
+        borderColor: primaryColor(0.4)
+      }
+    ]
   };
 
   const options = {
