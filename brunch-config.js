@@ -32,7 +32,7 @@ module.exports = {
   },
 
   conventions: {
-    assets: /^(app\/frontend\/images)/
+    assets: /^(app\/frontend\/(images|fonts))/
   },
 
   npm: {

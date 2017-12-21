@@ -2,6 +2,8 @@
 @import "tachyons";
 @import "animate";
 @import "ReactToastify";
+@import "icons/nucleo";
+@import "icons/icons";
 @import "variables";
 @import "extensions";
 
@@ -56,35 +58,27 @@ body {
   height: 18px;
 }
 
-.control--select {
+.select {
   label {
-    display: none;
+    // display: none;
   }
 
   select {
-    background: center right / contain no-repeat #fff
-      url(/assets/icons/down.svg);
+    background: calc(100% - 15px) center / 16px no-repeat #fff
+      url(/assets/minimal-down.svg);
   }
+}
+
+input[type="file"] {
+  border: 0;
+  padding: 0;
 }
 
 .avatar {
   height: 45px;
 }
 
-.high-score-img {
-  width: 80px;
-}
-
-.pot {
-  background: left center / contain no-repeat url(/assets/icons/pot1.svg);
-  text-indent: 60px;
-}
-
 @media screen and (min-width: 60em) {
-  .burger {
-    height: 24px;
-  }
-
   .whats-fresh {
     font-size: 4rem;
   }
