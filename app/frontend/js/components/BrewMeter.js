@@ -11,7 +11,7 @@ const BrewMeter = ({ colorStops, timeAgo, width }) => {
         borderRadius: "0 .5rem 0 0"
       }}
     >
-      <div className="aa white-90 f4 f3-ns fw4 pa3 ph4-ns pv0-ns tshadow">
+      <div className="aa white-90 f4 f3-ns pa3 ph4-ns pv0-ns tshadow">
         Brewed {timeAgo}
       </div>
     </div>

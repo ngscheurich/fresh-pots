@@ -8,7 +8,7 @@ const BrewClock = ({ date, width }) => {
       <div className="center mt2" style={{ width: "45px", height: "45px" }}>
         <Clock
           date={date}
-          color="#555"
+          color="#333"
           hourHandLength={0.55}
           minuteHandLength={0.8}
           hourHandWidth={6}

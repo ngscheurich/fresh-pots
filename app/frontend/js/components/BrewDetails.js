@@ -8,8 +8,8 @@ const BrewDetails = ({ pot, variety, width }) => {
       className="brew__details flex items-center aa bg-black-80 white-90 ttu pv2 pv0-ns f6"
       style={{ width: `${width}%`, borderRadius: "0 0 0.5rem 0" }}
     >
-      <BrewDetail text={pot} icon="pin" iconAltText="Map pin icon" />
-      <BrewDetail text={variety} icon="beans" iconAltText="Coffee beans icon" />
+      <BrewDetail text={pot} icon="treasure-map-21" />
+      <BrewDetail text={variety} icon="drop-2" />
     </div>
   );
 };

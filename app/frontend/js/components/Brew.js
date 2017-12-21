@@ -116,18 +116,10 @@ class Brew extends React.Component {
           key={brew.id}
         >
           <button
-            className="pointer bn input-reset absolute"
-            style={{
-              background: "center / 22px no-repeat url(/assets/icons/more.svg)",
-              height: "45px",
-              width: "35px",
-              top: 5,
-              right: 5,
-              textIndent: -9999
-            }}
+            className="pointer bn input-reset absolute top-0 right-0 input-reset bg-transparent white pa3"
             onClick={this.handleToggleMenu}
           >
-            Actions
+            <i className="nc-icon nc-menu-dots-2 f4" />
           </button>
 
           <div
@@ -135,17 +127,11 @@ class Brew extends React.Component {
             style={{ display: this.state.showMenu ? "block" : "none" }}
           >
             <button
-              className="pointer bn-reset bg-transparent bn db black-90 pa3 f5 z-1"
+              className="pointer bn-reset bg-transparent bn db black-90 pa3 z-1"
               onClick={this.handleOpenModal}
-              style={{ lineHeight: "18px" }}
             >
-              <img
-                className="v-mid mr2"
-                src="/assets/icons/skull.svg"
-                style={{ height: "18px" }}
-                alt="Skull icon"
-              />
-              Kill pot
+              <i className="nc-icon nc-circle-bold-delete v-mid f4 mr2" />
+              <span className="f6 ttu tracked">Kill pot</span>
             </button>
             <div
               className="fixed left-0 top-0"
