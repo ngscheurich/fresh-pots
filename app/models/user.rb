@@ -31,4 +31,8 @@ class User < ApplicationRecord
   def full_name
     "#{first_name} #{last_name}"
   end
+
+  def num_brews_this_week
+    brews.where("created_at >= '#{Time.zone.today.beginning_of_week}'").count
+  end
 end

@@ -6,14 +6,14 @@
     <% end%>
   </h1>
 
-    <% if signed_in? %>
-      <div class="flex-1">
-        <div
-          data-component="user-menu"
-          data-avatar="<%= current_user.avatar %>"
-          data-edit-url="<%= edit_user_url(current_user) %>"
+  <% if signed_in? %>
+    <div class="flex-1">
+      <div
+        data-component="user-menu"
+        data-avatar="<%= current_user.avatar %>"
+        data-show-url="<%= user_url(current_user) %>"
+        data-edit-url="<%= edit_user_url(current_user) %>"
         ></div>
-      </div>
-    <% end %>
-  </header>
-</div>
+    </div>
+  <% end %>
+</header>

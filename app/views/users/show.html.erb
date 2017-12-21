@@ -1,1 +1,37 @@
-<h1><%= @user.full_name %></h1>
+<div class="pattern-1 pa3 p4-ns pv6-l">
+  <div class="center measure-wide">
+    <div class="pa4 mb4 box br3 bg-white">
+      <div class="flex items-center">
+        <img src="<%= @user.avatar.url %>" class="w3 mr3 br-100" />
+        <h1 class="display mv0"><%= @user.full_name %></h1>
+      </div>
+
+      <div class="flex mt4">
+        <div class="w-50">
+          <h2 class="f5 f4-l fw7 ttu tracked mt0 mb1">Total Brews</h2>
+          <span class="f4 black-50"><%= @user.brews.count %></span>
+        </div>
+
+        <div class="w-50">
+          <h2 class="f5 f4-l fw7 ttu tracked mt0 mb1">Brews this week</h2>
+          <span class="f4 black-50"><%= @user.num_brews_this_week %></span>
+        </div>
+      </div>
+
+      <div class="flex mt4">
+        <div class="w-50">
+          <h2 class="f5 f4-l fw7 ttu tracked mt0 mb1">Fave pot</h2>
+          <span class="f4 black-50"><%= @user.favorite_pot.name %></span>
+        </div>
+
+        <div class="w-50">
+          <h2 class="f5 f4-l fw7 ttu tracked mt0 mb1">Fave variety</h2>
+          <span class="f4 black-50"><%= @user.favorite_variety.name %></span>
+        </div>
+      </div>
+    </div>
+
+    <%= link_to "Edit", edit_user_path(@user),
+      class: "aa db dib-ns fr-m fl-l f5 f4-l tc ph4 pv3 ttu br2 link btn" %>
+  </div>
+</div>
