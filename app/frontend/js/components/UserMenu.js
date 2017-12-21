@@ -18,20 +18,40 @@ class UserMenu extends Component {
     return (
       <div className="fr relative">
         <button
-          className="pr4 input-reset bn bg-transparent pointer"
-          style={{
-            background:
-              "center right / 30% no-repeat url(/assets/icons/down.svg)"
-          }}
+          className="input-reset ph0 bn bg-transparent pointer flex items-center dim"
           onClick={this.handleToggleMenu}
         >
-          <img className="avatar br-100" src={this.props.avatar} />
+          <img className="avatar br-100 mr2" src={this.props.avatar} />
+          <i className="nc-icon nc-bold-down white v-mid f4 mr2" />
         </button>
         <div
-          className="absolute right-0 bg-red white pa4 dn"
-          style={{ top: 40, display: this.state.isOpen ? "block" : "none" }}
+          className="absolute right-0 dn br2 shadow-2 bg-white pa3"
+          style={{
+            top: 40,
+            display: this.state.isOpen ? "block" : "none",
+            minWidth: 150
+          }}
         >
-          <a href={this.props.editUrl}>Edit profile</a>
+          <a
+            href={this.props.showUrl}
+            className="black-80 link dim db mb3 f5 ttu tracked"
+          >
+            View profile
+          </a>
+          <a
+            href={this.props.editUrl}
+            className="black-80 link dim db mb3 f5 ttu tracked"
+          >
+            Edit profile
+          </a>
+          <a
+            rel="nofollow"
+            data-method="delete"
+            href="/users/sign_out"
+            className="black-80 link dim db f5 ttu tracked"
+          >
+            Logout
+          </a>
         </div>
       </div>
     );
@@ -39,8 +59,9 @@ class UserMenu extends Component {
 }
 
 UserMenu.propTypes = {
-  avatar: PropTypes.string,
-  editUrl: PropTypes.string
+  avatar: PropTypes.string.isRequired,
+  showUrl: PropTypes.string.isRequired,
+  editUrl: PropTypes.string.isRequired
 };
 
 export default UserMenu;

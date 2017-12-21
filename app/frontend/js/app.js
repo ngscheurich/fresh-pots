@@ -61,7 +61,11 @@ function renderUserMenu() {
   if (node) {
     const data = node.dataset;
     ReactDOM.render(
-      <UserMenu avatar={data.avatar} editUrl={data.editUrl} />,
+      <UserMenu
+        avatar={data.avatar}
+        showUrl={data.showUrl}
+        editUrl={data.editUrl}
+      />,
       node
     );
   }
