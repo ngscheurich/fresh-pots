@@ -1,3 +1,12 @@
-<%= render partial: "brews" %>
-<%= render partial: "high_scores" %>
-<%= render partial: "stats" %>
+<section class="pattern-1">
+  <div class="flex-l justify-between relative pa3 pa4-ns pv6-l mw9-l center">
+    <%= render partial: "brews" %>
+  </div>
+</section>
+
+<div class="bg-white">
+  <div class="flex-l justify-between items-center relative pa3 pa4-ns pv6-l mw9-l center">
+    <%= render partial: "stats" %>
+    <%= render partial: "high_scores" %>
+  </div>
+</div>

@@ -1,11 +1,10 @@
-<div class="pattern-1">
-  <header class="cf pa3 pa4-l flex items-center bg-white-60" role="banner">
-    <h1 class="ttu f5 f4-ns ma0 lh-solid dib">
-      <%= link_to root_url, class: "link dim black-90" do %>
-        <img src="/assets/icons/pot2.svg" style="vertical-align: middle; height: 50px;" />
-        <span style="line-height: 45px;" class="f3">Fresh Pots</span>
-      <% end%>
-    </h1>
+<header class="cf pa3 pa4-ns flex items-center white-90" role="banner">
+  <h1 class="ttu f5 f4-ns ma0 lh-solid dib">
+    <%= link_to root_url, class: "link dim white-90" do %>
+      <img src="/assets/logo.svg" class="v-mid mr2" style="height: 50px;" />
+      <span style="line-height: 45px;" class="f3">Fresh Pots</span>
+    <% end%>
+  </h1>
 
     <% if signed_in? %>
       <div class="flex-1">

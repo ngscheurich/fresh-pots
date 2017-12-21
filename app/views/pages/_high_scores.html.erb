@@ -1,22 +1,23 @@
-<div class="flex-l justify-around relative ph3 ph4-ns pb5 pt4 pv5-l mw9-l center">
-  <div class="tc">
-    <h2 class="f4 fw7 ttu tracked">Most active user</h2>
-    <img src="<%= @most_active_user.avatar %>" class="db mb3 center br-100 high-score-img" />
-    <%= @most_active_user.full_name %>
+<div class="w-25">
+  <div class="bl b--black-10 pl4 bw3">
+  <div class="mb4">
+    <h2 class="f5 f4-l fw7 ttu tracked mt0 mb2">Brewmaster</h2>
+    <%= link_to @most_active_user.full_name, user_path(@most_active_user), class: "link dim black-50 f4" %>
   </div>
 
-  <div class="tc">
-    <h2 class="f4 fw7 ttu tracked">Most brewed variety</h2>
-    <%= @most_brewed_variety.name %>
+  <div class="mb4">
+    <h2 class="f5 f4-l fw7 ttu tracked mt0 mb1">Brews this week</h2>
+    <span class="f4 black-50"><%= @brews_this_week %></span>
   </div>
 
-  <div class="tc">
-    <h2 class="f4 fw7 ttu tracked">Most used pot</h2>
-    <%= @most_used_pot.name %>
+  <div class="mb4">
+    <h2 class="f5 f4-l fw7 ttu tracked mt0 mb1">Most popular pot</h2>
+    <span class="f4 black-50"><%= @most_used_pot.name %></span>
   </div>
 
-  <div class="tc">
-    <h2 class="f4 fw7 ttu tracked">Brews this week</h2>
-    <%= @brews_this_week %>
+  <div>
+    <h2 class="f5 f4-l fw7 ttu tracked mt0 mb1">Most popular variety</h2>
+    <span class="f4 black-50"><%= @most_brewed_variety.name %></span>
   </div>
+</div>
 </div>
