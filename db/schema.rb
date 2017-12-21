@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171217173217) do
+ActiveRecord::Schema.define(version: 20171221213814) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,9 +64,13 @@ ActiveRecord::Schema.define(version: 20171217173217) do
     t.integer "brews_count", default: 0
     t.string "first_name"
     t.string "last_name"
+    t.bigint "pot_id"
+    t.bigint "variety_id"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["pot_id"], name: "index_users_on_pot_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["variety_id"], name: "index_users_on_variety_id"
   end
 
   create_table "varieties", force: :cascade do |t|

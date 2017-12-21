@@ -12,8 +12,20 @@ class User < ApplicationRecord
 
   validates_attachment_content_type :avatar, content_type: %r{\Aimage\/.*\z}
 
+  belongs_to :pot
+  belongs_to :variety
+  has_many :brews
+
   def self.most_active
     User.order(brews_count: :desc).first
+  end
+
+  def favorite_pot
+    pot
+  end
+
+  def favorite_variety
+    variety
   end
 
   def full_name
