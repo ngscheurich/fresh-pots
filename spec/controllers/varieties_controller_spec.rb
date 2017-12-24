@@ -5,6 +5,7 @@ describe VarietiesController do
 
   describe "GET #index" do
     it "assigns @varieties" do
+      Variety.delete_all # TODO: What is up with this?
       variety = create(:variety)
       get :index
       expect(assigns(:varieties)).to eq([variety])

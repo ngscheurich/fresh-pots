@@ -5,6 +5,7 @@ describe PotsController do
 
   describe "GET #index" do
     it "assigns @pots" do
+      Pot.delete_all # TODO: What is up with this?
       pot = create(:pot)
       get :index
       expect(assigns(:pots)).to eq([pot])
