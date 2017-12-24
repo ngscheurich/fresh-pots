@@ -21,7 +21,8 @@ describe Users::RegistrationsController do
       before(:all) do
         Rails.configuration.fresh_pots["email_whitelist"] = {}
         Rails.configuration.fresh_pots["email_whitelist"]["enabled"] = true
-        Rails.configuration.fresh_pots["email_whitelist"]["domains"] = ["allowed.com"]
+        Rails.configuration.fresh_pots["email_whitelist"]["domains"] =
+          ["allowed.com"]
       end
 
       it "should allow whitelisted domains" do
