@@ -1,23 +1,23 @@
-<div class="w-25">
-  <div class="bl b--black-10 pl4 bw3">
-  <div class="mb4">
-    <h2 class="f5 f4-l fw7 ttu tracked mt0 mb2">Brewmaster</h2>
-    <%= link_to @most_active_user.full_name, user_path(@most_active_user), class: "link dim black-50 f4" %>
-  </div>
+<div class="w-100 w-50-m w-25-l mt1 mt0-ns bt bn-ns b--black-05 bw3 pt4 pt0-ns tc tl-ns">
+  <div class="flex flex-wrap db-ns bl-ns b--black-05 bw3 pl4-ns">
+    <div class="w-50 w-100-ns mb4">
+      <h2 class="f6 f5-ns fw7 ttu tracked mt0 mb1">Most used pot</h2>
+      <span class="f5 f4-ns black-50"><%= @most_used_pot.name %></span>
+    </div>
 
-  <div class="mb4">
-    <h2 class="f5 f4-l fw7 ttu tracked mt0 mb1">Brews this week</h2>
-    <span class="f4 black-50"><%= @brews_this_week %></span>
-  </div>
+    <div class="w-50 w-100-ns mb4">
+      <h2 class="f6 f5-ns fw7 ttu tracked mt0 mb1">Most brewed variety</h2>
+      <span class="f5 f4-ns black-50"><%= @most_brewed_variety.name %></span>
+    </div>
 
-  <div class="mb4">
-    <h2 class="f5 f4-l fw7 ttu tracked mt0 mb1">Most popular pot</h2>
-    <span class="f4 black-50"><%= @most_used_pot.name %></span>
-  </div>
+    <div class="w-50 w-100-ns mb4-ns">
+      <h2 class="f6 f5-ns fw7 ttu tracked mt0 mb1">Brews of all time</h2>
+      <span class="f5 f4-ns black-50"><%= Brew.count %></span>
+    </div>
 
-  <div>
-    <h2 class="f5 f4-l fw7 ttu tracked mt0 mb1">Most popular variety</h2>
-    <span class="f4 black-50"><%= @most_brewed_variety.name %></span>
+    <div class="w-50 w-100-ns">
+      <h2 class="f6 f5-ns fw7 ttu tracked mt0 mb1">Brews this week</h2>
+      <span class="f5 f4-ns black-50"><%= @brews_this_week %></span>
+    </div>
   </div>
-</div>
 </div>

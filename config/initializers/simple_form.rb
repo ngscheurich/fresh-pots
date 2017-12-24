@@ -44,7 +44,7 @@ SimpleForm.setup do |config|
     b.optional :readonly
 
     ## Inputs
-    b.wrapper tag: :div, class: "mt3" do |component|
+    b.wrapper tag: :div, class: "mb4" do |component|
       component.use :label
       component.use :input, class: "pa3 input-reset ba b--black-20 br1 w-100"
       component.use :hint,  wrap_with: { tag: :div, class: "f5 black-50 lh-copy" }
@@ -107,7 +107,7 @@ SimpleForm.setup do |config|
   config.label_text = lambda { |label, required, explicit_label| label }
 
   # You can define the class to use on all labels. Default is nil.
-  config.label_class = "db lh-copy f4"
+  config.label_class = "db lh-copy f5 f4-l ttu fw7 mb1"
 
   # You can define the default class to be used on forms. Can be overriden
   # with `html: { :class }`. Defaulting to none.

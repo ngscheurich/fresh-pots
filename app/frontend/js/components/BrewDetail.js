@@ -3,9 +3,9 @@ import PropTypes from "prop-types";
 
 const BrewDetail = ({ text, icon, iconAltText }) => {
   return (
-    <div className="brew__detail mh3 mh4-ns flex-1">
+    <div className="brew__detail mh3 mh4-ns flex-1 truncate">
       <i className={`nc-icon nc-${icon} v-mid mr2 f4`} />
-      <span className="f6 f5-l tracked">{text}</span>
+      <span className="f6 tracked">{text}</span>
     </div>
   );
 };

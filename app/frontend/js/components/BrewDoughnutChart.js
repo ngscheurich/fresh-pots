@@ -13,7 +13,7 @@ const BrewDoughnutChart = ({ chartData }) => {
   });
 
   const colors = qtys.map((x, i) => {
-    return primaryColor((i + 1) * 0.2);
+    return primaryColor((i + 1) * 0.03);
   });
 
   const data = {

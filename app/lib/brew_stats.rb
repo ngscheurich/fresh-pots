@@ -28,11 +28,11 @@ class BrewStats
   end
 
   def this_week
-    Brew.where("created_at >= '#{Date.today.beginning_of_week}'").count
+    Brew.where("created_at >= '#{Time.zone.today.beginning_of_week}'").count
   end
 
   def this_month
-    Brew.where("created_at >= '#{Date.today.beginning_of_month}'").count
+    Brew.where("created_at >= '#{Time.zone.today.beginning_of_month}'").count
   end
 
   private

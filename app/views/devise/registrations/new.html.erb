@@ -1,19 +1,21 @@
-<div class="measure center pa3 pv5-ns black-90">
-  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <fieldset class="ba b--transparent ph0 mh0">
-      <legend class="f1 fw6 ph0 mh0 display">Sign up</legend>
-      <%= f.input :email, required: true, autofocus: true %>
-      <%= f.input :password, required: true,
-                  hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
-      <%= f.input :password_confirmation, required: true %>
-    </fieldset>
+<div class="bg-white">
+  <div class="measure center pa3 pv5-ns black-90">
+    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <fieldset class="ba b--transparent ph0 mh0">
+        <legend class="f1 fw6 ph0 mh0 display">Sign up</legend>
+        <%= f.input :email, required: true, autofocus: true %>
+        <%= f.input :password, required: true,
+          hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
+        <%= f.input :password_confirmation, required: true %>
+      </fieldset>
 
-    <%= f.button :submit, "Sign up",
-      class: "aa dib mt2 tc pa3 ph4 ttu br2 white bg-black-90 input-reset bn f5 pointer btn mr3" %>
-    <%= link_to "Log in", new_session_path(resource_name), class: "link dim black-60 dib mb2 f5" %>
-  <% end %>
+      <%= f.button :submit, "Sign up",
+        class: "aa dib mt2 tc pa3 ph4 ttu br2 white bg-black-90 input-reset bn f5 pointer btn mr3" %>
+      <%= link_to "Log in", new_session_path(resource_name), class: "link dim black-60 dib mb2 f5" %>
+    <% end %>
 
-  <div class="mt4">
-    <%= render "devise/shared/links" %>
+    <div class="mt4">
+      <%= render "devise/shared/links" %>
+    </div>
   </div>
 </div>

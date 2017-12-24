@@ -11,6 +11,7 @@ class PagesController < ApplicationController
     redirect_to root_url unless signed_in?
     fetch_usage_stats
     fetch_brew_stats
+    @top_brewers = User.order(brews_count: :desc).limit(3)
   end
 
   private

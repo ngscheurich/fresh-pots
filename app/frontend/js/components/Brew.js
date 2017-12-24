@@ -127,7 +127,7 @@ class Brew extends React.Component {
             style={{ display: this.state.showMenu ? "block" : "none" }}
           >
             <button
-              className="pointer bn-reset bg-transparent bn db black-90 pa3 z-1"
+              className="pointer bn-reset bg-transparent bn db black-90 pa3 z-1 dim"
               onClick={this.handleOpenModal}
             >
               <i className="nc-icon nc-circle-bold-delete v-mid f4 mr2" />

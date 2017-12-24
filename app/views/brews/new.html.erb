@@ -1,5 +1,25 @@
-<div class="measure center pa3 pv5-ns black-90">
-  <h1 class="mv0 display">Start a brew</h1>
+<div class="pattern-1 ph3 pv4 ph4-ns pv5-m pv6-l">
+  <h1 class="dn db-ns mt0 mb4 f1 display tc">Start a brew</h1>
 
-  <%= render "form", brew: @brew %>
+  <%= simple_form_for(@brew) do |f| %>
+    <div class="center measure-wide">
+      <div class="pa4 mb3 box br3 bg-white">
+        <% if @brew.errors.any? %>
+          <ul>
+            <% @brew.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        <% end %>
+
+        <%= f.association :pot, prompt: "Which pot are you using?" %>
+        <%= f.association :variety, prompt: "What type of coffee?" %>
+      </div>
+
+      <%= f.button :submit, "Start brew",
+        class: "aa dib mt3 mr3 tc pa3 ph4 ttu br2 white bg-black-90 input-reset bn f5 pointer btn" %>
+      <%= link_to "Never mind", root_url,
+        class: "link dim black-50 dib mb2 f5" %>
+    </div>
+  <% end %>
 </div>

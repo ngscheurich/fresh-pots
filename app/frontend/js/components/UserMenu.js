@@ -21,15 +21,16 @@ class UserMenu extends Component {
           className="input-reset ph0 bn bg-transparent pointer flex items-center dim"
           onClick={this.handleToggleMenu}
         >
-          <img className="avatar br-100 mr2" src={this.props.avatar} />
-          <i className="nc-icon nc-bold-down white v-mid f4 mr2" />
+          <img className="avatar br-100 mr3" src={this.props.avatar} />
+          <i className="nc-icon nc-minimal-down-2 white v-mid f6 mr2" />
         </button>
         <div
           className="absolute right-0 dn br2 shadow-2 bg-white pa3"
           style={{
             top: 40,
             display: this.state.isOpen ? "block" : "none",
-            minWidth: 150
+            minWidth: 150,
+            zIndex: 9999
           }}
         >
           <a

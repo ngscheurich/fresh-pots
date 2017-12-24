@@ -53,9 +53,9 @@ const renderBrews = (brews, exhaustBrew) => {
 
 const renderNoBrewsMsg = () => {
   return (
-    <p className="f3 tc">
+    <p className="f4 f3-ns tc">
       <span className="emoji mr2">😱</span>
-      There’s no coffee! You should go&nbsp;
+      There’s no coffee!<br /> You should go&nbsp;
       <a className="link dim black-60" href="/brews/new">
         brew some
       </a>.

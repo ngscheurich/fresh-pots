@@ -74,8 +74,36 @@ input[type="file"] {
   padding: 0;
 }
 
+.logo {
+  &__image {
+    height: 30px;
+  }
+
+  &__text {
+    line-height: 30px;
+    transform: translateY(-4px);
+  }
+}
+
 .avatar {
-  height: 45px;
+  height: 30px;
+}
+
+@media screen and (min-width: 30em) {
+  .logo {
+    &__image {
+      height: 45px;
+    }
+
+    &__text {
+      line-height: 45px;
+      transform: none;
+    }
+  }
+
+  .avatar {
+    height: 45px;
+  }
 }
 
 @media screen and (min-width: 60em) {
@@ -108,5 +136,5 @@ input[type="file"] {
 }
 
 .breakfast-status-bar {
-  // display: none !important;
+  display: none !important;
 }

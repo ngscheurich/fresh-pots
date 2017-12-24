@@ -17,8 +17,8 @@ const BrewTimesChart = ({ chartData }) => {
     datasets: [
       {
         data: qtys,
-        backgroundColor: primaryColor(0.3),
-        borderColor: primaryColor(0.4)
+        backgroundColor: primaryColor(0.07),
+        borderColor: primaryColor(0.1)
       }
     ]
   };

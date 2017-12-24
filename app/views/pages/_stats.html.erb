@@ -1,28 +1,28 @@
-<div class="w-50">
-  <h2 class="f5 f4-l fw4 black-50 ttu tracked mt0 mb4">Most popular brew times</h2>
+<div class="w-100 w-50-l mb4">
+  <h2 class="f6 f5-l fw4 black-50 ttu tracked mt0 mb4">Most popular brew times</h2>
   <div
     data-component="brew-times-chart"
     data-chart-data='<%= @brews_by_time %>'
     ></div>
 </div>
 
-<div class="w-25">
-  <div class="relative">
+<div class="flex force-db-ns mb4 mb0-ns w-100 w-50-m w-25-l">
+  <div class="w-50 w-100-ns relative">
     <div
-      class="mb4"
+      class="mb4-ns"
       data-component="brew-doughnut-chart"
       data-chart-data='<%= @brews_by_variety %>'
       >
     </div>
-    <i class="nc-icon black-40 nc-treasure-map-21-2 f2 absolute" style="top: 50%; left: 50%; transform: translate(-50%, -50%);"></i>
+    <i class="nc-icon black-40 nc-treasure-map-21-2 f3 absolute" style="top: 50%; left: 50%; transform: translate(-50%, -50%);"></i>
   </div>
 
-  <div class="relative">
+  <div class="w-50 w-100-ns relative">
     <div
       data-component="brew-doughnut-chart"
       data-chart-data='<%= @brews_by_pot %>'
       >
     </div>
-    <i class="nc-icon black-40 nc-drop-3 f2 absolute" style="top: 50%; left: 50%; transform: translate(-50%, -50%);"></i>
+    <i class="nc-icon black-40 nc-drop-3 f3 absolute" style="top: 50%; left: 50%; transform: translate(-50%, -50%);"></i>
   </div>
 </div>

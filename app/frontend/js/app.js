@@ -71,17 +71,19 @@ function renderUserMenu() {
   }
 }
 
-const cable = ActionCable.createConsumer("ws://localhost:3000/cable");
-
 const App = {
   init() {
     document.addEventListener("turbolinks:load", () => {
       renderComponent(<CurrentTime />, "current-time");
-      renderComponent(<RecentBrews cable={cable} />, "brew-list");
       renderUserMenu();
       renderBrewTimesChart();
       renderBrewDoughnutCharts();
       renderToast();
+
+      if (location.pathname === "/dashboard") {
+        const cable = ActionCable.createConsumer("ws://localhost:3000/cable");
+        renderComponent(<RecentBrews cable={cable} />, "brew-list");
+      }
     });
   }
 };

@@ -1,16 +1,16 @@
-<div class="bg-white">
-  <div class="measure center pa3 pv5-ns black-90">
-    <%= simple_form_for(@user) do |f| %>
-      <fieldset class="ba b--transparent ph0 mh0">
+<div class="pattern-1 ph3 pv4 ph4-ns pv6-ns">
+  <%= simple_form_for(@user) do |f| %>
+    <div class="center measure-wide">
+      <div class="pa4 mb4 box br3 bg-white">
         <%= f.input :first_name, required: true %>
         <%= f.input :last_name, required: true %>
         <%= f.association :pot, label: "Favorite pot" %>
         <%= f.association :variety, label: "Favorite variety" %>
         <%= f.input :avatar, as: :file %>
-      </fieldset>
+      </div>
 
       <%= f.button :submit, "Save changes",
-        class: "aa dib mt2 tc pa3 ph4 ttu br2 white bg-black-90 input-reset bn f5 pointer btn mr3" %>
-    <% end %>
-  </div>
+        class: "aa db dib-ns f5 f4-l tc ph4 pv3 ttu br2 btn bn pointer" %>
+    </div>
+  <% end %>
 </div>
