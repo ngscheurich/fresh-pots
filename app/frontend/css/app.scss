@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Permanent+Marker|Source+Sans+Pro:300,400,700");
+@import "google_fonts";
 @import "tachyons";
 @import "animate";
 @import "ReactToastify";
@@ -59,14 +59,6 @@ body {
 }
 
 .select {
-  label {
-    // display: none;
-  }
-
-  select {
-    background: calc(100% - 15px) center / 16px no-repeat #fff
-      url(/assets/minimal-down.svg);
-  }
 }
 
 input[type="file"] {
@@ -87,6 +79,28 @@ input[type="file"] {
 
 .avatar {
   height: 30px;
+}
+
+select {
+  background: calc(100% - 15px) center / 16px no-repeat #fff
+    url(/assets/minimal-down.svg);
+
+  @extend .pa3;
+  @extend .input-reset;
+  @extend .ba;
+  @extend .b--black-20;
+  @extend .br1;
+  @extend .w-100;
+}
+
+label {
+  @extend .db;
+  @extend .lh-copy;
+  @extend .f5;
+  @extend .f4-l;
+  @extend .ttu;
+  @extend .fw7;
+  @extend .mb1;
 }
 
 @media screen and (min-width: 30em) {
