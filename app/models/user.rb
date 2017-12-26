@@ -12,8 +12,8 @@ class User < ApplicationRecord
 
   validates_attachment_content_type :avatar, content_type: %r{\Aimage\/.*\z}
 
-  belongs_to :pot
-  belongs_to :variety
+  belongs_to :pot, optional: true
+  belongs_to :variety, optional: true
   has_many :brews
 
   def self.most_active

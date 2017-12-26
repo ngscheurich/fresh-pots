@@ -12,8 +12,15 @@
           </ul>
         <% end %>
 
-        <%= f.association :pot, prompt: "Which pot are you using?" %>
-        <%= f.association :variety, prompt: "What type of coffee?" %>
+        <div class="select mb4">
+          <label for="pot_id">Pot</label>
+          <%= pot_select(current_user) %>
+        </div>
+
+        <div class="select mb2">
+          <label for="variety_id">Variety</label>
+          <%= variety_select(current_user) %>
+        </div>
       </div>
 
       <%= f.button :submit, "Start brew",
