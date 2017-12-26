@@ -71,6 +71,58 @@ function renderUserMenu() {
   }
 }
 
+function addSelectDefault(selector, text) {
+  let node = document.querySelector(selector);
+
+  if (node) {
+    let shouldAdd = true;
+    node.querySelectorAll("option").forEach(x => {
+      if (x.selected) shouldAdd = false;
+    });
+    shouldAdd && addPlaceholder(node, text);
+  }
+}
+
+function addPlaceholder(node, text) {
+  const option = document.createElement("option");
+  option.disabled = true;
+  option.selected = true;
+  option.append(text);
+
+  node.prepend(option);
+}
+
+function disablePlaceholderOptions() {
+  document
+    .querySelectorAll("option[value='']")
+    .forEach(option => (option.disabled = true));
+}
+
+function formShouldUseXHR(selector, loadURL, errorURL) {
+  const node = document.querySelector(selector);
+
+  if (node) {
+    node.addEventListener("submit", event => {
+      event.preventDefault();
+
+      const form = event.target;
+      const XHR = new XMLHttpRequest();
+      const FD = new FormData(form);
+
+      XHR.addEventListener("load", event => {
+        Turbolinks.visit(loadURL);
+      });
+
+      XHR.addEventListener("error", event => {
+        console.log(event);
+      });
+
+      XHR.open("POST", form.action);
+      XHR.send(FD);
+    });
+  }
+}
+
 const App = {
   init() {
     document.addEventListener("turbolinks:load", () => {
@@ -79,6 +131,9 @@ const App = {
       renderBrewTimesChart();
       renderBrewDoughnutCharts();
       renderToast();
+      disablePlaceholderOptions();
+      formShouldUseXHR("#new_brew", "/dashboard?brew_created", null);
+      formShouldUseXHR("#new_user", "/dashboard?logged_in", null);
 
       if (location.pathname === "/dashboard") {
         const cable = ActionCable.createConsumer("ws://localhost:3000/cable");

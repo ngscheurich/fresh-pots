@@ -12,6 +12,8 @@ class PagesController < ApplicationController
     fetch_usage_stats
     fetch_brew_stats
     @top_brewers = User.order(brews_count: :desc).limit(3)
+
+    params[:success] && flash[:notice] = "Your brew has been logged!"
   end
 
   private
