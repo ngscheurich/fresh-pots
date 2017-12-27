@@ -33,6 +33,10 @@ const App = {
         const cable = ActionCable.createConsumer("ws://localhost:3000/cable");
         Render.component(<RecentBrews cable={cable} />, "brew-list");
       }
+
+      if (navigator.userAgent.indexOf("Turbolinks/iOS") !== -1) {
+        document.querySelector("#page-header").style.display = "none";
+      }
     });
   }
 };
