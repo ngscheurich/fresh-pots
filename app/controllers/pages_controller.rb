@@ -1,10 +1,6 @@
 class PagesController < ApplicationController
   def home
-    if signed_in?
-      redirect_to dashboard_url
-    else
-      redirect_to signup_url
-    end
+    redirect_to dashboard_url if signed_in?
   end
 
   def dashboard
