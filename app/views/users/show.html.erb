@@ -2,7 +2,7 @@
   <div class="center measure-wide">
     <div class="pa4 mb4 box br3 bg-white">
       <div class="flex items-center">
-        <img src="<%= @user.avatar.url %>" class="w3 mr3 br-100" />
+        <img src="<%= @user.avatar.url(:thumb) %>" class="w3 mr3 br-100" />
         <h1 class="display mv0"><%= @user.full_name %></h1>
       </div>
 
