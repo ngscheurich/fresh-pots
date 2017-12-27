@@ -4,6 +4,7 @@ class User < ApplicationRecord
 
   has_attached_file(
     :avatar,
+    styles: { thumb: "200x200#" },
     s3_region: ENV["aws_region"],
     default_url: lambda do |a|
       "https://api.adorable.io/avatars/200/#{a.instance.email}"
