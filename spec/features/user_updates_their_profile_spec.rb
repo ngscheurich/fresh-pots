@@ -3,6 +3,8 @@ require "rails_helper"
 feature "User updates their profile" do
   scenario "edits their own profile" do
     user = create(:user)
+    create :pot
+    create :variety
     login_as(user)
 
     visit edit_user_url(user)
@@ -15,6 +17,8 @@ feature "User updates their profile" do
   scenario "edits someone else’s profile" do
     user1 = create(:user, first_name: "Interloper")
     user2 = create(:user)
+    create :pot
+    create :variety
     login_as(user1)
 
     visit edit_user_path(user2)
