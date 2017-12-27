@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 
 class Toast extends Component {
   componentDidMount() {
@@ -8,7 +8,8 @@ class Toast extends Component {
   }
 
   render() {
-    return <ToastContainer />;
+    console.log("Rendering toast");
+    return null;
   }
 }
 
