@@ -22,7 +22,7 @@ class UserMenu extends Component {
           onClick={this.handleToggleMenu}
         >
           <img className="avatar br-100 mr3" src={this.props.avatar} />
-          <i className="nc-icon nc-minimal-down-2 white v-mid f6 mr2" />
+          <i className="nc-icon nc-minimal-down-2 v-mid f6 mr2" />
         </button>
         <div
           className="absolute right-0 dn br2 shadow-2 bg-white pa3"

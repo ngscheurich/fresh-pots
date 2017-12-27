@@ -1,19 +1,21 @@
-<header class="mw9-l center cf ph3 pv2 ph4-ns pv3-ns flex items-center white-90" role="banner">
-  <h1 class="ttu ma0 lh-solid dib logo">
-    <%= link_to root_url, class: "link dim white" do %>
-      <img src="/assets/logo.svg" class="v-mid mr2 logo__image" />
-      <span class="f5 f3-ns logo__text dib">Fresh Pots</span>
-    <% end%>
-  </h1>
+<div class="bg-white">
+  <header class="mw9-l center cf ph3 pv2 ph4-ns pv3-ns flex items-center" role="banner">
+    <h1 class="ttu ma0 lh-solid dib logo">
+      <%= link_to dashboard_url, class: "link dim black-80" do %>
+        <img src="/assets/logo.svg" class="v-mid mr2 logo__image" />
+        <span class="f5 f3-ns logo__text dib">Fresh Pots</span>
+      <% end%>
+    </h1>
 
-  <% if signed_in? %>
-    <div class="flex-1">
-      <div
-        data-component="user-menu"
-        data-avatar="<%= current_user.avatar %>"
-        data-show-url="<%= user_url(current_user) %>"
-        data-edit-url="<%= edit_user_url(current_user) %>"
-        ></div>
-    </div>
-  <% end %>
-</header>
+    <% if signed_in? %>
+      <div class="flex-1">
+        <div
+          data-component="user-menu"
+          data-avatar="<%= current_user.avatar(:thumb) %>"
+          data-show-url="<%= user_url(current_user) %>"
+          data-edit-url="<%= edit_user_url(current_user) %>"
+          ></div>
+      </div>
+    <% end %>
+  </header>
+</div>
