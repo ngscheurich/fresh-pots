@@ -67,7 +67,6 @@ class RecentBrews extends React.Component {
           errorMsg={this.state.errorMsg}
           exhaustBrew={this.exhaustBrew}
         />
-        <ToastContainer />
       </div>
     );
   }
