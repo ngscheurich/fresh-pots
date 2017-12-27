@@ -8,14 +8,17 @@ import * as Render from "./render";
 import * as Forms from "./forms";
 import "rails-ujs";
 import Toast from "./components/Toast";
-import { ToastContainer } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 
 Turbolinks.start();
 
 const App = {
   init() {
     document.addEventListener("turbolinks:load", () => {
-      Render.component(<ToastContainer />, "toast-container");
+      Render.component(
+        <ToastContainer position={toast.POSITION.TOP_CENTER} />,
+        "toast-container"
+      );
       Render.component(<CurrentTime />, "current-time");
       Render.userMenu();
       Render.brewTimesChart();
