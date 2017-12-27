@@ -27,7 +27,7 @@ const App = {
 
       Forms.disablePlaceholderOptions();
       Forms.useXHR("#new_brew", "/dashboard?brew_logged=true", null);
-      // formShouldUseXHR("#new_user", "/dashboard?logged_in", null);
+      Forms.useXHR("#new_user", "/dashboard?logged_in=true", null);
 
       if (location.pathname === "/dashboard") {
         const cable = ActionCable.createConsumer("ws://localhost:3000/cable");
