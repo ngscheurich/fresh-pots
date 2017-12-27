@@ -58,12 +58,13 @@ body {
   height: 18px;
 }
 
-.select {
-}
-
 input[type="file"] {
   border: 0;
-  padding: 0;
+  padding-left: 0;
+}
+
+label.required:after {
+  content: "*";
 }
 
 .logo {
@@ -150,5 +151,5 @@ label {
 }
 
 .breakfast-status-bar {
-  display: none !important;
+  // display: none !important;
 }
