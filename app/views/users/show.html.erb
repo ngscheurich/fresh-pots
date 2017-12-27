@@ -31,7 +31,9 @@
       </div>
     </div>
 
-    <%= link_to "Edit your profile", edit_user_path(@user),
-        class: "aa db dib-ns f5 f4-l tc ph4 pv3 ttu br2 link btn" %>
+    <% if @user == current_user %>
+      <%= link_to "Edit your profile", edit_user_path(@user),
+        class: "aa db dib-ns f5 tc ph4 pv3 ttu br2 link btn" %>
+    <% end %>
   </div>
 </div>
