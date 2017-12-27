@@ -31,4 +31,8 @@ module ApplicationHelper
     varieties = Variety.all.map { |variety| [variety.name, variety.id] }
     varieties.unshift(["Which variety are you brewing?", nil])
   end
+
+  def user_agent_contains(str)
+    request.user_agent && request.user_agent.include?(str)
+  end
 end
