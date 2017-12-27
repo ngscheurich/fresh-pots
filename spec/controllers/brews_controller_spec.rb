@@ -40,6 +40,30 @@ describe BrewsController do
         post :create, params: @params
         expect(response).to redirect_to(root_url)
       end
+
+      it "assigns favorite pot to user without one" do
+        user = create(:user, pot: nil)
+        post :create, params: @params
+        expect(user.pot_id).to eq(@params[:pot_id])
+      end
+
+      it "doesn’t assign favorite pot to user with one" do
+        user = create(:user, pot: create(:pot))
+        post :create, params: @params
+        expect(user.pot_id).not_to eq(@params[:pot_id])
+      end
+
+      it "assigns favorite variety to user without one" do
+        user = create(:user, variety: nil)
+        post :create, params: @params
+        expect(user.variety_id).to eq(@params[:variety_id])
+      end
+
+      it "doesn’t assign favorite variety to user with one" do
+        user = create(:user, variety: create(:variety))
+        post :create, params: @params
+        expect(user.variety_id).not_to eq(@params[:variety_id])
+      end
     end
 
     context "with invalid params" do
