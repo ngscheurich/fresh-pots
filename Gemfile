@@ -17,6 +17,7 @@ gem "rails", "~> 5.1.4"
 gem "redis", "~> 3.0"
 gem "rubocop", require: false
 gem "simple_form"
+gem "title"
 
 group :development, :test do
   gem "bullet"
