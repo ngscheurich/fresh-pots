@@ -19,6 +19,7 @@ class BrewsController < ApplicationController
     @brew.user = current_user
 
     if @brew.save
+      ensure_user_favorites(current_user)
       redirect_to root_url, notice: created_message
     else
       render :new
@@ -39,6 +40,32 @@ class BrewsController < ApplicationController
   end
 
   private
+
+  def ensure_user_favorites(user)
+    ensure_user_pot(user)
+    ensure_user_variety(user)
+  end
+
+  def ensure_user_pot(user)
+    return if user.pot_id
+
+    user.pot_id = brew_params[:pot_id]
+    try_save_user(user)
+  end
+
+  def ensure_user_variety(user)
+    return if user.variety_id
+
+    user.variety_id = brew_params[:variety_id]
+    try_save_user(user)
+  end
+
+  def try_save_user(user)
+    return if user.save
+
+    flash[:error] = "Could not set user favorites."
+    render :new
+  end
 
   def set_brew
     @brew = Brew.find(params[:id])
