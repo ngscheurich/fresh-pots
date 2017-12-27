@@ -2,7 +2,6 @@ Rails.application.routes.draw do
   root to: "pages#home"
 
   get "/home", to: "pages#home"
-  get "/dashboard", to: "pages#dashboard"
 
   devise_for :users, controllers: {
     registrations: "users/registrations"
@@ -14,6 +13,8 @@ Rails.application.routes.draw do
   end
 
   authenticate :user do
+    get "/dashboard", to: "pages#dashboard"
+
     resources :brews
     resources :pots
     resources :varieties
