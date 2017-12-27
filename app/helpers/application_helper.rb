@@ -8,7 +8,10 @@ module ApplicationHelper
   end
 
   def variety_select(user)
-    select_tag(:"brew[variety_id]", options_for_select(variety_list, user.variety_id))
+    select_tag(
+      :"brew[variety_id]",
+      options_for_select(variety_list, user.variety_id)
+    )
   end
 
   private
