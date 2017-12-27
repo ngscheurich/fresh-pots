@@ -1,19 +1,21 @@
 <div class="bg-white">
   <div class="measure center pa3 pv5-ns black-90">
     <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-      <fieldset class="ba b--transparent ph0 mh0">
+      <fieldset class="ba b--transparent pa0 ma0">
         <legend class="f2 fw6 ph0 mt0 mb4 display">Log in</legend>
 
         <%= f.input :email, required: false, autofocus: true %>
         <%= f.input :password, required: false %>
+      </fieldset>
+
+      <div class="flex items-center">
+        <%= f.button :submit, "Log in",
+          class: "aa dib tc pa3 ph4 ttu br2 input-reset bn f5 pointer btn mr3" %>
         <div class="flex lh-copy pointer items-center">
           <%= f.input_field :remember_me, as: :boolean if devise_mapping.rememberable? %>
           <label for="user_remember_me" class="ml2 pointer fw4 f5">Remember me</label>
         </div>
-      </fieldset>
-
-      <%= f.button :submit, "Log in",
-        class: "aa dib mt2 tc pa3 ph4 ttu br2 input-reset bn f5 pointer btn" %>
+      </div>
     <% end %>
 
     <div class="mt4">
