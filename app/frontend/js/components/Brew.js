@@ -4,7 +4,7 @@ import Modal from "react-modal";
 import moment from "moment";
 import "moment-timezone";
 import axios from "axios";
-import { ToastContainer, toast } from "react-toastify";
+import Toast from "./Toast";
 import BrewClock from "./BrewClock";
 import BrewMeter from "./BrewMeter";
 import BrewStarted from "./BrewStarted";
@@ -103,7 +103,7 @@ class Brew extends React.Component {
         this.handleCloseModal();
         this.props.exhaustBrew(this.props.brew.id);
       })
-      .catch(error => toast(error.message, { type: "error" }));
+      .catch(error => <Toast text={error.message} type="error" />);
   }
 
   render() {
@@ -172,8 +172,6 @@ class Brew extends React.Component {
           <button onClick={this.handleCloseModal}>No, never mind</button>
           <button onClick={this.killPot}>Yep, I grabbed the last cup</button>
         </Modal>
-
-        <ToastContainer />
       </div>
     );
   }
