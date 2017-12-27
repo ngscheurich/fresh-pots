@@ -20,16 +20,22 @@ class User < ApplicationRecord
     User.order(brews_count: :desc).first
   end
 
-  def favorite_pot
-    pot
-  end
-
-  def favorite_variety
-    variety
+  def full_name=(name)
+    split = name.split(" ")
+    self.first_name = split.first
+    self.last_name = split.last
   end
 
   def full_name
-    "#{first_name} #{last_name}"
+    [first_name, last_name].join(" ")
+  end
+
+  def favorite_pot
+    pot || Pot.first
+  end
+
+  def favorite_variety
+    variety || Variety.first
   end
 
   def num_brews_this_week
