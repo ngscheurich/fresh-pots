@@ -4,7 +4,6 @@ class PagesController < ApplicationController
   end
 
   def dashboard
-    redirect_to root_url unless signed_in?
     fetch_usage_stats
     fetch_brew_stats
     @top_brewers = User.order(brews_count: :desc).limit(3)
