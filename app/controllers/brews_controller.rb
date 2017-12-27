@@ -10,7 +10,6 @@ class BrewsController < ApplicationController
 
   def new
     @brew = Brew.new
-    params[:error] && flash[:error] = "Uh-oh. Something has gone awry."
   end
 
   def edit; end
