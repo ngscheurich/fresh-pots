@@ -8,14 +8,17 @@ import * as Render from "./render";
 import * as Forms from "./forms";
 import "rails-ujs";
 import Toast from "./components/Toast";
-import { ToastContainer } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 
 Turbolinks.start();
 
 const App = {
   init() {
     document.addEventListener("turbolinks:load", () => {
-      Render.component(<ToastContainer />, "toast-container");
+      Render.component(
+        <ToastContainer position={toast.POSITION.TOP_CENTER} />,
+        "toast-container"
+      );
       Render.component(<CurrentTime />, "current-time");
       Render.userMenu();
       Render.brewTimesChart();
@@ -24,11 +27,15 @@ const App = {
 
       Forms.disablePlaceholderOptions();
       Forms.useXHR("#new_brew", "/dashboard?brew_logged=true", null);
-      // formShouldUseXHR("#new_user", "/dashboard?logged_in", null);
+      Forms.useXHR("#new_user", "/dashboard?logged_in=true", null);
 
       if (location.pathname === "/dashboard") {
         const cable = ActionCable.createConsumer("ws://localhost:3000/cable");
         Render.component(<RecentBrews cable={cable} />, "brew-list");
+      }
+
+      if (navigator.userAgent.indexOf("Turbolinks/iOS") !== -1) {
+        document.querySelector("#page-header").style.display = "none";
       }
     });
   }
