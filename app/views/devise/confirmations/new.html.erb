@@ -1,16 +1,25 @@
-<h2>Resend confirmation instructions</h2>
+<div class="bg-white">
+  <div class="measure center pa3 pv5-ns black-90">
+    <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <%= f.error_notification %>
 
-<%= simple_form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
-  <%= f.error_notification %>
-  <%= f.full_error :confirmation_token %>
+      <fieldset class="ba b--transparent pa0 ma0">
+        <legend class="f3 fw6 ph0 mv0 display">Still need to confirm?</legend>
+        <p class="mb4 lh-copy">
+          We use email confirmation to verify that you are who
+          you say you are. Fill out this form and we’ll re-send
+          the instructions on how to get confirmed.
+        </p>
 
-  <div class="form-inputs">
-    <%= f.input :email, required: true, autofocus: true %>
+        <%= f.input :email, required: false, autofocus: true %>
+      </fieldset>
+
+      <%= f.button :submit, "Submit",
+        class: "aa dib tc pa3 ph4 ttu br2 input-reset bn f5 pointer btn" %>
+    <% end %>
+
+    <div class="mt4">
+      <%= render "devise/shared/links" %>
+    </div>
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Resend confirmation instructions" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>
