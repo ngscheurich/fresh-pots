@@ -12,6 +12,10 @@ Rails.application.routes.draw do
     get "/login", to: "devise/sessions#new"
   end
 
+  namespace :api, format: "json" do
+    get "users/:id", to: "users#show"
+  end
+
   authenticate :user do
     get "/dashboard", to: "pages#dashboard"
 
