@@ -84,6 +84,7 @@ class Brew extends React.Component {
 
   componentDidMount() {
     this.timerID = setInterval(() => this.tick(), 1000);
+    this.appContainer = document.querySelector("#app");
   }
 
   componentWillUnmount() {
@@ -163,7 +164,11 @@ class Brew extends React.Component {
             />
           </div>
         </div>
-        <Modal isOpen={this.state.showModal} style={modalStyle}>
+        <Modal
+          isOpen={this.state.showModal}
+          style={modalStyle}
+          appElement={this.appContainer}
+        >
           <h1 className="f2 ma0">Kill pot?</h1>
           <p>
             This will mark this pot as empty and prevent it from being
