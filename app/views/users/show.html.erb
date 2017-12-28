@@ -3,30 +3,30 @@
     <div class="pa4 mb4 box br3 bg-white">
       <div class="flex items-center">
         <img src="<%= @user.avatar.url(:thumb) %>" class="w3 mr3 br-100" />
-        <h1 class="display mv0"><%= @user.full_name %></h1>
+        <h1 class="f3 f2-ns mv0"><%= @user.full_name %></h1>
+      </div>
+
+      <div class="flex mt4 mt5-ns">
+        <div class="w-50">
+          <h2 class="f6 f5-ns fw7 ttu tracked mt0 mb1">Total Brews</h2>
+          <span class="f5 f4-ns black-50"><%= @user.brews.count %></span>
+        </div>
+
+        <div class="w-50">
+          <h2 class="f6 f5-ns fw7 ttu tracked mt0 mb1">Brews this week</h2>
+          <span class="f5 f4-ns black-50"><%= @user.num_brews_this_week %></span>
+        </div>
       </div>
 
       <div class="flex mt4">
         <div class="w-50">
-          <h2 class="f5 f4-l fw7 ttu tracked mt0 mb1">Total Brews</h2>
-          <span class="f4 black-50"><%= @user.brews.count %></span>
+          <h2 class="f6 f5-ns fw7 ttu tracked mt0 mb1">Favorite pot</h2>
+          <span class="f5 f4-ns black-50"><%= @user.favorite_pot.name %></span>
         </div>
 
         <div class="w-50">
-          <h2 class="f5 f4-l fw7 ttu tracked mt0 mb1">Brews this week</h2>
-          <span class="f4 black-50"><%= @user.num_brews_this_week %></span>
-        </div>
-      </div>
-
-      <div class="flex mt4">
-        <div class="w-50">
-          <h2 class="f5 f4-l fw7 ttu tracked mt0 mb1">Fave pot</h2>
-          <span class="f4 black-50"><%= @user.favorite_pot.name %></span>
-        </div>
-
-        <div class="w-50">
-          <h2 class="f5 f4-l fw7 ttu tracked mt0 mb1">Fave variety</h2>
-          <span class="f4 black-50"><%= @user.favorite_variety.name %></span>
+          <h2 class="f6 f5-ns fw7 ttu tracked mt0 mb1">Favorite variety</h2>
+          <span class="f5 f4-ns black-50"><%= @user.favorite_variety.name %></span>
         </div>
       </div>
     </div>
