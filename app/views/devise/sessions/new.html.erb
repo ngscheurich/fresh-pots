@@ -2,7 +2,9 @@
   <div class="measure center pa3 pv5-ns black-90">
     <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <fieldset class="ba b--transparent pa0 ma0">
-        <legend class="f2 fw6 ph0 mt0 mb4 display">Log in</legend>
+        <% unless user_agent_contains("Fresh Pots iOS") %>
+          <legend class="f2 fw6 ph0 mt0 mb4 display">Log in</legend>
+        <% end %>
 
         <%= f.input :email, required: false, autofocus: true %>
         <%= f.input :password, required: false %>
@@ -10,10 +12,10 @@
 
       <div class="flex items-center">
         <%= f.button :submit, "Log in",
-          class: "aa dib tc pa3 ph4 ttu br2 input-reset bn f5 pointer btn mr3" %>
+          class: "aa dib tc pa3 ph4 ttu br2 input-reset bn f6 f5-ns pointer btn mr3" %>
         <div class="flex lh-copy pointer items-center">
           <%= f.input_field :remember_me, as: :boolean if devise_mapping.rememberable? %>
-          <label for="user_remember_me" class="ml2 pointer fw4 f5">Remember me</label>
+          <label for="user_remember_me" class="ml2 pointer fw4 f6 f5-ns">Remember me</label>
         </div>
       </div>
     <% end %>

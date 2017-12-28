@@ -31,6 +31,10 @@ class User < ApplicationRecord
     [first_name, last_name].join(" ")
   end
 
+  def first_initial
+    first_name[0]
+  end
+
   def favorite_pot
     pot || Pot.first
   end
@@ -41,5 +45,9 @@ class User < ApplicationRecord
 
   def num_brews_this_week
     brews.where("created_at >= '#{Time.zone.today.beginning_of_week}'").count
+  end
+
+  def to_s
+    "#{first_initial}. #{last_name}"
   end
 end

@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import Toast from "./components/Toast";
 import UserMenu from "./components/UserMenu";
+import MobileMenu from "./components/MobileMenu";
 import BrewTimesChart from "./components/BrewTimesChart";
 import BrewDoughnutChart from "./components/BrewDoughnutChart";
 import * as Selectors from "./selectors";
@@ -46,6 +47,22 @@ export function userMenu() {
     const data = node.dataset;
     ReactDOM.render(
       <UserMenu
+        avatar={data.avatar}
+        showUrl={data.showUrl}
+        editUrl={data.editUrl}
+      />,
+      node
+    );
+  }
+}
+
+export function mobileMenu() {
+  const node = Selectors.component("mobile-menu");
+
+  if (node) {
+    const data = node.dataset;
+    ReactDOM.render(
+      <MobileMenu
         avatar={data.avatar}
         showUrl={data.showUrl}
         editUrl={data.editUrl}

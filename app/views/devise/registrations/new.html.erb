@@ -2,7 +2,9 @@
   <div class="measure center pa3 pv5-ns black-90">
     <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <fieldset class="ba b--transparent pa0 ma0">
-        <legend class="f2 fw6 ph0 mt0 mb4 display">Sign up</legend>
+        <% unless user_agent_contains("Fresh Pots iOS") %>
+          <legend class="f2 fw6 ph0 mt0 mb4 display">Sign up</legend>
+        <% end %>
 
         <%= f.input :email, required: true, autofocus: true %>
 

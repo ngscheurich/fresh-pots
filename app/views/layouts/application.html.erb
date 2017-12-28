@@ -3,7 +3,7 @@
   <head>
     <title><%= title %></title>
 
-    <% if user_agent_contains("Turbolinks/iOS") %>
+    <% if user_agent_contains("Fresh Pots iOS") %>
       <meta
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
@@ -21,15 +21,33 @@
     <%= breakfast_autoreload_tag %>
   </head>
 
-  <body class="bg-black-90 black-90 h-100 relative pb4">
-    <%= render partial: "shared/header" %>
+  <% bg_color = user_agent_contains("Fresh Pots iOS") ? "white pattern-1" : "black-90" %>
+  <body class="bg-<%= bg_color %> black-90 h-100 relative pb4">
+    <div id="app">
+      <% unless user_agent_contains("Fresh Pots iOS") %>
+        <%= render partial: "shared/header" %>
+      <% end %>
 
-    <main role="main">
-      <%= yield %>
-    </main>
+      <main role="main">
+        <%= yield %>
+      </main>
 
-    <div data-component="toast-container"></div>
-    <%= render partial: "shared/footer" %>
-    <%= render partial: "shared/flashes" %>
+      <div data-component="toast-container"></div>
+
+      <% if user_agent_contains("Fresh Pots iOS") %>
+        <% if signed_in? %>
+            <div
+              data-component="mobile-menu"
+              data-avatar="<%= current_user.avatar(:thumb) %>"
+              data-show-url="<%= user_url(current_user) %>"
+              data-edit-url="<%= edit_user_url(current_user) %>"
+              ></div>
+        <% end %>
+      <% else %>
+        <%= render partial: "shared/footer" %>
+      <% end %>
+
+      <%= render partial: "shared/flashes" %>
+    </div>
   </body>
 </html>

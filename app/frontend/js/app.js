@@ -21,6 +21,7 @@ const App = {
       );
       Render.component(<CurrentTime />, "current-time");
       Render.userMenu();
+      Render.mobileMenu();
       Render.brewTimesChart();
       Render.brewDoughnutCharts();
       Render.toasts();
@@ -32,10 +33,6 @@ const App = {
       if (location.pathname === "/dashboard") {
         const cable = ActionCable.createConsumer("ws://localhost:3000/cable");
         Render.component(<RecentBrews cable={cable} />, "brew-list");
-      }
-
-      if (navigator.userAgent.indexOf("Turbolinks/iOS") !== -1) {
-        document.querySelector("#page-header").style.display = "none";
       }
     });
   }
