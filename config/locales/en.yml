@@ -5,3 +5,11 @@ en:
       dashboard: Dashboard
     brews:
       new: Start a Brew
+    users:
+      show: "%{user}"
+      edit: Edit Profile
+      registrations:
+        new: Sign up
+    devise:
+      sessions:
+        new: Log in 
