@@ -1,6 +1,6 @@
 development:
   email_whitelist:
-    enabled: true
+    enabled: false
     domains:
       - domain.com
 
