@@ -14,7 +14,13 @@ varieties = Variety.create(
   ]
 )
 
+User.create({ email: "user@example.com", password: "password" })
+User.first.confirmed_at(Time.zone.now).save
+
 1.upto(5) do
-  Brew.create(pot: pots.sample,
-              variety: varieties.sample)
+  Brew.create(
+    pot: pots.sample,
+    variety: varieties.sample,
+    user: User.first
+  )
 end
