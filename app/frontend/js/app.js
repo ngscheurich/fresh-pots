@@ -7,7 +7,6 @@ import ActionCable from "actioncable";
 import * as Render from "./render";
 import * as Forms from "./forms";
 import "rails-ujs";
-import Toast from "./components/Toast";
 import { ToastContainer, toast } from "react-toastify";
 
 Turbolinks.start();
@@ -15,10 +14,7 @@ Turbolinks.start();
 const App = {
   init() {
     document.addEventListener("turbolinks:load", () => {
-      Render.component(
-        <ToastContainer position={toast.POSITION.TOP_CENTER} />,
-        "toast-container"
-      );
+      Render.component(<ToastContainer />, "toast-container");
       Render.component(<CurrentTime />, "current-time");
       Render.userMenu();
       Render.mobileMenu();
@@ -28,7 +24,8 @@ const App = {
 
       Forms.disablePlaceholderOptions();
       Forms.useXHR("#new_brew", "/dashboard?brew_logged=true", null);
-      Forms.useXHR("#new_user", "/dashboard?logged_in=true", null);
+      Forms.useXHR("#new_user[action='/users']", "/home?signed_up=true", null);
+      Forms.useXHR("#new_user[action='/users/sign_in']", "/dashboard", null);
 
       if (location.pathname === "/dashboard") {
         const cable = ActionCable.createConsumer("ws://localhost:3000/cable");
