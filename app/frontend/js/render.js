@@ -18,7 +18,28 @@ export function toasts() {
   nodes.forEach(node => {
     const type = node.dataset.type;
     const text = node.dataset.text;
-    ReactDOM.render(<Toast type={type} text={text} />, node);
+    let autoClose;
+    const dataValue = node.dataset.autoClose;
+    switch (true) {
+      case dataValue === "true":
+        autoClose = true;
+        break;
+      case dataValue === "false":
+        autoClose = false;
+        break;
+      case !isNaN(dataValue):
+        autoClose = dataValue;
+        break;
+      default:
+        autoClose = 5000;
+        break;
+    }
+    console.log(autoClose);
+
+    ReactDOM.render(
+      <Toast type={type} text={text} autoClose={autoClose} />,
+      node
+    );
   });
 }
 
