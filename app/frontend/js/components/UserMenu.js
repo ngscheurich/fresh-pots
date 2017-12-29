@@ -35,13 +35,13 @@ class UserMenu extends Component {
         >
           <a
             href={this.props.showUrl}
-            className="black-80 link dim db mb3 f5 ttu tracked"
+            className="black-80 link dim db mb3 f6 f5-ns ttu tracked"
           >
             View profile
           </a>
           <a
             href={this.props.editUrl}
-            className="black-80 link dim db mb3 f5 ttu tracked"
+            className="black-80 link dim db mb3 f6 f5-ns ttu tracked"
           >
             Edit profile
           </a>
@@ -49,7 +49,7 @@ class UserMenu extends Component {
             rel="nofollow"
             data-method="delete"
             href="/users/sign_out"
-            className="black-80 link dim db f5 ttu tracked"
+            className="black-80 link dim db f6 f5-ns ttu tracked"
           >
             Logout
           </a>
