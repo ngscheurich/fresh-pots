@@ -6,7 +6,7 @@
           <legend class="f2 fw6 ph0 mt0 mb4 display">Sign up</legend>
         <% end %>
 
-        <%= f.input :email, required: true, autofocus: true, input_html: { value: "ngscheurich+#{Time.zone.now.to_i}@gmail.com" } %>
+        <%= f.input :email, required: true, autofocus: true %>
 
         <div class="mb4">
           <label class="db lh-copy f5 ttu fw7 mb1" for="user_full_name">Name</label>
@@ -21,8 +21,8 @@
         <%= f.input :avatar, label: "Profile image", as: :file %>
 
         <%= f.input :password, required: true,
-          hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length), input_html: { value: "password" } %>
-        <%= f.input :password_confirmation, required: true, input_html: { value: "password" } %>
+          hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
+        <%= f.input :password_confirmation, required: true %>
       </fieldset>
 
       <%= f.button :submit, "Sign up",

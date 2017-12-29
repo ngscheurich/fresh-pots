@@ -11,7 +11,7 @@ import { ToastContainer, toast } from "react-toastify";
 
 Turbolinks.start();
 
-console.log("004");
+console.log("005");
 
 const App = {
   init() {
