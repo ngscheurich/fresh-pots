@@ -11,6 +11,8 @@ import { ToastContainer, toast } from "react-toastify";
 
 Turbolinks.start();
 
+console.log("001");
+
 const App = {
   init() {
     document.addEventListener("turbolinks:load", () => {
