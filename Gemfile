@@ -22,6 +22,7 @@ gem "title"
 group :development, :test do
   gem "bullet"
   gem "bundler-audit", ">= 0.5.0", require: false
+  gem "dotenv-rails"
   gem "factory_bot_rails"
   gem "pry-byebug"
   gem "pry-rails"

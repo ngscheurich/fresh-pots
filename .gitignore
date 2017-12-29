@@ -27,3 +27,5 @@ public/assets/*
 tags
 public/assets
 public/system
+
+.env
