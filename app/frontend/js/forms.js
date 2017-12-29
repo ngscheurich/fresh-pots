@@ -25,9 +25,8 @@ export function useXHR(selector, loadURL, errorURL) {
   const node = document.querySelector(selector);
 
   if (node) {
+    console.log(`Will submit ${selector} via XHR`);
     node.addEventListener("submit", event => {
-      console.log(`Will submit ${selector} via XHR`);
-
       event.preventDefault();
 
       const form = event.target;
