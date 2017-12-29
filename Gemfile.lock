@@ -309,7 +309,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  aws-sdk (~> 3)
+  aws-sdk (~> 2.3.0)
   breakfast
   bullet
   bundler-audit (>= 0.5.0)
