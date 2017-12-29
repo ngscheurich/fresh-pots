@@ -1,7 +1,8 @@
 <div id="page-header" class="bg-white">
   <header class="mw9-l center cf ph3 pv2 ph4-ns pv3-ns flex items-center" role="banner">
     <h1 class="ttu ma0 lh-solid dib logo">
-      <%= link_to dashboard_url, class: "link dim black-80" do %>
+      <% url = if signed_in? then dashboard_url else root_url end %>
+      <%= link_to url, class: "link dim black-80" do %>
         <img src="/assets/logo.svg" class="v-mid mr2 logo__image" />
         <span class="f5 f3-ns logo__text dib">Fresh Pots</span>
       <% end%>
