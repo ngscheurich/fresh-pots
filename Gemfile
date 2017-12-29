@@ -5,7 +5,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem "aws-sdk", "~> 3"
+gem "aws-sdk", "~> 2.3.0"
 gem "breakfast"
 gem "devise"
 gem "jbuilder", "~> 2.5"
