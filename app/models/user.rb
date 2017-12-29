@@ -11,6 +11,7 @@ class User < ApplicationRecord
       bucket: ENV["S3_BUCKET"]
     },
     s3_region: ENV["S3_REGION"],
+    s3_protocol: :https,
     styles: { thumb: "200x200#" },
     default_url: lambda do |a|
       "https://api.adorable.io/avatars/200/#{a.instance.email}"
