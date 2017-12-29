@@ -26,5 +26,5 @@ module Users
     # def default_message
     #   "Sorry, your email address is not authorized for this app."
     # end
-  # end
+  end
 end
