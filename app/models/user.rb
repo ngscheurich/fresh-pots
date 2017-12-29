@@ -4,8 +4,14 @@ class User < ApplicationRecord
 
   has_attached_file(
     :avatar,
+    storage: :s3,
+    s3_credentials: {
+      access_key_id:  ENV["S3_ACCESS_KEY_ID"],
+      secret_access_key: ENV["S3_SECRET_ACCESS_KEY"],
+      bucket: ENV["S3_BUCKET"]
+    },
+    s3_region: ENV["S3_REGION"],
     styles: { thumb: "200x200#" },
-    s3_region: ENV["aws_region"],
     default_url: lambda do |a|
       "https://api.adorable.io/avatars/200/#{a.instance.email}"
     end
