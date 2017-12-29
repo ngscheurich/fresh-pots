@@ -4,6 +4,8 @@ class BrewStats
   end
 
   def by_time
+    return {} if @brews == []
+
     data =
       @brews.map do |brew|
         time = nearest_half_hour(brew.created_at.localtime)
