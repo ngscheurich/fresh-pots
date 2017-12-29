@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171221213814) do
+ActiveRecord::Schema.define(version: 20171229044907) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,8 +62,8 @@ ActiveRecord::Schema.define(version: 20171221213814) do
     t.integer "avatar_file_size"
     t.datetime "avatar_updated_at"
     t.integer "brews_count", default: 0
-    t.string "first_name"
-    t.string "last_name"
+    t.string "first_name", default: ""
+    t.string "last_name", default: ""
     t.bigint "pot_id"
     t.bigint "variety_id"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
