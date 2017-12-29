@@ -26,6 +26,8 @@ export function useXHR(selector, loadURL, errorURL) {
 
   if (node) {
     node.addEventListener("submit", event => {
+      console.log(`Will submit ${selector} via XHR`);
+
       event.preventDefault();
 
       const form = event.target;
@@ -33,6 +35,7 @@ export function useXHR(selector, loadURL, errorURL) {
       const FD = new FormData(form);
 
       XHR.addEventListener("load", event => {
+        console.log(`Done. Visiting ${loadURL}...`);
         Turbolinks.visit(loadURL);
       });
 
@@ -41,7 +44,6 @@ export function useXHR(selector, loadURL, errorURL) {
       });
 
       XHR.open("POST", form.action);
-      console.log("Sending via XHR", XHR);
       XHR.send(FD);
     });
   }
