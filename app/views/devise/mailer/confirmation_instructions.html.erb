@@ -1,24 +1,19 @@
-<p>Dearest <%= @email %>,</p>
+<p>Dearest user,</p>
 
 <p>
   Welcome to Fresh Pots, and thanks for signing up!
   <i>You may have just made the best decision of your life.</i>
-  To celebrate, why don’t you click the link below to confirm
-  your account. Go ahead.
+  To celebrate, why don&rsquo;t you click the link below to confirm
+  your account. Go ahead:
 </p>
 
-
-<p>The aforementioned link:</p>
 <p><%= link_to "Confirm my account", confirmation_url(@resource, confirmation_token: @token) %></p>
 
 <p>
-  <b>Have you already clicked it?</b> If so, you probably aren’t reading
-  this part. This is the <i>secret part</i> for people who haven’t
-  clicked the link yet. Anyway, you’re awesome and I love you.
-</p>
-
-<p>
-  Don’t hesitate to get it touch if you have any issues. I’m available
+  <b>Have you already clicked it?</b> If so, you probably aren&rsquo;t reading
+  this part. This is the <i>secret part</i> for people who haven&rsquo;t
+  clicked the link yet. Anyway, you&rsquo;re awesome and I love you.
+  Don&rsquo;t hesitate to get it touch if you have any issues. I&rsquo;m available
   via means such as:
 </p>
 
@@ -33,6 +28,6 @@
 </p>
 
 <p>
-  P.S. Don’t forget to click 
-  <%= link_to "this link", confirmation_url(@resource, confirmation_token: @token) %>
+  P.S. Don&rsquo;t forget to click 
+  <%= link_to "the aforementioned link", confirmation_url(@resource, confirmation_token: @token) %>.
 </p>
