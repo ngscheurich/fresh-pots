@@ -28,17 +28,5 @@ module FreshPots
       generate.helper false
       generate.test_framework :rspec
     end
-
-    def after_sign_out_path_for(resource_or_scope)
-      login_url
-    end
-
-    def authenticate_user!
-      if user_signed_in?
-        super
-      else
-        redirect_to login_url, notice: "You must be logged in to access that!"
-      end
-    end
   end
 end
