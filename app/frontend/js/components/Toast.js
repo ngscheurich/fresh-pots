@@ -4,18 +4,21 @@ import { toast } from "react-toastify";
 
 class Toast extends Component {
   componentDidMount() {
-    toast(this.props.text, { type: this.props.type });
+    toast(this.props.text, {
+      type: this.props.type,
+      autoClose: this.props.autoClose
+    });
   }
 
   render() {
-    console.log("Rendering toast");
     return null;
   }
 }
 
 Toast.propTypes = {
   type: PropTypes.string,
-  text: PropTypes.string
+  text: PropTypes.string,
+  autoClose: PropTypes.oneOfType([PropTypes.string, PropTypes.bool])
 };
 
 export default Toast;
