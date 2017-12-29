@@ -5,7 +5,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem "aws-sdk", "~> 3"
+gem "aws-sdk", "~> 2.3.0"
 gem "breakfast"
 gem "devise"
 gem "jbuilder", "~> 2.5"
@@ -22,6 +22,7 @@ gem "title"
 group :development, :test do
   gem "bullet"
   gem "bundler-audit", ">= 0.5.0", require: false
+  gem "dotenv-rails"
   gem "factory_bot_rails"
   gem "pry-byebug"
   gem "pry-rails"
