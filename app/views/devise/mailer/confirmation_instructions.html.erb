@@ -1,5 +1,38 @@
-<p><b>Howdy, <%= @email %>!</b></p>
+<p>Dearest <%= @email %>,</p>
 
-<p>Welcome to Fresh Pots. You can confirm your account email by clicking the link below:</p>
+<p>
+  Welcome to Fresh Pots, and thanks for signing up!
+  <i>You may have just made the best decision of your life.</i>
+  To celebrate, why don’t you click the link below to confirm
+  your account. Go ahead.
+</p>
 
+
+<p>The aforementioned link:</p>
 <p><%= link_to "Confirm my account", confirmation_url(@resource, confirmation_token: @token) %></p>
+
+<p>
+  <b>Have you already clicked it?</b> If so, you probably aren’t reading
+  this part. This is the <i>secret part</i> for people who haven’t
+  clicked the link yet. Anyway, you’re awesome and I love you.
+</p>
+
+<p>
+  Don’t hesitate to get it touch if you have any issues. I’m available
+  via means such as:
+</p>
+
+<ul>
+  <li><b>Twitter:</b> <a href="https://twitter.com/ngscheurich">@ngscheurich</a></li>
+  <li><b>Electronic-mail</b>: <a href="mailto:nick@freshpotsapp.com">nick@freshpotsapp.com</a></li>
+</ul>
+
+<p>
+  Cheers,<br>
+  Nick
+</p>
+
+<p>
+  P.S. Don’t forget to click 
+  <%= link_to "this link", confirmation_url(@resource, confirmation_token: @token) %>
+</p>
