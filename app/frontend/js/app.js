@@ -34,6 +34,11 @@ const App = {
         const cable = ActionCable.createConsumer("ws://localhost:3000/cable");
         Render.component(<RecentBrews cable={cable} />, "brew-list");
       }
+
+      const modal = document.querySelector(".ReactModal__Overlay");
+      if (modal) modal.parentNode.removeChild(modal);
+      const app = document.querySelector("#app");
+      if (app) app.classList.remove("is-frosted");
     });
   }
 };
