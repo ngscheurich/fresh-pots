@@ -108,6 +108,10 @@ label {
   @extend .mb1;
 }
 
+.is-frosted {
+  filter: blur(2px);
+}
+
 @media screen and (min-width: 30em) {
   .logo {
     &__image {
@@ -152,4 +156,8 @@ label {
       border-radius: 0 0 0.5rem 0.5rem !important;
     }
   }
+}
+
+#breakfast-status-bar {
+  display: none !important;
 }
