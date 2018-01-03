@@ -40,18 +40,19 @@ class MobileMenu extends Component {
 
   componentDidMount() {
     this.appContainer = document.querySelector("#app");
+    Modal.setAppElement = this.appContainer;
   }
 
   render() {
     return (
       <div>
         <button
-          className="input-reset ph0 bn btn br-100 fixed flex items-center justify-center tc"
+          className="input-reset ph0 bn bg-black br-100 fixed flex items-center justify-center tc"
           style={{
-            right: 20,
-            bottom: 20,
-            width: 45,
-            height: 45,
+            right: 30,
+            bottom: 30,
+            width: 60,
+            height: 60,
             boxShadow: "0 3px 20px rgba(0, 0, 0, 0.7)"
           }}
           onClick={this.handleOpenModal}
