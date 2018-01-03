@@ -15,6 +15,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def me
+    redirect_to current_user
+  end
+
   private
 
   def set_user

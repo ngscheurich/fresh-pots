@@ -17,12 +17,13 @@ Rails.application.routes.draw do
   end
 
   authenticate :user do
-    get "/dashboard", to: "pages#dashboard"
-
     resources :brews
     resources :pots
     resources :varieties
     resources :users, only: [:show, :edit, :update]
+
+    get "/dashboard", to: "pages#dashboard"
+    get "/me", to: "users#me"
 
     namespace :api, format: "json" do
       get "brews/recent", to: "brews#recent"

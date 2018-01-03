@@ -88,6 +88,17 @@ describe UsersController do
     end
   end
 
+  describe "GET #me" do
+    it "redirects to the current user" do
+      user = create(:user)
+      sign_in user
+
+      get :me
+
+      expect(response).to redirect_to(user)
+    end
+  end
+
   private
 
   def valid_params

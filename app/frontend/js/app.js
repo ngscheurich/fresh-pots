@@ -25,9 +25,10 @@ const App = {
       Render.toasts();
 
       Forms.disablePlaceholderOptions();
-      Forms.useXHR("#new_brew", "/dashboard?brew_logged=true", null);
-      Forms.useXHR("#new_user[action='/users']", "/home?signed_up=true", null);
-      Forms.useXHR("#new_user[action='/users/sign_in']", "/dashboard", null);
+      Forms.useXHR("#new_brew", "/dashboard?brew_logged=true");
+      Forms.useXHR("#new_user[action='/users']", "/home?signed_up=true");
+      Forms.useXHR("#new_user[action='/users/sign_in']", "/dashboard");
+      Forms.useXHR(".edit_user", "/me");
 
       if (location.pathname === "/dashboard") {
         const cable = ActionCable.createConsumer("ws://localhost:3000/cable");
