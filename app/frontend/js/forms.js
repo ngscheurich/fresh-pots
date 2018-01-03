@@ -21,11 +21,10 @@ function addPlaceholder(node, text) {
   node.prepend(option);
 }
 
-export function useXHR(selector, loadURL, errorURL) {
+export function useXHR(selector, loadURL, errorURL = null) {
   const node = document.querySelector(selector);
 
   if (node) {
-    console.log(`Will submit ${selector} via XHR`);
     node.addEventListener("submit", event => {
       event.preventDefault();
 
@@ -34,12 +33,12 @@ export function useXHR(selector, loadURL, errorURL) {
       const FD = new FormData(form);
 
       XHR.addEventListener("load", event => {
-        console.log(`Done. Visiting ${loadURL}...`);
         Turbolinks.visit(loadURL);
       });
 
       XHR.addEventListener("error", event => {
-        console.log(event);
+        const urlToVisit = errorURL === null ? loadURL : errorURL;
+        Turbolinks.visit(urlToVisit);
       });
 
       XHR.open("POST", form.action);
