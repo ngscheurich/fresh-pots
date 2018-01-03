@@ -12,6 +12,7 @@ import BrewDetails from "./BrewDetails";
 
 const modalStyle = {
   content: {
+    minWidth: 340,
     top: "30%",
     right: "auto",
     bottom: "auto",
@@ -47,10 +48,12 @@ class Brew extends React.Component {
   handleOpenModal() {
     const newMenuState = this.state.showMenu ? false : true;
     this.setState({ showModal: true, showMenu: newMenuState });
+    this.appContainer.classList.add("is-frosted");
   }
 
   handleCloseModal() {
     this.setState({ showModal: false });
+    this.appContainer.classList.remove("is-frosted");
   }
 
   calcTimeAgo() {
@@ -85,6 +88,7 @@ class Brew extends React.Component {
   componentDidMount() {
     this.timerID = setInterval(() => this.tick(), 1000);
     this.appContainer = document.querySelector("#app");
+    Modal.setAppElement = this.appContainer;
   }
 
   componentWillUnmount() {
@@ -169,13 +173,25 @@ class Brew extends React.Component {
           style={modalStyle}
           appElement={this.appContainer}
         >
-          <h1 className="f2 ma0">Kill pot?</h1>
-          <p>
-            This will mark this pot as empty and prevent it from being
-            displayed. Is this what you want to do?
-          </p>
-          <button onClick={this.handleCloseModal}>No, never mind</button>
-          <button onClick={this.killPot}>Yep, I grabbed the last cup</button>
+          <div className="w-100">
+            <h1 className="f4 mv0 lh-title">Kill pot?</h1>
+            <p className="lh-copy mb4">
+              This will mark this pot as empty and prevent it from being
+              displayed to other users. Is this what you want to do?
+            </p>
+            <button
+              onClick={this.killPot}
+              className="aa dib f6 tc ph4 pv3 ttu br2 btn bn pointer"
+            >
+              Yep, do it
+            </button>
+            <button
+              onClick={this.handleCloseModal}
+              className="ml3 link dim black-50 dib f5"
+            >
+              No, never mind
+            </button>
+          </div>
         </Modal>
       </div>
     );
