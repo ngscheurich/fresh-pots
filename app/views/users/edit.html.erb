@@ -6,7 +6,7 @@
         <%= f.input :last_name, required: true %>
         <%= f.association :pot, label: "Favorite pot" %>
         <%= f.association :variety, label: "Favorite variety" %>
-        <%= f.input :avatar, as: :file %>
+        <%= f.input :avatar, as: :file, label: "Change your profile image" %>
       </div>
 
       <%= f.button :submit, "Save changes",
