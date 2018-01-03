@@ -28,8 +28,13 @@ const App = {
       Forms.useXHR("#new_user[action='/users/sign_in']", "/dashboard");
       Forms.useXHR(".edit_user", "/me");
 
-      if (location.pathname === "/dashboard") {
-        const cable = ActionCable.createConsumer("ws://localhost:3000/cable");
+      if (
+        location.href.indexOf("freshpotsapp.com") !== -1 &&
+        location.pathname === "/dashboard"
+      ) {
+        const cable = ActionCable.createConsumer(
+          "ws://www.freshpotsapp.com/cable"
+        );
         Render.component(<RecentBrews cable={cable} />, "brew-list");
       }
 
