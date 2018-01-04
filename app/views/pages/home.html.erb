@@ -1,20 +1,26 @@
 <div class="bg-white">
   <div class="ph3 ph4-ns pv6 mw9-l center">
-    <div class="f5 f3-ns tc measure center">
-      <h1 class="display mt0 mb5">Always know where the fresh coffee’s at</h1>
-    </div>
-    <div class="center measure-narrow tc">
-      <%= link_to  "Sign up", signup_url,
-        class: "aa db f5 f4-l tc ph4 pv3 ttu br2 link btn mb3" %>
-      or <%= link_to  "Log in", login_url, class: "f5 f4-l ttu link dim black-80 fw7" %>
-    </div>
+    <% if @confirm %>
+      <div class="f5 tc measure center">
+        <h1 class="display mt0 mb3">Thanks for signing up!</h1>
+      </div>
+      <p class="f4-ns lh-copy measure center mb4 tc">
+        We’ve sent you an email to confirm your membership.<br />
+        Have a look at it before logging in!
+      </p>
+      <div class="center measure-narrow tc">
+        <%= link_to  "Log in", login_url,
+          class: "aa f5 f4-l tc ph3 pv2 ttu br2 link btn" %>
+      </div>
+    <% else %>
+      <div class="f5 f3-ns tc measure center">
+        <h1 class="display mt0 mb5">Always know where the fresh coffee’s at</h1>
+      </div>
+      <div class="center measure-narrow tc">
+        <%= link_to  "Sign up", signup_url,
+          class: "aa db f5 f4-l tc ph4 pv3 ttu br2 link btn mb3" %>
+        or <%= link_to  "Log in", login_url, class: "f5 f4-l ttu link dim black-80 fw7" %>
+      </div>
+    <% end %>
   </div>
 </div>
-
-<% if @toast %>
-  <div
-    data-component="toast"
-    data-text="<%= @toast %>"
-    data-auto-close="false"
-  ></div>
-<% end %>

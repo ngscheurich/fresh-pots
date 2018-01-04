@@ -3,6 +3,7 @@ class PagesController < ApplicationController
 
   def home
     redirect_to dashboard_url if signed_in?
+    params[:confirm] == "true" && @confirm = true
   end
 
   def dashboard

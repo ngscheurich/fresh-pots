@@ -25,7 +25,7 @@ const App = {
 
       Forms.disablePlaceholderOptions();
 
-      Forms.useXHR("#new_user[action='/users']", "/home");
+      Forms.useXHR("#new_user[action='/users']", "/home?confirm=true");
       Forms.useXHR("#new_user[action='/users/sign_in']", "/dashboard");
       Forms.useXHR("#new_brew", "/dashboard");
       Forms.useXHR(".edit_user", "/me");
