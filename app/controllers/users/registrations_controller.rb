@@ -5,10 +5,12 @@ module Users
     private
 
     def email_authorization
-      return unless whitelist["enabled"]
+      config = Rails.configuration.fresh_pots
+
+      return unless config["email_whitelist"]["enabled"]
 
       user_domain = params["user"]["email"].split("@").last
-      allowed_domains = whitelist["domains"]
+      allowed_domains = config["email_whitelist"]["domains"]
 
       deny_registration unless allowed_domains.include?(user_domain)
     end
