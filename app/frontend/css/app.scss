@@ -112,6 +112,10 @@ label {
   filter: blur(2px);
 }
 
+.turbolinks-progress-bar {
+  background-color: #4821a8;
+}
+
 @media screen and (min-width: 30em) {
   .logo {
     &__image {
@@ -159,5 +163,5 @@ label {
 }
 
 #breakfast-status-bar {
-  display: none !important;
+  // display: none !important;
 }
