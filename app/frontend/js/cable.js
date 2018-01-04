@@ -5,7 +5,7 @@ import RecentBrews from "./components/RecentBrews";
 
 export function brews() {
   if (location.pathname === "/dashboard") {
-    const cable = ActionCable.createConsumer(`wss://${location.host}/cable`);
+    const cable = ActionCable.createConsumer(`ws://${location.host}/cable`);
     component(<RecentBrews cable={cable} />, "brew-list");
   }
 }
