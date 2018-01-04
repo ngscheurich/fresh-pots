@@ -18,7 +18,7 @@ class Toast extends Component {
 Toast.propTypes = {
   type: PropTypes.string,
   text: PropTypes.string,
-  autoClose: PropTypes.oneOfType([PropTypes.string, PropTypes.bool])
+  autoClose: PropTypes.oneOfType([PropTypes.number, PropTypes.bool])
 };
 
 export default Toast;
