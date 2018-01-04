@@ -21,7 +21,12 @@ function addPlaceholder(node, text) {
   node.prepend(option);
 }
 
-export function useXHR(selector, loadURL, errorURL = null) {
+export function useXHR(
+  selector,
+  loadURL,
+  flash_message = null,
+  errorURL = null
+) {
   const node = document.querySelector(selector);
 
   if (node) {
@@ -29,20 +34,21 @@ export function useXHR(selector, loadURL, errorURL = null) {
       event.preventDefault();
 
       const form = event.target;
-      const XHR = new XMLHttpRequest();
-      const FD = new FormData(form);
+      const xhr = new XMLHttpRequest();
+      const fd = new FormData(form);
 
-      XHR.addEventListener("load", event => {
+      xhr.addEventListener("load", event => {
         Turbolinks.visit(loadURL);
       });
 
-      XHR.addEventListener("error", event => {
+      xhr.addEventListener("error", event => {
         const urlToVisit = errorURL === null ? loadURL : errorURL;
         Turbolinks.visit(urlToVisit);
       });
 
-      XHR.open("POST", form.action);
-      XHR.send(FD);
+      xhr.open("POST", form.action);
+      xhr.setRequestHeader("Flash-Message", encodeURIComponent(flash_message));
+      xhr.send(fd);
     });
   }
 }

@@ -2,12 +2,13 @@ import Turbolinks from "turbolinks";
 import React from "react";
 import ReactDOM from "react-dom";
 import CurrentTime from "./components/CurrentTime";
-import RecentBrews from "./components/RecentBrews";
-import ActionCable from "actioncable";
 import * as Render from "./render";
 import * as Forms from "./forms";
-import "rails-ujs";
+import * as Cable from "./cable";
+import * as Utils from "./utils.js";
 import { ToastContainer, toast } from "react-toastify";
+
+import "rails-ujs";
 
 Turbolinks.start();
 
@@ -23,25 +24,26 @@ const App = {
       Render.toasts();
 
       Forms.disablePlaceholderOptions();
-      Forms.useXHR("#new_brew", "/dashboard?brew_logged=true");
-      Forms.useXHR("#new_user[action='/users']", "/home?signed_up=true");
-      Forms.useXHR("#new_user[action='/users/sign_in']", "/dashboard");
-      Forms.useXHR(".edit_user", "/me");
 
-      if (
-        location.href.indexOf("freshpotsapp.com") !== -1 &&
-        location.pathname === "/dashboard"
-      ) {
-        const cable = ActionCable.createConsumer(
-          "ws://www.freshpotsapp.com/cable"
-        );
-        Render.component(<RecentBrews cable={cable} />, "brew-list");
-      }
+      Forms.useXHR(
+        "#new_user[action='/users']",
+        "/home",
+        "👍 A confirmation has been sent to your email. Check it out before you log in!"
+      );
 
-      const modal = document.querySelector(".ReactModal__Overlay");
-      if (modal) modal.parentNode.removeChild(modal);
-      const app = document.querySelector("#app");
-      if (app) app.classList.remove("is-frosted");
+      Forms.useXHR(
+        "#new_user[action='/users/sign_in']",
+        "/dashboard",
+        `👋 Howdy! You’re logged in.`
+      );
+
+      Forms.useXHR("#new_brew", "/dashboard", "☕ Your brew was logged!");
+
+      Forms.useXHR(".edit_user", `/me`, "👍  Your profile has been updated.");
+
+      Cable.brews();
+
+      Utils.clearModal();
     });
   }
 };

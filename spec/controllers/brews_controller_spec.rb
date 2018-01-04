@@ -36,9 +36,9 @@ describe BrewsController do
         expect(assigns(:brew)).to eq(Brew.last)
       end
 
-      it "redirects to the dashboard" do
-        post :create, params: @params
-        expect(response).to redirect_to(root_url)
+      it "responds with OK status" do
+        patch :create, params: @params
+        expect(response.code).to eq("200")
       end
 
       it "assigns favorite pot to user without one" do

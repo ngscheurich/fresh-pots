@@ -34,7 +34,6 @@ export function toasts() {
         autoClose = 5000;
         break;
     }
-    console.log(autoClose);
 
     ReactDOM.render(
       <Toast type={type} text={text} autoClose={autoClose} />,

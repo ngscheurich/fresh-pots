@@ -1,19 +1,15 @@
 class PagesController < ApplicationController
+  before_action :set_flash_message
+
   def home
     redirect_to dashboard_url if signed_in?
-
-    params[:signed_up] &&
-      @toast =
-        "A confirmation has been sent to your email." \
-        "Check it out before you log in!"
   end
 
   def dashboard
     fetch_usage_stats
     fetch_brew_stats
+    set_flash_message
     @top_brewers = User.order(brews_count: :desc).limit(3)
-
-    params[:brew_logged] && @toast = "☕ Your brew has been logged!"
   end
 
   private

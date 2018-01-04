@@ -69,9 +69,9 @@ describe UsersController do
         expect(assigns(:user)).to eq(@user)
       end
 
-      it "redirects to the updated user" do
+      it "responds with OK status" do
         patch :update, params: @params
-        expect(response).to redirect_to(@user)
+        expect(response.code).to eq("200")
       end
     end
 

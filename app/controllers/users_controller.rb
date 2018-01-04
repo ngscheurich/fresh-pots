@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   include Messageable
   before_action :set_user, only: %i[show edit update]
   before_action :ensure_correct_user, only: %i[edit update]
+  before_action :set_flash_message, only: %[me]
 
   def show; end
 
@@ -9,9 +10,9 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      redirect_to @user, notice: updated_message
+      head :ok
     else
-      render :edit
+      render :edit 
     end
   end
 
