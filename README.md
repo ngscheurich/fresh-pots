@@ -26,8 +26,11 @@ they start a brew and to quickly scan the freshness of available pots.
 
 ## Install
 
-You should totally set up Fresh Pots for your organization! It requires the
-following to be installed:
+You should totally set up Fresh Pots for your organization! I intended for this to project
+to be totally decoupled from my place of employment, but time constraints. I’d be glad to
+accept any PRs that make the project more easily usable for any team.
+
+Fresh Pots requires the following to be installed:
 
 * Ruby 2.4.x
 * PostgreSQL 9.6.x
@@ -69,12 +72,10 @@ pot.brews
 # => [#<Brew ...>, #<Brew ...>]
 ```
 
-Authenticated users can get an overview of all of the pots in the application.
-
 ### Brews
 
 A **brew** represents an instance of coffee created with a pot. Each brew
-belongs to a pot.
+belongs to a pot and a user.
 
 ```ruby
 brew = Brew.first
