@@ -9,8 +9,16 @@ module Users
 
       return unless config["email_whitelist"]["enabled"]
 
+      logger.debug "----------------"
+      logger.debug config
+      logger.debug "----------------"
+
       user_domain = params["user"]["email"].split("@").last
       allowed_domains = config["email_whitelist"]["domains"]
+
+      logger.debug "----------------"
+      logger.debug allowed_domains.include?(user_domain)
+      logger.debug "----------------"
 
       deny_registration unless allowed_domains.include?(user_domain)
     end
@@ -19,10 +27,6 @@ module Users
       custom_message = whitelist["message"]
       flash[:error] = custom_message.nil? ? default_message : custom_message
       redirect_to new_user_registration_url
-    end
-
-    def whitelist
-      Rails.configuration.fresh_pots["email_whitelist"]
     end
 
     def default_message
