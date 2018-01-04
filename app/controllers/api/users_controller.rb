@@ -9,4 +9,8 @@ class Api::UsersController < ApiController
 
     render json: user_data
   end
+
+  def sign_out
+    request.env["warden"].logout
+  end
 end

@@ -25,21 +25,10 @@ const App = {
 
       Forms.disablePlaceholderOptions();
 
-      Forms.useXHR(
-        "#new_user[action='/users']",
-        "/home",
-        "👍 A confirmation has been sent to your email. Check it out before you log in!"
-      );
-
-      Forms.useXHR(
-        "#new_user[action='/users/sign_in']",
-        "/dashboard",
-        `👋 Howdy! You’re logged in.`
-      );
-
-      Forms.useXHR("#new_brew", "/dashboard", "☕ Your brew was logged!");
-
-      Forms.useXHR(".edit_user", `/me`, "👍  Your profile has been updated.");
+      Forms.useXHR("#new_user[action='/users']", "/home");
+      Forms.useXHR("#new_user[action='/users/sign_in']", "/dashboard");
+      Forms.useXHR("#new_brew", "/dashboard");
+      Forms.useXHR(".edit_user", "/me");
 
       Cable.brews();
 

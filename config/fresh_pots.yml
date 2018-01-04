@@ -1,7 +1,7 @@
 development:
   email_whitelist:
-    enabled: false
+    enabled: true 
     domains:
-      - domain.com
+      - theadvocate.com
 
-  max_brew_hours: 3
+  max_brew_hours: 4

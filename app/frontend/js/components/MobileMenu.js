@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import Turblinks from "turbolinks";
 import Modal from "react-modal";
 
 const modalStyles = {
@@ -26,6 +27,7 @@ class MobileMenu extends Component {
 
     this.handleOpenModal = this.handleOpenModal.bind(this);
     this.handleCloseModal = this.handleCloseModal.bind(this);
+    this.handleLogout = this.handleLogout.bind(this);
   }
 
   handleOpenModal() {
@@ -36,6 +38,18 @@ class MobileMenu extends Component {
   handleCloseModal() {
     this.setState({ showModal: false });
     this.appContainer.classList.remove("is-frosted");
+  }
+
+  handleLogout(event) {
+    event.preventDefault();
+
+    const xhr = new XMLHttpRequest();
+
+    xhr.open("DELETE", "/api/sign_out");
+    xhr.send();
+
+    Turbolinks.start();
+    Turblinks.visit("/");
   }
 
   componentDidMount() {
@@ -89,9 +103,7 @@ class MobileMenu extends Component {
             </a>
 
             <a
-              rel="nofollow"
-              data-method="delete"
-              href="/users/sign_out"
+              onClick={this.handleLogout}
               className="black-80 link dim db f5 ttu tracked"
             >
               Logout

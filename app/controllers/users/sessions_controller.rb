@@ -1,6 +1,7 @@
 class Users::SessionsController < Devise::SessionsController
   after_action :set_user_id_cookie, only: :create
   after_action :delete_user_id_cookie, only: :destroy
+  protect_from_forgery except: :destroy
 
   private
 

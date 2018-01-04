@@ -15,6 +15,7 @@ Rails.application.routes.draw do
 
   namespace :api, format: "json" do
     get "users/:id", to: "users#show"
+    delete "sign_out", to: "users#sign_out"
   end
 
   authenticate :user do

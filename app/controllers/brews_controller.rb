@@ -20,8 +20,7 @@ class BrewsController < ApplicationController
 
     if @brew.save
       ensure_user_favorites(current_user)
-      cookies[:flash_message] = request.headers["Flash-Message"]
-      head :ok
+      redirect_to root_url, notice: created_message
     else
       render :new
     end

@@ -12,7 +12,8 @@
       <%= f.button :submit, "Save changes",
         class: "aa dib f5 tc ph4 pv3 ttu br2 btn bn pointer" %>
       <%= link_to "Never mind", user_url(@user),
-        class: "ml3 link dim black-50 dib mb2 f5" %>
+        class: "ml3 link dim black-50 dib mb2 f5",
+        "data-turbolinks-action": "replace" %>
     </div>
   <% end %>
 </div>

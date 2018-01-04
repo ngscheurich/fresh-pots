@@ -187,7 +187,7 @@ class Brew extends React.Component {
             </button>
             <button
               onClick={this.handleCloseModal}
-              className="ml3 link dim black-50 dib f5"
+              className="input-reset bn ml3 link dim black-50 dib f5"
             >
               No, never mind
             </button>

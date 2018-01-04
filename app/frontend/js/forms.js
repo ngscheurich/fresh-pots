@@ -1,4 +1,4 @@
-// import Turbolinks from "turbolinks";
+import Turbolinks from "turbolinks";
 
 export function addSelectDefault(selector, text) {
   let node = document.querySelector(selector);
@@ -21,12 +21,7 @@ function addPlaceholder(node, text) {
   node.prepend(option);
 }
 
-export function useXHR(
-  selector,
-  loadURL,
-  flash_message = null,
-  errorURL = null
-) {
+export function useXHR(selector, nextURL) {
   const node = document.querySelector(selector);
 
   if (node) {
@@ -34,21 +29,17 @@ export function useXHR(
       event.preventDefault();
 
       const form = event.target;
+
       const xhr = new XMLHttpRequest();
-      const fd = new FormData(form);
+      xhr.open("POST", form.action);
+      xhr.setRequestHeader("Turbolinks-Referrer", window.location);
 
       xhr.addEventListener("load", event => {
-        Turbolinks.visit(loadURL);
+        Turbolinks.visit(nextURL, { action: "replace" });
       });
 
-      xhr.addEventListener("error", event => {
-        const urlToVisit = errorURL === null ? loadURL : errorURL;
-        Turbolinks.visit(urlToVisit);
-      });
-
-      xhr.open("POST", form.action);
-      xhr.setRequestHeader("Flash-Message", encodeURIComponent(flash_message));
-      xhr.send(fd);
+      const data = new FormData(form);
+      xhr.send(data);
     });
   }
 }
