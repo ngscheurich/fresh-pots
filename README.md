@@ -20,7 +20,7 @@ they start a brew and to quickly scan the freshness of available pots.
 ## Table of Contents
 
 * [Install](#install)
-* [Overview](#overview)
+* [Domain Model](#domain-model)
 * [Maintainers](#maintainers)
 * [Contribute](#contribute)
 * [License](#license)
