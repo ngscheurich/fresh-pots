@@ -4,4 +4,4 @@ development:
     domains:
       - theadvocate.com
 
-  max_brew_hours: 4
+  max_brew_hours: 5
