@@ -7,10 +7,9 @@
 
 There are a lot of coffee pots [where I work](http://theadvocate.com), in
 different locations spread across multiple floors and buildings. It’s no fun to
-venture out to my nearby coffee station only to be greeted by a stale, tepid
+venture out to your nearby coffee station only to be greeted by a stale, tepid
 brew. Furthermore, it seems wasteful to make a fresh pot only to have
-its contents languish away into unpalatability because you are the only
-one aware of its existence.
+its contents languish away because no one but you is aware of it.
 
 Fresh Pots is a web application that helps to keep teams *au courant* with
 their coffee situation by allowing coffee drinkers to easily log when and where
@@ -18,16 +17,66 @@ they start a brew and to quickly scan the freshness of available pots.
 
 ## Table of Contents
 
-* [Install](#install)
 * [Overview](#overview)
+* [Install](#install)
 * [Maintainers](#maintainers)
 * [Contribute](#contribute)
 * [License](#license)
 
+## Overview
+
+After authenticating, users interact with Fresh Pots by starting brews and marking pots
+as empty.
+
+### Pots
+
+A **pot** represents some physical device with which coffee can be brewed. If it makes
+more sense for your situation, you can think of a pot as a location, e.g., *break room*.
+Either way, pots have many brews.
+
+```ruby
+pot = Pot.first
+# => #<Pot id: 1, name: "Nick’s Chemex", ...>
+pot.brews
+# => [#<Brew ...>, #<Brew ...>]
+```
+
+### Varieties
+
+A **variety** represents a particular blend or style of coffee. Think *Dark Roast*,
+*Kenyan Single Origin*, or
+[*Hombre Cohete*](https://cafeciteaux.com/product/hombre-cohete-rocket-man/).
+
+```ruby
+Variety.first
+# => #<Variety id: 1, name: "Community Coffee & Chicory", ...>
+```
+
+### Brews
+
+A **brew** represents an instance of some variety of coffee created with a pot. Each brew
+belongs to a pot, a variety, and a user.
+
+```ruby
+brew = Brew.first
+# => #<Brew id: 1 ...>
+brew.pot
+# => #<Pot ...>
+brew.variety
+# => #<Variety ...>
+brew.user
+# => #<User ...>
+```
+
+Brews will degrade in freshness over time, as shown on the application dashboard.
+
 ## Install
 
-You should totally set up Fresh Pots for your organization! It requires the
-following to be installed:
+You should totally set up Fresh Pots for your organization! I intended for this to project
+to be totally decoupled from my place of employment, but time constraints. I’d be glad to
+accept any PRs that make the project more easily usable for any team.
+
+Fresh Pots requires the following to be installed:
 
 * Ruby 2.4.x
 * PostgreSQL 9.6.x
@@ -55,38 +104,6 @@ hacking:
 % bin/rails server
 ```
 
-## Overview
-
-### Pots
-
-A **pot** represents some physical device with which coffee can be brewed. Pots
-have many brews.
-
-```ruby
-pot = Pot.first
-# => #<Pot id: 1, name: "Break Room", ...>
-pot.brews
-# => [#<Brew ...>, #<Brew ...>]
-```
-
-Authenticated users can get an overview of all of the pots in the application.
-
-### Brews
-
-A **brew** represents an instance of coffee created with a pot. Each brew
-belongs to a pot.
-
-```ruby
-brew = Brew.first
-# => #<Brew id: 1, coffee_type: "Coffee & Chicory", ...>
-brew.pot
-# => #<Pot ...>
-```
-
-Brews will degrade in freshness over time, as shown on the application’s main
-screen.
-
-
 ## Maintainers
 
 [@ngscheurich](https://github.com/ngscheurich)
@@ -101,4 +118,4 @@ specification.
 
 ## License
 
-MIT © 2017 N. G. Scheurich
+MIT © 2018 N. G. Scheurich
