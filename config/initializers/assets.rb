@@ -1,4 +1,4 @@
-Rails.application.config.assets.version = "1.1"
+Rails.application.config.assets.version = "1.2"
 
 Rails.application.config.assets.paths << Rails.root.join("node_modules")
 Rails.application.config.assets.paths << Rails.root.join("public", "assets")
