@@ -7,7 +7,7 @@
         <%= link_to user.full_name, user_path(user), class: "f6 f5-ns link dim ttu tracked fw7 white-80 db mb2" %>
         <div class="f6 f5-ns white-60 ttu">
           <% count = user.brews_count %>
-          <%= count %> brew<%= "s" if count !== 1 %>
+          <%= count %> brew<%= "s" if count != 1 %>
         </div>
       </div>
     <% end %>
