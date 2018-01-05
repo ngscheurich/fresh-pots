@@ -42,6 +42,18 @@ jobs:
           root: tmp
           paths: 
             - codeclimate.backend.json
+  upload-coverage:
+    <<: *defaults
+    environment: 
+      - CC_TEST_REPORTER_ID: ee9ce58fcac6c9e71525e19db0dded7e58f2bb724b86d42581ff3f274b08254e
+    steps:
+      - attach_workspace:
+        at: ~/repo/tmp
+      - run:
+          name: Upload coverage results to Code Climate
+          command: |
+            ./tmp/cc-test-reporter sum-coverage tmp/codeclimate.*.json -p 2 -o tmp/codeclimate.total.json
+            ./tmp/cc-test-reporter upload-coverage -i tmp/codeclimate.total.json
 workflows:
   version: 2
 
@@ -54,4 +66,3 @@ workflows:
       - upload-coverage:
           requires:
              - backend-tests
-             - frontend-tests

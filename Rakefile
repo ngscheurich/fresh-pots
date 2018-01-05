@@ -1,4 +1,7 @@
 require_relative "config/application"
+require "bundler/audit/task"
+
+Bundler::Audit::Task.new
 
 Rails.application.load_tasks
 task(:default).clear
