@@ -6,7 +6,8 @@
         <img src="<%= user.avatar.url(:thumb) %>" class="w3 w4-ns db mb3 br-100 center" />
         <%= link_to user.full_name, user_path(user), class: "f6 f5-ns link dim ttu tracked fw7 white-80 db mb2" %>
         <div class="f6 f5-ns white-60 ttu">
-          <%= user.brews_count %> brews
+          <% count = user.brews_count %>
+          <%= count %> brew<%= "s" if count > 1 %>
         </div>
       </div>
     <% end %>
