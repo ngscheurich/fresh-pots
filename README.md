@@ -60,32 +60,50 @@ hacking:
 
 ## Overview
 
+After authenticating, users interact with Fresh Pots by starting brews and marking pots
+as empty.
+
 ### Pots
 
-A **pot** represents some physical device with which coffee can be brewed. Pots
-have many brews.
+A **pot** represents some physical device with which coffee can be brewed. If it makes
+more sense for your situation, you can think of a pot as a location, e.g., *break room*.
+Either way, pots have many brews.
 
 ```ruby
 pot = Pot.first
-# => #<Pot id: 1, name: "Break Room", ...>
+# => #<Pot id: 1, name: "Nick’s Chemex", ...>
 pot.brews
 # => [#<Brew ...>, #<Brew ...>]
 ```
 
+## Varieties
+
+A **variety** represents a particular blend or style of coffee. Think *Dark Roast*,
+*Kenyan Single Origin*, or
+[*Hombre Cohete*](https://cafeciteaux.com/product/hombre-cohete-rocket-man/).
+
+```ruby
+Variety.first
+# => #<Variety id: 1, name: "Community Coffee & Chicory", ...>
+```
+
 ### Brews
 
-A **brew** represents an instance of coffee created with a pot. Each brew
-belongs to a pot and a user.
+A **brew** represents an instance of some variety of coffee created with a pot. Each brew
+belongs to a pot, a variety, and a user.
 
 ```ruby
 brew = Brew.first
-# => #<Brew id: 1, coffee_type: "Coffee & Chicory", ...>
+# => #<Brew id: 1 ...>
 brew.pot
 # => #<Pot ...>
+brew.variety
+# => #<Variety ...>
+brew.user
+# => #<User ...>
 ```
 
-Brews will degrade in freshness over time, as shown on the application’s main
-screen.
+Brews will degrade in freshness over time, as shown on the application dashboard.
 
 
 ## Maintainers
