@@ -27,8 +27,8 @@ they start a brew and to quickly scan the freshness of available pots.
 
 ## Install
 
-You should totally set up Fresh Pots for your organization! I intended for this to project
-to be totally decoupled from my place of employment, but time constraints. I’d be glad to
+You should totally set up Fresh Pots for your organization! I originally intended for this project
+to be fully decoupled from my place of employment, but time constraints. I’d be glad to
 accept any PRs that make the project more easily usable for any team.
 
 ### Dependencies
