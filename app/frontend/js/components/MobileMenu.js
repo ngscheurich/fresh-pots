@@ -89,6 +89,13 @@ class MobileMenu extends Component {
             />
 
             <a
+              href="/brews/new"
+              className="black-80 link dim db mb3 f5 fw7 ttu tracked"
+            >
+              Start a brew
+            </a>
+
+            <a
               href={this.props.showUrl}
               className="black-80 link dim db mb3 f5 ttu tracked"
             >
