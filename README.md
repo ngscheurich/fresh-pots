@@ -118,4 +118,4 @@ specification.
 
 ## License
 
-MIT © 2017 N. G. Scheurich
+MIT © 2018 N. G. Scheurich
