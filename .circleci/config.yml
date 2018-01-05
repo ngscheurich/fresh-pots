@@ -1,30 +1,20 @@
 version: 2.0
 jobs:
   build:
+    environment:
+      CC_TEST_REPORTER_ID: ee9ce58fcac6c9e71525e19db0dded7e58f2bb724b86d42581ff3f274b08254e
     docker:
       - image: circleci/ruby:2.4.1-node-browsers
         environment:
-        - PGHOST: 127.0.0.1
+          - PGHOST: 127.0.0.1
       - image: circleci/postgres:9.4
         environment:
-        - POSTGRES_USER=postgres
+          - POSTGRES_USER=postgres
 
     working_directory: ~/repo
 
     steps:
       - checkout
-
-      - run:
-          name:  Download cc-test-reporter
-          command: |
-            mkdir -p tmp/
-            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./tmp/cc-test-reporter
-            chmod +x ./tmp/cc-test-reporter
-
-      - persist_to_workspace:
-          root: tmp
-          paths:
-            - cc-test-reporter
 
       - restore_cache:
           keys:
@@ -36,27 +26,25 @@ jobs:
             - ./vendor/bundle
           key: v1-dependencies-{{ checksum "Gemfile.lock" }}
 
-      - attach_workspace:
-          at: ~/repo/tmp
-
       - run: 
           name: Set up dependencies
           command: |
             bundle install --without production --path=${BUNDLE_PATH:-vendor/bundle}
             bundle exec rake db:create db:migrate
 
+      - run:
+          name: Set up Code Climate test-reporter
+          command: |
+            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+            chmod +x ./cc-test-reporter
+
       - run: 
           name: Run tests
           command: |
             bundle exec rake
-            ./tmp/cc-test-reporter format-coverage -t simplecov -o tmp/codeclimate.json coverage/.resultset.json
-
-      - persist_to_workspace:
-          root: tmp
-          paths: 
-            - codeclimate.json
+            ./cc-test-reporter format-coverage -t simplecov -o coverage/codeclimate.json
 
       - run:
-          name: Upload coverage results to Code Climate
+          name: Upload results to Code Climate
           command: |
-            ./tmp/cc-test-reporter upload-coverage -i tmp/codeclimate.json
+            ./tmp/cc-test-reporter upload-coverage -i coverage/codeclimate.json
