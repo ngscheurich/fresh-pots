@@ -7,10 +7,9 @@
 
 There are a lot of coffee pots [where I work](http://theadvocate.com), in
 different locations spread across multiple floors and buildings. It’s no fun to
-venture out to my nearby coffee station only to be greeted by a stale, tepid
+venture out to your nearby coffee station only to be greeted by a stale, tepid
 brew. Furthermore, it seems wasteful to make a fresh pot only to have
-its contents languish away into unpalatability because you are the only
-one aware of its existence.
+its contents languish away because no one but you is aware of it.
 
 Fresh Pots is a web application that helps to keep teams *au courant* with
 their coffee situation by allowing coffee drinkers to easily log when and where
@@ -18,45 +17,11 @@ they start a brew and to quickly scan the freshness of available pots.
 
 ## Table of Contents
 
-* [Install](#install)
 * [Overview](#overview)
+* [Install](#install)
 * [Maintainers](#maintainers)
 * [Contribute](#contribute)
 * [License](#license)
-
-## Install
-
-You should totally set up Fresh Pots for your organization! I intended for this to project
-to be totally decoupled from my place of employment, but time constraints. I’d be glad to
-accept any PRs that make the project more easily usable for any team.
-
-Fresh Pots requires the following to be installed:
-
-* Ruby 2.4.x
-* PostgreSQL 9.6.x
-* Node 6.10.x
-* Yarn (or NPM)
-
-After cloning the application and changing to its directory, you’ll want to run
-the setup script:
-
-```
-% bin/setup
-```
-
-This will install application dependencies and create your development
-database. Next, initialize your database with:
-
-```
-% bin/rails db:migrate
-```
-
-That’s all there is to it. Spin up a server on http://localhost:3000 and start
-hacking:
-
-```
-% bin/rails server
-```
 
 ## Overview
 
@@ -105,6 +70,39 @@ brew.user
 
 Brews will degrade in freshness over time, as shown on the application dashboard.
 
+## Install
+
+You should totally set up Fresh Pots for your organization! I intended for this to project
+to be totally decoupled from my place of employment, but time constraints. I’d be glad to
+accept any PRs that make the project more easily usable for any team.
+
+Fresh Pots requires the following to be installed:
+
+* Ruby 2.4.x
+* PostgreSQL 9.6.x
+* Node 6.10.x
+* Yarn (or NPM)
+
+After cloning the application and changing to its directory, you’ll want to run
+the setup script:
+
+```
+% bin/setup
+```
+
+This will install application dependencies and create your development
+database. Next, initialize your database with:
+
+```
+% bin/rails db:migrate
+```
+
+That’s all there is to it. Spin up a server on http://localhost:3000 and start
+hacking:
+
+```
+% bin/rails server
+```
 
 ## Maintainers
 
