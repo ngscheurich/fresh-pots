@@ -1,10 +1,31 @@
 # Fresh Pots
 
-[![CircleCI](https://img.shields.io/circleci/token/51e5f2f8960c15238f155521f40ad1d9d9808ca5/project/ngscheurich/fresh_pots/master.svg?style=flat)](https://circleci.com/gh/ngscheurich/fresh_pots)
-[![Maintainability](https://api.codeclimate.com/v1/badges/96cec22aeadc92ee0f02/maintainability)](https://codeclimate.com/github/ngscheurich/fresh-pots/maintainability)
-[![standard-readme compliant](https://img.shields.io/badge/standard--readme-OK-green.svg?style=flat)](https://github.com/RichardLitt/standard-readme)
+<p align="center">
+  <img src="public/logo.png" alt="RouteMate logo" width="100" height="101">
+</p>
 
-> Always know where the fresh coffee’s at.
+<p align="center">
+  Always know where the fresh coffee’s at.
+</p>
+
+<p align="center">
+  <a href="https://circleci.com/gh/ngscheurich/fresh_pots">
+    <img src="https://circleci.com/gh/ngscheurich/fresh-pots.svg?style=shield" alt="Build badge" />
+    </a>
+  
+  <a href="https://codeclimate.com/github/ngscheurich/fresh-pots/test_coverage">
+    <img src="https://api.codeclimate.com/v1/badges/96cec22aeadc92ee0f02/test_coverage" alt="Coverage badge" />
+  </a>
+  
+  <a href="https://codeclimate.com/github/ngscheurich/fresh-pots/maintainability">
+    <img src="https://api.codeclimate.com/v1/badges/96cec22aeadc92ee0f02/maintainability" alt="Maintainability badge" />
+  </a>
+  
+  <a href="https://github.com/RichardLitt/standard-readme">
+    <img src="https://img.shields.io/badge/standard--readme-OK-green.svg?style=flat" alt="standard-readme compliance badge" />
+  </a>
+</p>
+
 
 There are a lot of coffee pots [where I work](http://theadvocate.com), in
 different locations spread across multiple floors and buildings. It’s no fun to
@@ -19,7 +40,7 @@ they start a brew and to quickly scan the freshness of available pots.
 Currently, Fresh Pots is available at [https://www.freshpots.com](https://www.freshpots.com) and
 as [an iOS app](https://github.com/ngscheurich/fresh-pots-ios).
 
-<img src="https://i.imgur.com/FWpnroj.gif" alt="Dave Grohl exclaiming 'fresh pots!'" width="100%" />
+The name "Fresh Pots" does have [an origin](https://youtu.be/fhdCslFcKFU), in case you were wondering.
 
 ## Table of Contents
 
@@ -66,6 +87,8 @@ Fresh Pots requires the following to be installed:
 * Yarn (or NPM)
 
 ## Domain Model
+
+<img src="https://i.imgur.com/FWpnroj.gif" alt="Dave Grohl exclaiming 'fresh pots!'" width="100%" />
 
 ### Users
 
