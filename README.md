@@ -15,12 +15,15 @@ Fresh Pots is a web application that helps to keep teams *au courant* with
 their coffee situation by allowing coffee drinkers to easily log when and where
 they start a brew and to quickly scan the freshness of available pots.
 
+Currently, Fresh Pots is available at [https://www.freshpots.com](https://www.freshpots.com) and
+as [an iOS app](https://github.com/ngscheurich/fresh-pots-ios).
+
 <img src="https://i.imgur.com/FWpnroj.gif" alt="Dave Grohl exclaiming 'fresh pots!'" width="100%" />
 
 ## Table of Contents
 
 * [Install](#install)
-* [Overview](#overview)
+* [Domain Model](#domain-model)
 * [Maintainers](#maintainers)
 * [Contribute](#contribute)
 * [License](#license)
@@ -61,10 +64,12 @@ Fresh Pots requires the following to be installed:
 * Node 6.10.x
 * Yarn (or NPM)
 
-## Overview
+## Domain Model
 
-After authenticating, users interact with Fresh Pots by starting brews and marking pots
-as empty.
+### Users
+
+A **user** is someone that authenticates with the app and then creates brews and marks
+pots as empty. Users have many brews.
 
 ### Pots
 
