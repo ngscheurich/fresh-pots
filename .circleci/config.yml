@@ -8,8 +8,6 @@ jobs:
       - image: circleci/postgres:9.4
         environment:
         - POSTGRES_USER=postgres
-      environment: 
-        - CC_TEST_REPORTER_ID: ee9ce58fcac6c9e71525e19db0dded7e58f2bb724b86d42581ff3f274b08254e
 
     working_directory: ~/repo
 
