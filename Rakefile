@@ -1,7 +1,7 @@
 require_relative "config/application"
-require "bundler/audit/task"
+# require "bundler/audit/task"
 
-Bundler::Audit::Task.new
+# Bundler::Audit::Task.new
 
 Rails.application.load_tasks
 task(:default).clear
@@ -14,4 +14,4 @@ if defined? RSpec
   end
 end
 
-task default: "bundle:audit"
+# task default: "bundle:audit"
