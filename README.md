@@ -31,16 +31,7 @@ You should totally set up Fresh Pots for your organization! I originally intende
 to be fully decoupled from my place of employment, but time constraints. I’d be glad to
 accept any PRs that make the project more easily usable for any team.
 
-### Dependencies
-
-Fresh Pots requires the following to be installed:
-
-* Ruby 2.4.x
-* PostgreSQL 9.6.x
-* Node 6.10.x
-* Yarn (or NPM)
-
-After cloning the application and changing to its directory, you’ll want to run
+After cloning the project and changing to its directory, you’ll want to run
 the setup script:
 
 ```
@@ -60,6 +51,15 @@ hacking:
 ```
 % bin/rails server
 ```
+
+### Dependencies
+
+Fresh Pots requires the following to be installed:
+
+* Ruby 2.4.x
+* PostgreSQL 9.6.x
+* Node 6.10.x
+* Yarn (or NPM)
 
 ## Overview
 
