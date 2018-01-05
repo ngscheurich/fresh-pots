@@ -40,7 +40,7 @@ they start a brew and to quickly scan the freshness of available pots.
 Currently, Fresh Pots is available at [https://www.freshpots.com](https://www.freshpots.com) and
 as [an iOS app](https://github.com/ngscheurich/fresh-pots-ios).
 
-The name "Fresh Pots" does have [an origin](https://youtu.be/fhdCslFcKFU), in case you were wondering.
+The name *Fresh Pots* does have [an origin](https://youtu.be/fhdCslFcKFU), in case you were wondering.
 
 ## Table of Contents
 
