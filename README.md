@@ -1,7 +1,8 @@
 # Fresh Pots
 
-[![CircleCI](https://img.shields.io/circleci/token/51e5f2f8960c15238f155521f40ad1d9d9808ca5/project/ngscheurich/fresh_pots/master.svg?style=flat-square)](https://circleci.com/gh/ngscheurich/fresh_pots)
-[![standard-readme compliant](https://img.shields.io/badge/standard--readme-OK-green.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
+[![CircleCI](https://img.shields.io/circleci/token/51e5f2f8960c15238f155521f40ad1d9d9808ca5/project/ngscheurich/fresh_pots/master.svg?style=flat)](https://circleci.com/gh/ngscheurich/fresh_pots)
+[![Maintainability](https://api.codeclimate.com/v1/badges/96cec22aeadc92ee0f02/maintainability)](https://codeclimate.com/github/ngscheurich/fresh-pots/maintainability)
+[![standard-readme compliant](https://img.shields.io/badge/standard--readme-OK-green.svg?style=flat)](https://github.com/RichardLitt/standard-readme)
 
 > Always know where the fresh coffee’s at.
 
