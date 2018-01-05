@@ -66,7 +66,7 @@ Fresh Pots requires the following to be installed:
 ### Users
 
 A **user** is someone that authenticates with the app and then creates brews and marks
-pots as empty.
+pots as empty. Users have many brews.
 
 ### Pots
 
