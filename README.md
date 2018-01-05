@@ -61,10 +61,12 @@ Fresh Pots requires the following to be installed:
 * Node 6.10.x
 * Yarn (or NPM)
 
-## Overview
+## Domain Model
 
-After authenticating, users interact with Fresh Pots by starting brews and marking pots
-as empty.
+### Users
+
+A **user** is someone that authenticates with the app and then creates brews and marks
+pots as empty.
 
 ### Pots
 
