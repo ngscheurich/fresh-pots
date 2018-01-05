@@ -47,4 +47,4 @@ jobs:
       - run:
           name: Upload results to Code Climate
           command: |
-            ./tmp/cc-test-reporter upload-coverage -i coverage/codeclimate.json
+            ./cc-test-reporter upload-coverage -i coverage/codeclimate.json
