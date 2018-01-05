@@ -41,7 +41,7 @@ pot.brews
 # => [#<Brew ...>, #<Brew ...>]
 ```
 
-## Varieties
+### Varieties
 
 A **variety** represents a particular blend or style of coffee. Think *Dark Roast*,
 *Kenyan Single Origin*, or
