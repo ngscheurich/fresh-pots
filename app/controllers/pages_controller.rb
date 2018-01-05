@@ -13,6 +13,8 @@ class PagesController < ApplicationController
     @top_brewers = User.order(brews_count: :desc).limit(3)
   end
 
+  def what; end
+
   private
 
   def fetch_usage_stats
