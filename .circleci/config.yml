@@ -27,6 +27,10 @@ jobs:
           command: |
             bundle install --jobs=4 --retry=3 --path vendor/bundle
 
+      # Fetch pre-built CodeClimate binary
+      - run: curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest
+      - run: chmod +x ./cc-test-reporter
+
       # Store bundle cache
       - save_cache:
           paths:
@@ -41,6 +45,9 @@ jobs:
           name: Initializing database
           command: bundle exec rake db:schema:load
 
+      # Notify CodeClimate of a pending report
+      - run: ./cc-test-reporter before-build
+
       # Run rspec in parallel
       - run: |
           bundle exec rspec --profile 10 \
@@ -52,4 +59,7 @@ jobs:
       # Save test results for timing analysis
       - store_test_results:
           path: test_results
+
+      # Send report to CodeClimate
+      - run: ./cc-test-reporter after-build --exit-code $EXIT_CODE
 
