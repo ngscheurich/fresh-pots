@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html class="h-100">
   <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=ua-31062667-6"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag("js", new Date());
+      gtag("config", "UA-31062667-6");
+    </script>
+
     <title><%= title %></title>
 
     <% if user_agent_contains("Fresh Pots iOS") %>
