@@ -37,7 +37,7 @@ Fresh Pots is a web application that helps to keep teams *au courant* with
 their coffee situation by allowing coffee drinkers to easily log when and where
 they start a brew and to quickly scan the freshness of available pots.
 
-Currently, Fresh Pots is available at [https://www.freshpots.com](https://www.freshpots.com) and
+Currently, Fresh Pots is available at [https://www.freshpotsapp.com](https://www.freshpotsapp.com) and
 as [an iOS app](https://github.com/ngscheurich/fresh-pots-ios).
 
 The name *Fresh Pots* does have [an origin](https://youtu.be/fhdCslFcKFU), in case you were wondering.
